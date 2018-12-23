@@ -1,0 +1,61 @@
+% Using XeLaTeX for fancy OpenType fonts
+\documentclass[10pt]{article}
+\usepackage[letterpaper, left=0.75in, right=0.75in, top=1in, bottom=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage[boxruled, linesnumbered]{algorithm2e}
+\usepackage{caption}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{placeins}
+\usepackage{titling}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+% using STIX2 fonts
+\setmainfont {STIX2Text-Regular}[
+Extension=.otf,
+BoldFont=STIX2Text-Bold,
+ItalicFont=STIX2Text-Italic,
+BoldItalicFont=STIX2Text-BoldItalic,
+]
+
+\setmathfont{STIX2Math.otf}
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\thetitle}
+\cfoot{\thepage}
+
+\onehalfspacing
+
+\newenvironment{question}[1]{\par\medskip\noindent\textbf{#1}\quad}{\medskip}
+\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1}\quad}{\medskip}
+
+\title{Detailed Solutions to PRML}
+\author{Ziyue ``Alan'' Xiang}
+\date{\today}
+
+\begin{document}
+% !! insert begin
+
+% !! insert end
+\end{document}
