@@ -1,7 +1,7 @@
 # Solutions to PRML questions
 
-- mathematical solutions are in /tex
-- programming solutions are in /python
+- mathematical solutions are in ```/solutions/tex```
+- programming solutions are in ```/solutions/python```
 
 # To Inspect an answer
-run ```inspect.py```
+run ```inspect_answer.py```

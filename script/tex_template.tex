@@ -28,6 +28,7 @@
 \usepackage{titling}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{color}
 \usepackage{hyperref}
 
 % using STIX2 fonts
@@ -47,8 +48,8 @@ BoldItalicFont=STIX2Text-BoldItalic,
 
 \onehalfspacing
 
-\newenvironment{question}[1]{\par\medskip\noindent\textbf{#1}\quad}{\medskip}
-\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1}\quad}{\medskip}
+\newenvironment{question}[1]{\par\medskip\noindent{\color{red}\textbf{#1}}\quad}{\medskip}
+\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1.}\quad}{\medskip}
 
 \title{Detailed Solutions to PRML}
 \author{Ziyue ``Alan'' Xiang}
