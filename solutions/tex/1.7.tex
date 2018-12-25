@@ -1,0 +1,66 @@
+\begin{question}{1.7}
+	In this exercise, we prove the normalization condition for the univariate Gaussian. (i.e. $\int_{-\infty}^{+\infty} \mathcal{N}(x \mid \mu, \sigma^2) = 1$) To do this consider, the integral
+	\begin{align*}
+		I = \int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}x^2\right)\ dx
+	\end{align*}
+	which we can evaluate by first writing its square in the form
+	\begin{align*}
+		I^2 = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}x^2 -\frac{1}{2\sigma^2}y^2\right)\ dx\ dy.
+	\end{align*}
+	Now make the transformation from Cartesian coordinates $(x,y)$ to polar coordinates $(r, \theta)$ and then substitute $u = r^2$. Show that, by performing the integrals over $\theta$ and $u$, and then taking the square root of both sides, we obtain
+	\begin{align*}
+		I = \left(2\pi\sigma^2\right)^{\frac{1}{2}}.
+	\end{align*}
+	Finally, use this result to show that the Gaussian distribution $\mathcal{N}(x \mid \mu, \sigma^2)$ is normalized.
+\end{question}
+
+\begin{answer}{}
+	We can make following substitution
+	\begin{equation}
+		\begin{cases}
+		x = \phi(r, \theta) = r\cos(\theta)\\
+		y = \psi(r, \theta) = r\sin(\theta)
+		\end{cases}
+	\end{equation}
+	to transform from Cartesian coordinates to polar coordinates. The Jacobian determinant $J$ is
+	\begin{align}
+		J &= \left|\frac{\partial(\phi, \psi)}{\partial(r, \theta)}\right| = 
+			\begin{vmatrix}
+				\cos(\theta) & -r\sin(\theta) \\
+				\sin(\theta) & r\cos(\theta)
+			\end{vmatrix}
+		= r.
+	\end{align}
+	Therefore we have
+	\begin{align}
+		I^2 &= \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}x^2 -\frac{1}{2\sigma^2}y^2\right)\ dx\ dy\\
+		&= \int_{0}^{2\pi}\int_{0}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}r^2\cos^2(\theta) -\frac{1}{2\sigma^2}r^2\sin^2(\theta)\right)|J|\ dr\ d\theta\\
+		&= \int_{0}^{2\pi}\int_{0}^{+\infty} \exp\left[-\frac{1}{2\sigma^2}r^2\left(\cos^2(\theta) + sin^2(\theta)\right)\right]r\ dr\ d\theta\\
+		&= \int_{0}^{2\pi}d\theta \int_{0}^{+\infty} \left(-\frac{1}{2\sigma^2}r^2\right)r\ dr\\
+		&= 2\pi \int_{0}^{+\infty} \left(-\frac{u}{2\sigma^2}\right)\frac{1}{2}\ du\\
+		&= \pi \cdot \left[\left.(-2\sigma^2)\exp\left(-\frac{u}{2\sigma^2}\right)\right\rvert_{0}^{+\infty}\right]\\
+		&= 2\pi\sigma^2.
+	\end{align}
+	It is obvious that
+	\begin{align}
+		\int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}x^2\right)\ dx = \int_{-\infty}^{+\infty} \exp\left[-\frac{1}{2\sigma^2}(x-\mu)^2\right]\ dx = \left(2\pi\sigma^2\right)^{\frac{1}{2}}.
+	\end{align}
+	Therefore we can conclude that $\int_{-\infty}^{+\infty} \left(2\pi\sigma^2\right)^{\frac{1}{2}}\exp\left[-\frac{1}{2\sigma^2}(x-\mu)^2\right] \ dx = 1$, that is to say, the Gaussian distribution is normalized.
+	
+	Another way of determining $I$ is to make use of the Gamma function $\Gamma(z) = \int_{0}^{+\infty} x^{z-1}e^{-x}\ dx$. We know that $\Gamma(\frac{1}{2}) = \pi^{\frac{1}{2}}$, that is,
+	\begin{align}
+		\int_{0}^{+\infty} x^{-\frac{1}{2}}e^{-x}\ dx = \pi^{-\frac{1}{2}}.
+	\end{align}
+	By applying change of variable $v = x^{\frac{1}{2}}$,  we have $dv = \frac{1}{2}x^{-\frac{1}{2}}dx$. It can be seen that
+	\begin{align}
+		\int_{0}^{+\infty} e^{-x}x^{-\frac{1}{2}}\ dx = \int_{0}^{+\infty} e^{-v^2} 2\ dv = \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
+	\end{align} 
+	Further substituting $v = \frac{1}{\sqrt{2}\sigma}w$ yields
+	\begin{align}
+		\int_{-\infty}^{+\infty} e^{-v^2}\ dv = \int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}w^2\right)\frac{1}{\sqrt{2}\sigma} \ dw = \frac{1}{\sqrt{2}\sigma} \int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}w^2\right) \ dw = \pi^{\frac{1}{2}}.
+	\end{align}
+	We can also conclude that
+	\begin{align}
+		I = \int_{-\infty}^{+\infty} \exp\left(-\frac{1}{2\sigma^2}w^2\right) \ dw = \sqrt{2\pi}\sigma.
+	\end{align}
+\end{answer}

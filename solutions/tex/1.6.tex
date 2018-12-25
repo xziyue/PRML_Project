@@ -1,0 +1,19 @@
+\begin{question}{1.6}
+	Show that if two varaibles $x$ and $y$ are independent, then their covariance is zero.
+\end{question}
+
+\begin{answer}{}
+	The covariance of $x$ and $y$ is given by
+	\begin{align}
+		\cov{x, y} &= \mathbb{E}_{x,y}\left[\left\{x - \ev{x}\right\} \left\{y - \ev{y}\right\} \right]\\
+		&= \mathbb{E}_{x,y}\left[xy\right] - \ev{x}\ev{y}.
+	\end{align} 
+	When two variables $x$ and $y$ are independent, then their joint distribution $p(x,y)$ satisfies $p(x,y) = p(x)p(y)$. It can be seen that
+	\begin{align}
+		\mathbb{E}_{x,y}\left[xy\right] &= \int\int p(x,y)xy\ dxdy\\
+		&= \int\int p(x)p(y)xy\ dxdy\\
+		&= \int p(x)x \ dx \int p(y)y\ dy\\
+		&= \ev{x}\ev{y}.
+	\end{align}
+	Therefore we can conclude that if $x$ and $y$ are independent, then $\cov{x,y} = 0$.
+\end{answer}

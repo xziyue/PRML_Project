@@ -1,0 +1,27 @@
+\begin{question}{1.5}
+	Using the definition $\var{f} = \ev{\left(f(x) - \ev{f(x)}^2\right)^2}$, show that $\var{f(x)}$ satisfies $\var{f} = \ev{f(x)^2} - \ev{f(x)}^2$.
+\end{question}
+
+\begin{answer}{}
+	Assume that the density function of the expectation is $p(x)$. It should satisfy
+	\begin{align}
+		p(x) &\geq 0,\\
+		\int p(x)\ dx &= 1.
+	\end{align}
+	The expected value $\ev{f(x)}$ of $f(x)$ is given by
+	\begin{align}
+		\ev{f(x)} = \int p(x)f(x)\ dx.
+	\end{align}
+	It can be seen that when $f(x)$ is a constant function given by $f(x) = c$, then $\ev{f(x)} = c$. We can also see that $\ev{f(x)}$ is a constant itself because $x$ is integrated out completely. 
+	
+	Given the definition of $\ev{f(x)}$ and the properties of integral, it is not hard to conclude that $\ev{af(x)} = a\ev{f(x)}$ for some consant $a$, and $\ev{f(x) \pm g(x)} = \ev{f(x)} \pm \ev{g(x)}$. This shows that expectation is a \emph{linear} operator.
+	
+	Another fact that needs to be shown is $\ev{\ev{f}} = \ev{f}$, due to the fact that $\ev{f}$ is a constant. Therefore, we have
+	\begin{align}
+		\var{f} &= \ev{\left(f(x) - \ev{f(x)}^2\right)^2}\\
+		&= \ev{f(x)^2 - 2\cdot f(x) \cdot \ev{f(x)} + \ev{f(x)}^2}\\
+		&= \ev{f(x)^2} - \ev{2\cdot\ev{f(x)}\cdot f(x)} + \ev{\ev{f(x)}^2}\\
+		&= \ev{f(x)^2} -2\cdot\ev{f(x)} \cdot \ev{f(x)} + \ev{f(x)^2}\\
+		&= \ev{f(x)^2} - \ev{f(x)}^2.
+	\end{align}
+\end{answer}
