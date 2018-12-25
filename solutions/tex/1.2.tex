@@ -1,0 +1,28 @@
+\begin{question}{1.2}
+	Write down the set of coupled linear equations, analogous to that in \prmlqstyle{1.1}, statisfied by the coefficients $w_i$ which minimize the regularized sum-of-squares error function given by $\tilde{E}(\bm{w}) = \frac{1}{2} \sum_{n=1}^{N} \left\{ y(x_n, \bm{w}) - t_n\right\}^2 + \frac{\lambda}{2} \lVert\bm{w}\rVert^2$.
+\end{question}
+
+\begin{answer}{}
+	\emph{(using the notations in \prmlqstyle{1.1})} Because $\tilde{E}(\bm{w}) = E(w) + \frac{\lambda}{2}\lVert\bm{w}\rVert^2$, it is obvious that
+	\begin{align}
+	\frac{\partial}{\partial w_i} \tilde{E}(\bm{w}) &= \frac{\partial}{\partial w_i} E(\bm{w}) + \frac{\partial}{\partial w_i}\frac{\lambda}{2}\lVert\bm{w}\rVert^2\\
+		&= \sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} - \sum_{n=1}^{N} t_n x_n^i + \frac{\partial}{\partial w_i}\frac{\lambda}{2}\sum_{j=0}^{M}w_j^2\\
+		&= \sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} - \sum_{n=1}^{N} t_n x_n^i + \lambda w_i.
+	\end{align}
+	Similarly, the equations to be solved are
+	\begin{gather}
+		\sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} - \sum_{n=1}^{N} t_n x_n^i + \lambda w_i = 0\\
+		\sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} + \lambda w_i = \sum_{n=1}^{N} t_n x_n^i.
+	\end{gather}
+	for $i = 0, 1, \ldots, M$.
+
+	Let $I_{ij}$ be
+	\begin{equation}
+		I_{ij} =
+		\begin{cases}
+			1, &i = j,\\
+			0, &\mbox{otherwise}.
+		\end{cases}
+	\end{equation}
+	By setting $A_{ij} = \sum_{n=1}^{N} x_n^{i+j}$ and $T_i = \sum_{n=1}^{N} t_n x_n^i$, it can be seen that the set of equations can be written as $\sum_{j = 0}^{M} \left(A_{ij} + I_{ij}\right)w_j = T_i$.
+\end{answer}

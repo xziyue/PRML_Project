@@ -1,0 +1,21 @@
+\begin{question}{1.3}
+	Suppose that we have three colored boxes $r$ (red), $b$ (blue) and $g$ (green). Box $r$ contains 3 apples, 4 oranges and 3 limes, box $b$ contains 1 apple, 1 orange and 0 lime, and box $g$ contains 3 apples, 3 oranges and 4 limes. If a box is chosen at random with probabilities $p(r)=0.2$, $p(b) = 0.2$, $p(g)=0.6$, and a piece of fruit is removed from the box (with equal probability of selecting any of the items in the box), then what is the probability of selecting an apple? If we observe that the second fruit is in fact an orange, what is the probability that it came from the green box?
+\end{question}
+
+\begin{answer}{}
+	Denote the event of selecting an apple, orange and lime by $a$, $o$ and $l$, respectively; denote the set of all boxes by $B= \{r, b, g\}$. The probability of selecting an apple is $p(a)$, which by product rule, is equal to
+	\begin{align}
+		p(a) &= \sum_{b \in B} p(a \mid b)p(b)\\
+		&= p(a \mid r)p(r) + p(a \mid b)p(b) + p(a \mid g)p(g)\\
+		&= \frac{3}{10}\times\frac{1}{5} + \frac{1}{2}\times\frac{1}{5} + \frac{3}{10}\times\frac{3}{5}\\
+		&= \frac{3 + 5 + 9}{50} = \frac{17}{50} = 0.34.
+	\end{align}
+	Given the fruit selected is orange, the probability of it coming from the green box is given by $p(g \mid o)$. By \emph{Bayes' Theorem}, it can be seen that
+	\begin{align}
+		p(g \mid o) &= \frac{p(o \mid g)p(g)}{p(o)}\\
+		&= \frac{p(o \mid g)p(g)}{\sum_{b \in B} p(o \mid b)p(b)}\\
+		&= \frac{p(o \mid g)p(g)}{p(o \mid r)p(r) + p(o \mid b)p(b) + p(o \mid g)p(g)}\\
+		&= \frac{\frac{3}{10}\times\frac{3}{5}}{\frac{4}{10}\times\frac{1}{5} + \frac{1}{2}\times\frac{1}{5} + \frac{3}{10}\times\frac{3}{5}}\\
+		&= \frac{1}{2} = 0.5.
+	\end{align}
+\end{answer}

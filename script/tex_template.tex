@@ -29,8 +29,28 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{color}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\thetitle}
+\cfoot{\thepage}
+
+\doublespacing
+
+\newcommand{\prmlqstyle}[1]{{\color{red}\textbf{#1}}}
+\newenvironment{question}[1]{\par\medskip\noindent{\prmlqstyle{#1}}~}{\medskip}
+\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1.}~}{\medskip}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\bm}[1]{\mathbf{#1}}
+
+
+\title{Detailed Solutions to PRML}
+\author{Ziyue ``Alan'' Xiang}
+\date{\today}
+
+\begin{document}
 % using STIX2 fonts
 \setmainfont {STIX2Text-Regular}[
 Extension=.otf,
@@ -41,21 +61,6 @@ BoldItalicFont=STIX2Text-BoldItalic,
 
 \setmathfont{STIX2Math.otf}
 
-\pagestyle{fancy}
-\fancyhf{}
-\chead{\thetitle}
-\cfoot{\thepage}
-
-\onehalfspacing
-
-\newenvironment{question}[1]{\par\medskip\noindent{\color{red}\textbf{#1}}\quad}{\medskip}
-\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1.}\quad}{\medskip}
-
-\title{Detailed Solutions to PRML}
-\author{Ziyue ``Alan'' Xiang}
-\date{\today}
-
-\begin{document}
 % !! insert begin
 
 % !! insert end

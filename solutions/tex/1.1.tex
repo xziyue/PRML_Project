@@ -1,8 +1,42 @@
 \begin{question}{1.1}
-This is the question.
+	Consider the sum-of-squares error function $E(\bm{w})=\frac{1}{2}\sum_{n=1}^{N} \left\{ y(x_n, \bm{w}) - t_n\right\}^2$, in which the function $y(x_n, \bm{w})$ is given by $y(x_n, \bm{w}) = \sum_{j = 0}^{M}w_j x^j$. Show that the coefficients $\bm{w}=\{w_i\}$ that minimize this error function are given by the solution to the following set of linear equations
+	\begin{align*}
+		\sum_{j = 0}^{M} A_{ij}w_j = T_i,
+	\end{align*}
+	where
+	\begin{align*}
+		&A_{ij} = \sum_{n=1}^{N} (x_n)^{i+j}, &T_i = \sum_{n=1}^{N}(x_n)^i t_n.
+	\end{align*}%
+	Here a suffix $i$ or $j$ denotes the index of a component, whereas $(x)^i$ denotes $x$ raised to the power of $i$.
 \end{question}
 
 \begin{answer}{}
+	In order to find the minimum of $E$, we need to equate the partial derivative of $E$ with respect to $w_i$ to zero. Therefore we need to compute
+	\begin{align}
+		\frac{\partial E}{\partial w_i} = \frac{\partial}{\partial w_i} \frac{1}{2}\sum_{n=1}^{N} \left\{ y(x_n, \bm{w}) - t_n\right\}^2.
+	\end{align}
+	Given a fixed $n$, it can be seen that
+	\begin{align}
+		&\frac{\partial}{\partial w_i} \frac{1}{2} \left\{ y(x_n, \bm{w})- t_n \right\}^2\\
+		&= \frac{\partial}{\partial w_i} \frac{1}{2} \left[ \left(\sum_{j = 0}^{M}w_j x_n^j\right) - t_n \right]^2\\
+		&= 2 \cdot \frac{1}{2} \cdot \left[ \left(\sum_{j = 0}^{M}w_j x_n^j\right) - t_n \right] \cdot \frac{\partial}{\partial w_i} \left[ \left(\sum_{j = 0}^{M}w_j x_n^j\right) - t_n\right]\\
+		&= \left[ \left(\sum_{j = 0}^{M}w_j x_n^j\right) - t_n \right] \cdot x_n^i\\
+		&= \sum_{j = 0}^{M}w_j x_n^{i+j} - t_n x_n^i.
+	\end{align}
+	Hence we have
+	\begin{align}
+		\frac{\partial E}{\partial w_i} &= \frac{\partial}{\partial w_i} \frac{1}{2}\sum_{n=1}^{N} \left\{ y(x_n, \bm{w}) - t_n \right\}^2\\
+		&= \frac{\partial}{\partial w_i} \sum_{n=1}^{N} \frac{1}{2}\left\{ y(x_n, \bm{w}) - t_n \right\}^2\\
+		&= \sum_{n=1}^{N} \left( \sum_{j = 0}^{M}w_j x_n^{i+j} - t_n x_n^i \right)\\
+		&= \sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} - \sum_{n=1}^{N} t_n x_n^i.
+	\end{align}
+	Equating it to zero yields
+	\begin{gather}
+		\sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} - \sum_{n=1}^{N} t_n x_n^i = 0\\
+		\sum_{j = 0}^{M} \sum_{n=1}^{N} w_j x_n^{i+j} = \sum_{n=1}^{N} t_n x_n^i\\
+		\sum_{j = 0}^{M} w_j \cdot \sum_{n=1}^{N} x_n^{i+j} = \sum_{n=1}^{N} t_n x_n^i.
+	\end{gather}
+	for $i = 0, 1, \ldots, M$.
 
-
+	By setting $A_{ij} = \sum_{n=1}^{N} x_n^{i+j}$ and $T_i = \sum_{n=1}^{N} t_n x_n^i$, it can be seen that the set of equations can be written as $\sum_{j = 0}^{M} A_{ij}w_j = T_i$.
 \end{answer}
