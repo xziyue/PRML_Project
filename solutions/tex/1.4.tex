@@ -1,0 +1,26 @@
+\begin{question}{1.4}
+	Consider a probability $p_x(x)$ defined over a continuous variable $x$, and suppose that we make a nonlinear change of variable using $x = g(y)$, so that the density transforms according to $p_y(y) = p_x(g(y))\left| g'(y) \right|$. By differentiating it, show that the location $\hat{y}$ of the maximum of the density in $y$ is not in general related to the location $\hat{x}$ of the maximum of the density over $x$ by the simple functional relation $\hat{x} = g(\hat{y})$ as a consequence of the Jacobian factor. This shows that the maximum of a probability density (in contrast to a simple function) is dependent on the choice of variable. Verify that, in the case of a linear transformation, the location of the maximum transforms in the same way as the variable itself.
+\end{question}
+
+\begin{answer}{}
+	The location $\hat{x}$ of the maximum of the density over $x$ should satisfy
+	\begin{align}
+		p'_x(\hat{x}) = 0.
+	\end{align}
+	By differentiating $p_y(y) = p_x(g(y))\left| g'(y) \right|$, we have
+	\begin{align}
+		p'_y(y) &= \left[p_x(g(y))\left| g'(y) \right|\right]'\\
+		&= \left[p_x(g(y))\right]'\cdot \left| g'(y) \right| + p_x(g(y)) \cdot \left| g'(y) \right|'\\
+		&= p'_x(g(y)) \cdot g'(y) \cdot  \left| g'(y) \right| + p_x(g(y)) \cdot \sgn{g'(y)} \cdot g''(y)\\
+		&= p'_x(g(y)) \cdot \sgn{g'(y)} \cdot \left[g'(y)\right]^2 + p_x(g(y)) \cdot \sgn{g'(y)} \cdot g''(y)\\
+		&= \sgn{g'(y)} \left\{ p'_x(g(y))\cdot\left[g'(y)\right]^2 + p_x(g(y)) \cdot  g''(y) \right\}. \quad\left(g'(y) \neq 0\right)
+	\end{align}
+	Putting $\hat{x} = g(\hat{y})$ into the result above yields
+	\begin{align}
+		p'_y(\hat{y}) &= \sgn{g'(\hat{y})} \left\{ p'_x(\hat{x})\cdot\left[g'(\hat{y})\right]^2 + p_x(\hat{x}) \cdot  g''(\hat{y}) \right\}\\
+		&= \sgn{g'(\hat{y})} \left\{ p_x(\hat{x}) \cdot  g''(y) \right\}.
+	\end{align}
+	In general, it should be true that $ p_x(\hat{x}) > 0$. Due to the fact that $g(y)$ is a nonlinear transformation, generally it should also be true that $g''(y) \neq 0$. That is to say $p'_y(\hat{y}) \neq 0$ in general. Hence we can conclude that the maximum of the density in $y$ is not in general related to the location $\hat{x}$ of the maximum of the density over $x$.
+	
+	However, when the transformation $g(y)$ is linear, we have $g''(y) = 0$, and therefore $p'_y(\hat{y}) = 0$ holds. That is, $\hat{y}$ is a maximum of $p_y(y)$. Because $\hat{x} = g(\hat{y})$, it can be seen that the location $\hat{y}$ of the maximum of the density over $y$ is transformed in the same way as the variable itself.
+\end{answer}

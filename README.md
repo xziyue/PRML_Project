@@ -4,4 +4,4 @@
 - programming solutions are in ```/solutions/python```
 
 # To Inspect an answer
-run ```inspect_answer.py```
+Suppose one needs to check the answer of question 1.1, run ```python3 inspect_answer.py -s 1.1```.
