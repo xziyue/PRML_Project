@@ -9,6 +9,12 @@ allAns.sort()
 
 allFrac = ''
 for path in allAns:
-    with open(path, 'r') as in
+    with open(path, 'r') as infile:
+        allFrac += infile.read()
 
-print('compiling...')
+full = GenerateFullTex(root, allFrac)
+pdfOutput = CompileTeX(root, 'all', full)
+if os.path.exists(pdfOutput):
+    OpenFile(pdfOutput)
+else:
+    raise RuntimeError('unable to open file {}, there might have been some error in compiling LaTeX'.format(pdfOutput))
