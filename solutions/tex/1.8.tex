@@ -1,0 +1,34 @@
+\begin{question}{1.8}
+	By using a change of variables, verify that the univariate Gaussian distribution given by $\mathcal{N}(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \right\}$ satisfies $\ev{x} = \mu$. Next, by differentiating both sides of the normalization condition
+	\begin{align*}
+		\int_{-\infty}^{+\infty} \mathcal{N}(x \mid \mu, \sigma^2) \ dx = 1
+	\end{align*}
+	with respect to $\sigma^2$, verify that the Gaussian satisfies $\ev{x^2} = \mu^2 + \sigma^2$. Finally, show that $\var{x} = \sigma^2$ holds.
+\end{question}
+
+\begin{answer}{}
+	We know that
+	\begin{align}
+		\ev{x} &= \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}\sigma}\exp\left\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \right\}x\ dx\\
+		&\mbox{(let $u = (x-\mu)$, $dx = du$)} \nonumber\\
+		&= \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}\sigma} \exp\left\{ -\frac{1}{2\sigma^2} u^2 \right\}(u + \mu)\ du\\
+		&= \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}\sigma}  \exp\left\{ -\frac{1}{2\sigma^2} u^2 \right\}u \ du + \mu \int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}\sigma}  \exp\left\{ -\frac{1}{2\sigma^2} u^2 \right\} \ du
+	\end{align}
+	Because $\frac{1}{\sqrt{2\pi}\sigma}  \exp\left\{ -\frac{1}{2\sigma^2} u^2 \right\}u$ is an odd function, the result of the first term is zero. Hence we can conclude that $\ev{x} = \mu$.
+	
+	To compute $\ev{x^2}$, we apply differentiation with respect to $\sigma^2$ on both sides of the normalization condition. In order to do this, let $v = \sigma^2$, then $v^{\frac{1}{2}} = \sigma$, and we have
+	\begin{gather}
+		\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}\sigma}\exp\left\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \right\}\ dx = 1\\
+		\int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \right\}\ dx = \sqrt{2\pi} \sigma\\
+		\int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2v} (x-\mu)^2 \right\}\ dx = \sqrt{2\pi} v^{\frac{1}{2}}\\
+		\frac{\partial}{\partial v} \int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2v} (x-\mu)^2 \right\}\ dx = \frac{\partial}{\partial v}\sqrt{2\pi} v^{\frac{1}{2}}\\
+		\int_{-\infty}^{+\infty} \frac{\partial}{\partial v}\exp\left\{ -\frac{1}{2v} (x-\mu)^2 \right\}\ dx = \frac{1}{2}\sqrt{2\pi} v^{-\frac{1}{2}}\\
+		\int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2v} (x-\mu)^2 \right\} \frac{(x-\mu)^2}{2v^2}\ dx = \frac{1}{2}\sqrt{2\pi} v^{-\frac{1}{2}}\\
+		\int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2v} (x-\mu)^2 \right\} (x-\mu)^2\ dx = \sqrt{2\pi}v^{\frac{3}{2}}\\
+		\int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \right\} (x-\mu)^2\ dx = \sqrt{2\pi}\sigma^3\\
+		\frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^{+\infty} \exp\left\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \right\} (x-\mu)^2\ dx = \sigma^2.
+	\end{gather}
+	That is to say, $\ev{(x - \mu)^2} = \ev{x^2 - 2\mu x + \mu^2} = \ev{x^2} -2\mu\ev{x} + \mu^2 = \ev{x^2} - \mu^2 = \sigma^2$. Therefore we can conclude that $\ev{x^2} = \sigma^2 + \mu^2$.
+	
+	By definition, $\var{x} = \ev{(x - \ev{x})^2} = \ev{(x - \mu)^2} = \sigma^2$.
+\end{answer}

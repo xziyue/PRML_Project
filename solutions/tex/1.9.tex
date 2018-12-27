@@ -1,0 +1,103 @@
+\begin{question}{1.9}
+	Show that the mode (i.e. the maximum) of the Gaussian distribution 
+	\begin{align*}
+		\mathcal{N}(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma} \exp\{ -\frac{1}{2\sigma^2} (x-\mu)^2 \} 
+	\end{align*}
+	is given by $\mu$. 
+	
+	Similarly, show that the mode of the $D$-dimensional multivariate Gaussian 
+	\begin{align*}
+		\mathcal{N}(\bm{x} \mid \bm{\mu}, \bm{\Sigma}) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\left\lvert \bm{\Sigma} \right\rvert^{1/2}} \exp\left\{ -\frac{1}{2}(\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) \right\}
+	\end{align*} 
+	is given by $\bm{\mu}$.
+\end{question}
+
+\begin{answer}{}
+	The univariate Gaussian distribution is obviously a special case of the multivariate Gaussian distribution, therefore we only need to prove the multivariate situation. 
+	
+	Denote the element on $i$th row, $j$th column of some matrix $\bm{A}$ by $A_{ij}$; denote the $i$th element of some vector $\bm{a}$ by $a_i$. It is important to point out that $\bm{\Sigma}$ is symmetric, which indicates that $\bm{\Sigma}^{-1}$ is also symmetric. That is to say, $\Sigma^{-1}_{ij} = \Sigma^{-1}_{ji}$. 
+	
+	To prove that the mode of $D$-dimensional multivariate Gaussian is given by $\bm{\mu}$, we simply apply partial derivative with respect to the $l$th element $x_l$ and equate it to zero. By setting $l = 1, 2,\ldots,D$, we will get a set of linear equations that allows us to solve for each $x_l$. The partial derivative is
+	\begin{align}
+		\frac{\partial}{\partial x_l} \mathcal{N}(\bm{x} \mid \bm{\mu}, \bm{\Sigma}) &= \frac{\partial}{\partial x_l}\frac{1}{(2\pi)^{D/2}} \frac{1}{\left\lvert \bm{\Sigma} \right\rvert^{1/2}} \exp\left\{ -\frac{1}{2}(\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) \right\}\\
+		&= \frac{1}{(2\pi)^{D/2}} \frac{1}{\left\lvert \bm{\Sigma} \right\rvert^{1/2}}\exp\left\{ -\frac{1}{2}(\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\} \frac{\partial}{\partial x_l} \left\{ -\frac{1}{2}(\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\}.
+	\end{align}
+	For it to be equal to zero, it is clear that
+	\begin{gather}
+		\frac{\partial}{\partial x_l} \left\{ -\frac{1}{2}(\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\right\} = 0\\
+		\frac{\partial}{\partial x_l} (\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) = 0
+	\end{gather}
+	Expanding the result of $\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})$, we have
+	\begin{align}
+		\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) = 
+		\begin{bmatrix}
+		\sum_j \Sigma_{1j}^{-1} \left(x_j - \mu_j\right)\\
+		\vdots\\
+		\sum_j \Sigma_{Dj}^{-1} \left(x_j - \mu_j\right)
+		\end{bmatrix},
+	\end{align}
+	which allows us to write
+	\begin{align}
+		(\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu}) &= \sum_k \left(x_k - \mu_k\right)\left[\sum_j \Sigma_{kj}^{-1} \left(x_j - \mu_j\right)\right]\\
+		&= \sum_k \sum_j \Sigma_{kj}^{-1} \left(x_k - \mu_k\right) \left(x_j - \mu_j\right)\\
+		&=  \sum_k \sum_j \Sigma_{kj}^{-1} \left(x_k x_j - \mu_k x_j - \mu_j x_k + \mu_k \mu_j\right).
+	\end{align}
+	It can be seen that
+	\begin{align}
+		&\frac{\partial}{\partial x_l} (\bm{x}-\bm{\mu})^\T\bm{\Sigma}^{-1}(\bm{x}-\bm{\mu})\\
+		&= \frac{\partial}{\partial x_l} \sum_k \sum_j \Sigma_{kj}^{-1} \left(x_k x_j - \mu_k x_j - \mu_j x_k + \mu_k \mu_j\right)\\
+		&= \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1}x_k x_j - \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_k x_j - \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_j x_k + \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_k \mu_j. \label{1.9eqn1}
+	\end{align}
+	There are four terms in (\ref{1.9eqn1}), which we will simplify one by one. It is obvious that the fourth term equals to zero. For the second term, it is not hard to see that
+	\begin{align}
+		\sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_k x_j = \sum_k \Sigma_{kl}^{-1} \mu_k.
+	\end{align}
+	Similarly, the third term can be simplified as
+	\begin{align}
+		\sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_j x_k = \sum_j \Sigma_{lj}^{-1} \mu_j.
+	\end{align}
+	Because $\bm{\Sigma}^{-1}$ is symmetric, we have
+	\begin{align}
+		\sum_k \Sigma_{kl}^{-1} \mu_k = \sum_j \Sigma_{lj}^{-1} \mu_j.
+	\end{align}%
+	\begin{comment}
+		The first term is a bit more complicated. It can be seen that
+		\begin{equation}\label{1.9eqn2}
+		\frac{\partial}{\partial x_l} \Sigma_{kj}^{-1}x_k x_j = 
+		\begin{cases}
+		2\Sigma_{ll}^{-1}x_l, &\mbox{$k = l$ and $j = l$}\\
+		\left(\sum_j \Sigma_{lj}^{-1} x_j\right) - \Sigma_{ll}^{-1}x_l, &\mbox{$k = l$ and $j \neq l$}\\
+		\left(\sum_k \Sigma_{kl}^{-1} x_k\right) - \Sigma_{ll}^{-1}x_l, &\mbox{$k \neq l$ and $j = l$}\\
+		0, &\mbox{otherwise}.
+		\end{cases}
+		\end{equation}
+		For the reason mentioned above, the second situation and the third situation in (\ref{1.9eqn2}) are equal. Therefore we have
+		\begin{align}
+		\sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1}x_k x_j = 2\sum_j \Sigma_{lj}^{-1} x_j.
+		\end{align}
+	\end{comment}
+	The first term is a bit more complicated. Due to the symmetry of $\bm{\Sigma}^{-1}$, it can be seen that
+	\begin{align}
+		&\sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1}x_k x_j\\ 
+		& = \sum_k \sum_j \Sigma_{kj}^{-1} \frac{\partial x_k}{\partial x_l}x_j + \sum_k \sum_j \Sigma_{kj}^{-1} \frac{\partial x_j}{\partial x_l}x_k\\
+		& = \sum_j \Sigma_{lj}^{-1}x_j + \sum_k \Sigma_{kl}^{-1}x_k\\
+		&= 2\sum_j \Sigma_{lj}^{-1}x_j.
+	\end{align}
+	Hence (\ref{1.9eqn1}) yields
+	\begin{align}
+		&\sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1}x_k x_j - \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_k x_j - \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_j x_k + \sum_k \sum_j \frac{\partial}{\partial x_l} \Sigma_{kj}^{-1} \mu_k \mu_j\\
+		&= 2\sum_j \Sigma_{lj}^{-1} x_j - 2\sum_j \Sigma_{lj}^{-1} \mu_j.
+	\end{align}
+	Equating it to zero, we have
+	\begin{align}
+		\sum_j \Sigma_{lj}^{-1} x_j =\sum_j \Sigma_{lj}^{-1} \mu_j,
+	\end{align}
+	for $l = 1, 2, \ldots D$. By observing this equation, we find out that it is exactly the expansion of the equation
+	\begin{align}
+		\bm{\Sigma}^{-1}\bm{x'} = \bm{\Sigma}^{-1}\bm{\mu}.
+	\end{align}
+	Multiplying both sides by $\bm{\Sigma}$ yields
+	\begin{align}
+		\bm{x'} = \bm{\mu}.
+	\end{align}
+\end{answer}
