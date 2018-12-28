@@ -1,0 +1,33 @@
+\begin{question}{1.11}
+	By setting the derivatives of log likelihood function
+	\begin{align*}
+		\ln p(\bm{x} \mid \mu, \sigma^2) = -\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln\sigma^2 - \frac{N}{2}\ln(2\pi),
+	\end{align*}
+	verify the results of
+	\begin{align*}
+		\mu_{\mathrm{ML}} &= \frac{1}{N} \sum_{n=1}^{N}x_n,\\
+		\sigma^2_{\mathrm{ML}} &= \frac{1}{N} \sum_{n=1}^{N} (x_n - \mu_{\mathrm{ML}})^2.
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	By setting the derivative with respect to $\mu$ to zero, we have
+	\begin{gather}
+		\frac{\partial}{\partial \mu} \left[-\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln\sigma^2 - \frac{N}{2}\ln(2\pi)\right] = 0\\
+		\frac{\partial}{\partial \mu} \left[-\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 \right] = 0\\
+		\frac{\partial}{\partial \mu} \sum_{n=1}^{N} (x_n^2-2\mu x_n + \mu^2) = 0\\
+		\frac{\partial}{\partial \mu} \left[ \sum_{n=1}^{N}x_n^2 - 2\sum_{n=1}^{N}\mu x_n + N\mu^2  \right] = 0\\
+		-2\sum_{n=1}^{N}x_n + 2N\mu = 0\\
+		\mu = \frac{1}{N} \sum_{n=1}^{N} x_n.
+	\end{gather}
+	We can conclude that the formula for $\mu_{\mathrm{ML}}$ is correct.
+	
+	Let $u = \sigma^2$, by setting the derivative with respect to $u$ to zero, we have
+	\begin{gather*}
+		\frac{\partial}{\partial \sigma^2} \left[-\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln\sigma^2 - \frac{N}{2}\ln(2\pi)\right] = 0\\
+		\frac{\partial}{\partial u} \left[-\frac{1}{2u} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln u - \frac{N}{2}\ln(2\pi)\right] = 0\\
+		\frac{1}{2u^2}  \sum_{n=1}^{N} (x_n-\mu)^2 - \frac{N}{2u} = 0\\
+		u = \frac{1}{N} \sum_{n=1}^{N} (x_n-\mu)^2.
+	\end{gather*}
+	By substituting $\mu$ with $\mu_{\mathrm{ML}}$, we can conclude that the formula for $\sigma^2_{\mathrm{ML}}$ is correct.
+\end{answer}
