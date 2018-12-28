@@ -1,5 +1,5 @@
 % Using XeLaTeX for fancy OpenType fonts
-\documentclass[10pt]{article}
+\documentclass[9pt]{article}
 \usepackage[letterpaper, left=0.75in, right=0.75in, top=1in, bottom=1in]{geometry}
 \usepackage[english]{babel}
 \usepackage{ragged2e}
@@ -28,6 +28,7 @@
 \usepackage{titling}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{calc}
 \usepackage{color}
 %\usepackage{hyperref}
 
@@ -36,7 +37,7 @@
 \chead{\thetitle}
 \cfoot{\thepage}
 
-\doublespacing
+
 
 \newcommand{\prmlqstyle}[1]{{\color{red}\textbf{#1}}}
 \newenvironment{question}[1]{\par\medskip\noindent{\prmlqstyle{#1}}~}{\medskip}
@@ -66,6 +67,9 @@ BoldItalicFont=STIX2Text-BoldItalic,
 ]
 
 \setmathfont{STIX2Math.otf}
+
+%\doublespacing
+\onehalfspacing
 
 % !! insert begin
 

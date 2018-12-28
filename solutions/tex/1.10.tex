@@ -1,0 +1,33 @@
+\begin{question}{1.10}
+	Suppose that the two variables $x$ and $z$ are statistically independent. Show that the mean and variance of their sum satisfies
+	\begin{align*}
+		\ev{x + z} &= \ev{x} + ev{z}\\
+		\var{x + z} &= \var{x} + \var{z}.
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	Because these two variables are statistically independent, we know that $p(x,z) = p(x)p(z)$. Therefore
+	\begin{align}
+		\ev{x+z} &=\int\int (x+z)p(x,z)\ dx\ dz\\
+		&= \int\int (x+z)p(x)p(z)\ dx \ dz\\
+		&= \int\int xp(x)p(z) + zp(x)p(z) \ dx\ dz\\
+		&= \int \ev{x}p(z) + zp(z)\ dz\\
+		&= \ev{x} + \ev{z}.
+	\end{align}
+	Similarly, we have
+	\newlength{\tempeqn}
+	\settowidth{\tempeqn}{$=$}
+	\begin{align}
+		\var{x+z} &= \int\int (x + z- \ev{x + z})^2 p(x,z)\ dx\ dz\\
+		&= \int\int (x + z- \ev{x} - \ev{z})^2 p(x)p(z)\ dx\ dz\\
+		&= \int\int \left[\left(x - \ev{x}\right)+(z-\ev{z})\right]^2 p(x)p(z)\ dx\ dz\\
+		\begin{split}
+		&=\int\int \left(x - \ev{x}\right)^2p(x)p(z)\ dx\ dz + {}\\
+		&\phantom{=}\quad\int\int \left(z - \ev{z}\right)^2p(x)p(z)\ dx\ dz + {}\\
+		&\phantom{=}\quad\quad{\int\int 2\left(x-\ev{x}\right)\left(z-\ev{z}\right)p(x)p(z)\ dx\ dz}
+		\end{split}\\
+		&= \var{x} + \var{z} + 2\cov{x,z}.
+	\end{align}
+	By the conclusions of question \prmlqstyle{1.6}, we have already known that $\cov{x,z} = 0$ if $x$ and $z$ are independent. Therefore $\var{x+z} = \var{x} + \var{z}$ holds.
+\end{answer}
