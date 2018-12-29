@@ -1,0 +1,109 @@
+% Using XeLaTeX for fancy OpenType fonts
+\documentclass[10pt]{article}
+\usepackage[letterpaper, left=0.75in, right=0.75in, top=1in, bottom=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{pifont}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage[boxruled, linesnumbered]{algorithm2e}
+\usepackage{caption}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{placeins}
+\usepackage{titling}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{calc}
+\usepackage{color}
+%\usepackage{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\thetitle}
+\cfoot{\thepage}
+
+
+
+\newcommand{\prmlqstyle}[1]{{\color{red}\textbf{#1}}}
+\newenvironment{question}[1]{\par\medskip\noindent{\prmlqstyle{#1}}~}{\medskip}
+\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1.}~}{\medskip}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+\newcommand{\bm}[1]{\symbf{#1}}
+
+\newcommand{\T}{\mathsf{T}}
+
+\newcommand{\sgn}[1]{\mathrm{sgn}\left(#1\right)}
+\newcommand{\ev}[1]{\mathbb{E}\left[#1\right]}
+\newcommand{\var}[1]{\mathrm{var}\left[#1\right]}
+\newcommand{\cov}[1]{\mathrm{cov}\left[#1\right]}
+
+\title{Detailed Solutions to PRML}
+\author{Ziyue ``Alan'' Xiang}
+\date{\today}
+
+\begin{document}
+% using STIX2 fonts
+\setmainfont {STIX2Text-Regular}[
+Extension=.otf,
+BoldFont=STIX2Text-Bold,
+ItalicFont=STIX2Text-Italic,
+BoldItalicFont=STIX2Text-BoldItalic,
+]
+
+\setmathfont{STIX2Math.otf}
+
+%\doublespacing
+\onehalfspacing
+
+% !! insert begin
+\begin{question}{1.11}
+	By setting the derivatives of log likelihood function
+	\begin{align*}
+		\ln p(\bm{x} \mid \mu, \sigma^2) = -\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln\sigma^2 - \frac{N}{2}\ln(2\pi),
+	\end{align*}
+	verify the results of
+	\begin{align*}
+		\mu_{\mathrm{ML}} &= \frac{1}{N} \sum_{n=1}^{N}x_n,\\
+		\sigma^2_{\mathrm{ML}} &= \frac{1}{N} \sum_{n=1}^{N} (x_n - \mu_{\mathrm{ML}})^2.
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	By setting the derivative with respect to $\mu$ to zero, we have
+	\begin{gather}
+		\frac{\partial}{\partial \mu} \left[-\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln\sigma^2 - \frac{N}{2}\ln(2\pi)\right] = 0\\
+		\frac{\partial}{\partial \mu} \left[-\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 \right] = 0\\
+		\frac{\partial}{\partial \mu} \sum_{n=1}^{N} (x_n^2-2\mu x_n + \mu^2) = 0\\
+		\frac{\partial}{\partial \mu} \left[ \sum_{n=1}^{N}x_n^2 - 2\sum_{n=1}^{N}\mu x_n + N\mu^2  \right] = 0\\
+		-2\sum_{n=1}^{N}x_n + 2N\mu = 0\\
+		\mu = \frac{1}{N} \sum_{n=1}^{N} x_n.
+	\end{gather}
+	We can conclude that the formula for $\mu_{\mathrm{ML}}$ is correct.
+	
+	Let $u = \sigma^2$, by setting the derivative with respect to $u$ to zero, we have
+	\begin{gather*}
+		\frac{\partial}{\partial \sigma^2} \left[-\frac{1}{2\sigma^2} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln\sigma^2 - \frac{N}{2}\ln(2\pi)\right] = 0\\
+		\frac{\partial}{\partial u} \left[-\frac{1}{2u} \sum_{n=1}^{N} (x_n-\mu)^2 -\frac{N}{2}\ln u - \frac{N}{2}\ln(2\pi)\right] = 0\\
+		\frac{1}{2u^2}  \sum_{n=1}^{N} (x_n-\mu)^2 - \frac{N}{2u} = 0\\
+		u = \frac{1}{N} \sum_{n=1}^{N} (x_n-\mu)^2.
+	\end{gather*}
+	By substituting $\mu$ with $\mu_{\mathrm{ML}}$, we can conclude that the formula for $\sigma^2_{\mathrm{ML}}$ is correct.
+\end{answer}
+% !! insert end
+\end{document}
