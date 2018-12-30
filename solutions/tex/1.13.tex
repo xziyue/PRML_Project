@@ -1,0 +1,17 @@
+\begin{question}{1.13}
+	Suppose that the variance of a Gaussian is estimated using $\sigma^2_{\mathrm{ML}} = \frac{1}{N} \sum_{n=1}^{N} \left( x_n - \mu_{\mathrm{ML}} \right)^2$, but with the maximum likelihood estimate $\mu_{\mathrm{ML}}$ replaced with the true value $\mu$ of the mean. Show that this estimator has the property that its expectation is given by the true variance $\sigma^2$.
+\end{question}
+
+\begin{answer}{}
+	In this scenario, the estimator $\hat{\sigma^2}$ of $\sigma^2$ is given by $\hat{\sigma^2} = \frac{1}{N} \sum_{n=1}^{N} \left( x_n - \mu \right)^2$, it can be seen that
+	\begin{align}
+		\ev{\hat{\sigma^2}} &= \ev{\frac{1}{N} \sum_{n=1}^{N} \left( x_n - \mu \right)^2}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{\left( x_n - \mu \right)^2}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{x_n^2 -2\mu x_n + \mu^2}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{x_n^2} -  \frac{2\mu}{N} \sum_{n=1}^{N} \ev{x_n} + \frac{1}{N} \sum_{n=1}^{N} \ev{\mu^2} \\
+		&= \frac{1}{N} \cdot N \cdot (\mu^2 + \sigma^2) - \frac{2\mu}{N} \cdot N \cdot \mu + \frac{1}{N} \cdot N \cdot \mu^2\\
+		&= \sigma^2.
+	\end{align}
+	
+	The difference between $\hat{\sigma^2}$ and $\sigma^2_{\mathrm{ML}}$ is raised by the fact that $\mu$ is a constant. When it is multiplied to another variable, it only changes the expected value linearly. However, $\mu_{\mathrm{ML}}$ is a statistic, which is a function of the observations. When it is multiplied to another variable, it might not change the expected value in a linear fashion.
+\end{answer}
