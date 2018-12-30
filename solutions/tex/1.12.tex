@@ -1,0 +1,73 @@
+\begin{question}{1.12}
+	Using the fact that 
+	\begin{align*}
+		\ev{x} &= \mu\\
+		\ev{x^2} &= \mu^2 + \sigma^2,
+	\end{align*}
+	show that
+	\begin{align*}
+		\ev{x_n x_m} = \mu^2 + I_{nm}\sigma^2,
+	\end{align*}
+	where $x_n$ and $x_m$ denote data points sampled from a Gaussian distribution with mean $\mu$ and variance $\sigma^2$, and $I_{nm}$ satisfies $I_{nm} = 1$ if $n = m$ and $I_{nm}=0$ otherwise. Hence prove
+	\begin{align*}
+		\ev{\mu_{\mathrm{ML}}} &= \mu\\
+		\ev{\sigma^2_{\mathrm{ML}}} &= \left(\frac{N-1}{N}\right)\sigma^2.
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	If $n=m$, clearly that $\ev{x_n x_m} = \ev{x_n^2} = \mu^2 + \sigma^2$. Otherwise, because $x_n$ and $x_m$ are independent, it can be seen that $p(x_n, x_m) = p(x_n)p(x_m)$. Therefore we have
+	\begin{align}
+		\ev{x_n x_m} &= \int\int x_n x_m p(x_n, x_m)\ dx_n\ dx_m\\
+		&= \int\int x_n x_m p(x_n)p(x_m)\ dx_n\ dx_m\\
+		&= \int x_np(x_n)\ dx_n \int x_mp(x_m)\ dx_m\\
+		&= \ev{x_n}\ev{x_m}\\
+		&= \mu^2.
+	\end{align}
+	Hence we can conclude that $\ev{x_n x_m} = \mu^2 + I_{nm}\sigma^2$. 
+	
+	We know that
+	\begin{align}
+		\mu_{\mathrm{ML}} &= \frac{1}{N} \sum_{n=1}^{N} x_n\\
+		\sigma^2_{\mathrm{ML}} &= \frac{1}{N} \sum_{n=1}^{N} \left( x_n - \mu_{\mathrm{ML}} \right)^2.
+	\end{align}
+	It is obvious that
+	\begin{align}
+		\ev{\mu_{\mathrm{ML}}} &= \ev{\frac{1}{N} \sum_{n=1}^{N} x_n}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{x_n}\\
+		&= \mu.
+	\end{align}
+	To compute the expectation of $\sigma^2_{\mathrm{ML}}$, we need to compute the expectation of $\mu_{\mathrm{ML}}x_m$ and $\mu_{\mathrm{ML}}^2$. The first one writes
+	\begin{align}
+		\ev{\mu_{\mathrm{ML}}x_m} &= \ev{\frac{x_m}{N} \sum_{n=1}^{N} x_n}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{x_n x_m}.
+	\end{align}
+	There are $N$ terms in total, where only one term satisfies $n = m$, therefore we have
+	\begin{align}
+		& \frac{1}{N} \sum_{n=1}^{N} \ev{x_n x_m}\\
+		&= \frac{1}{N} \left( N\mu^2 + \sigma^2 \right)\\
+		&= \mu^2 + \frac{1}{N}\sigma^2.
+	\end{align}
+	The second one writes
+	\begin{align}
+		\ev{\mu_{\mathrm{ML}}^2} &= \ev{\left( \frac{1}{N} \sum_{n=1}^{N} x_n\ \right)\left( \frac{1}{N} \sum_{n=1}^{N} x_n\ \right)}\\
+			&= \frac{1}{N^2} \ev{\sum_{i=1}^{N}\sum_{j=1}^{N}x_i x_j}.
+	\end{align}
+	There are $N^2$ terms in total, among which $N$ terms satisfies $i = j$. Therefore, we can write
+	\begin{align}
+		&\frac{1}{N^2} \ev{\sum_{i=1}^{N}\sum_{j=1}^{N}x_i x_j}\\
+		&= \frac{1}{N^2}(N^2 \mu^2 + N\sigma^2)\\
+		&= \mu^2 + \frac{1}{N}\sigma^2.
+	\end{align}
+	Hence we have
+	\begin{align}
+		\ev{\sigma^2_{\mathrm{ML}}} &= \ev{\frac{1}{N} \sum_{n=1}^{N} \left( x_n - \mu_{\mathrm{ML}} \right)^2}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{ \left( x_n - \mu_{\mathrm{ML}} \right)^2}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{x_n^2 - 2\mu_{\mathrm{ML}}x_n + \mu_{\mathrm{ML}}^2}\\
+		&= \frac{1}{N} \sum_{n=1}^{N} \ev{x_n^2} -\frac{2}{N}\sum_{n=1}^{N}\ev{\mu_{\mathrm{ML}x_n}} + \frac{1}{N} \sum_{n=1}^{N} \ev{\mu_{\mathrm{ML}}^2}\\
+		&= \frac{1}{N} \cdot N \cdot (\mu^2 + \sigma^2) - \frac{2}{N} \cdot N \cdot (\mu^2 + \frac{1}{N}\sigma^2) + \frac{1}{N} \cdot N \cdot (\mu^2 + \frac{1}{N}\sigma^2)\\
+		&= \sigma^2 - \frac{1}{N}\sigma^2\\
+		&= \frac{N-1}{N}\sigma^2.
+	\end{align}
+
+\end{answer}
