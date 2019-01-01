@@ -1,0 +1,52 @@
+\begin{question}{1.14}
+	Show that an arbitrary square matrix with elements $w_{ij}$ can be written in the form $w_{ij} = w_{ij}^{S} + w_{ij}^{A}$ where $w_{ij}^{S}$ and $w_{ij}^{A}$ are symmetric and anti-symmetric matrices, respectively, satisfying $w_{ij}^{S} = w_{ji}^{S}$ and $w_{ij}^{A} = -w_{ji}^{A}$ for all $i$ and $j$. Now consider the second order term in a higher order polynomial in $D$ dimensions, given by
+	\begin{align*}
+		\sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ij} x_i x_j.
+	\end{align*}
+	Show that
+	\begin{align*}
+		\sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ij} x_i x_j = \sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ij}^{S} x_i x_j
+	\end{align*}
+	so that the contribution from the anti-symmetric matrix vanishes. We therefore see that without loss of generality, the matrix of coefficients $w_{ij}$ can be chosen to be symmetric, and so not all of the $D^2$ elements of this matrix can be chosen independently. Show that the number of independent parameters in the matrix $w_{ij}^{S}$ can be given by $D(D+1)/2$.
+\end{question}
+
+\begin{answer}{}
+	Denote the original matrix, symmetric matrix and anti-symmetric matrix by $W$, $W^S$ and $W^A$, respectively. It is clear that we have
+	\begin{gather}
+		W = W^S + W^A\\ \label{1.14eqn1}
+		W^S = \left(W^S\right)^{\T}\\
+		W^A = -\left(W^A\right)^{\T}.
+	\end{gather}
+	By transposing \ref{1.14eqn1} we have
+	\begin{align}
+		W^{\T} &= \left(W^S\right)^{\T} + \left(W^A\right)^{\T}\\
+		&= W^S - W^A.
+	\end{align}
+	Immediately we can write
+	\begin{align}
+		W^S = \frac{W + W^{\T}}{2},
+	\end{align}
+	and that
+	\begin{align}
+		W^A = \frac{W - W^{\T}}{2}.
+	\end{align}
+	Therefore we have
+	\begin{align}
+		w^S_{ij} &= \frac{1}{2}\left(w_{ij} + w^{\T}_{ij}\right)\\
+		&= \frac{1}{2}\left(w_{ij} + w_{ji}\right)
+	\end{align}
+	which allows us to write
+	\begin{align}
+		&\sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ij}^{S} x_i x_j\\
+		&= \sum_{i = 1}^{D} \sum_{j = 1}^{D} \frac{1}{2}\left(w_{ij} + w_{ji}\right) x_i x_j\\
+		&= \frac{1}{2}\sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ij}x_ix_j + \frac{1}{2}\sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ji}x_jx_i\\
+		&= \sum_{i = 1}^{D} \sum_{j = 1}^{D} w_{ij}x_ix_j.
+	\end{align}
+	Let $\bm{x} = \left(x_1, \ldots, x_D\right)^{\T}$, this actually proves $\bm{x}^{\T}W\bm{x} = \bm{x}^{\T}W^S\bm{x}$. Now we have verified that the the contribution from the anti-symmetric matrix vanishes.
+	
+	In symmetric matrix $W^S$, there are $D^2$ elements in total. $D$ elements are on the diagonal, and there are $D^2 - D$ elements above and below the diagonal, which are symmetric. Therefore we can only choose among
+	\begin{align}
+		\frac{D^2 - D}{2} + D = \frac{D(D+1)}{2}
+	\end{align}
+	parameters.
+\end{answer}

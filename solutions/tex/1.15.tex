@@ -1,0 +1,91 @@
+\begin{question}{1.15}
+	In this exercise and next, we explore how te number of independent parameters in a polynomial grows with the order $M$ of the polynomial and with the dimensionality $M$ of the output space. We start by writing down the $M$\textsuperscript{th} order term for a polynomial in $D$ dimensions in the form
+	\begin{align*}
+		\sum_{i_1 = 1}^{D} \sum_{i_2 = 1}^{D} \cdots \sum_{i_M = 1}^{D} w_{i_1i_2\cdots i_M} x_{i_1}x_{i_2}\cdots x_{i_M}.
+	\end{align*}
+	
+	The coefficients $w_{i_1i_2\cdots i_M}$ comprise $D^M$ elements, but the number of independent parameters is significantly fewer due to many interchange symmetries of the factor $x_{i_1}x_{i_2}\cdots x_{i_M}$. Begin by showing that the redundancy in the coefficients can be removed by rewriting this $M$\textsuperscript{th} order in the form
+	\begin{align*}
+		\sum_{i_1 = 1}^{D}\sum_{i_2=1}^{i_1}\cdots \sum_{i_M=1}^{i_{M-1}} \tilde{w}_{i_1i_2\cdots i_M} x_{i_1}x_{i_2}\cdots x_{i_M}.
+	\end{align*}
+	Note that the precise relationship between the $\tilde{w}$ coefficients and the $w$ coefficients need not be made explicit. Use this result to show that the number of \emph{independent} parameters $n(D, M)$, which appear at order $M$, satisfies the following recursion relation
+	\begin{align*}
+		n(D, M) = \sum_{i = 1}^{D} n(i, M - 1).
+	\end{align*}
+	Next use proof by induction to show that the following result holds
+	\begin{align*}
+		\sum_{i = 1}^{D} \frac{(i + M - 2)!}{(i - 1)!(M - 1)!} = \frac{(D + M - 1)!}{(D-1)!M!}
+	\end{align*}
+	which can be done by first proving the results for $D=1$ and arbitrary $M$ by making use of the result $0!=1$, then assuming it is correct for dimension $D$ and verifying that is is correct for dimension $D+1$. Finally, use the two previous results, together with proof by induction, show
+	\begin{align*}
+		n(D,M) = \frac{(D + M - 1)!}{(D-1)!M!}.
+	\end{align*}
+	To do this, first show that the result is true for $M = 2$, and any value of $D \geq 1$, by comparison with the result of Exercise \prmlqstyle{1.14}. Then make use of $n(D, M) = \sum_{i = 1}^{D} n(i, M - 1)$, to show that, if the result holds at order $M - 1$, then it will also hold at order $M$.
+\end{question}
+
+\begin{answer}{}
+	To find out how the redundancy forms and how to eliminate it, let us appreciate $i_a$ and $i_b$, where $a < b$. The $M$\textsuperscript{th} order term writes
+	\begin{align}
+		&\sum_{i_1 = 1}^{D} \cdots \sum_{i_a = 1}^{D} \cdots \sum_{i_b = 1}^{D} \cdots \sum_{i_M = 1}^{D} w_{i_1i_2\cdots i_M} x_{i_1}x_{i_2}\cdots x_{i_M}\\
+		&= \sum_{i_a = 1}^{D}\sum_{i_b = 1}^{D} \cdots  \sum \cdots \left(w_{\cdots i_a \cdots i_b \cdots} \right)\left(x_{i_a}x_{i_b}\cdots\right).
+	\end{align}
+	Temporarily ignoring other variables, now the term has an identical form to the expression in question \prmlqstyle{1.14}. Now the square coefficient matrix $W$ is given by $w_{ij} = \left.w_{\cdots i_a \cdots i_b \cdots}\right\rvert_{i_a = i, i_b = j}$. By its conclusion, we can make $W$ a symmetric matrix, and the independent elements are those that locate on the diagonal and below. That is to say, when $i_a \geq i_b$, the coefficients are independent. This holds for any arbitrary pairs of $i_a$ and $i_b$ where $a < b$.  If we guarantee
+	\begin{align}
+		i_1 \geq i_2 \geq \cdots \geq i_M,
+	\end{align}
+	then the resulting terms have no redundancy. Therefore the expression
+	\begin{align}
+		\sum_{i_1 = 1}^{D}\sum_{i_2=1}^{i_1}\cdots \sum_{i_M=1}^{i_{M-1}} \tilde{w}_{i_1i_2\cdots i_M} x_{i_1}x_{i_2}\cdots x_{i_M}
+	\end{align}
+	has no redundancy. 
+	
+	The number of independent parameters $n(D, M)$ can be given by
+	\begin{align}
+		n(D, M) &= 	\sum_{i_1 = 1}^{D}\sum_{i_2=1}^{i_1}\cdots \sum_{i_M=1}^{i_{M-1}} 1\\
+		&=  \sum_{i_1 = 1}^{D} \left(\sum_{i_2=1}^{i_1} \cdots \sum_{i_M=1}^{i_{M-1}} 1\right)\\
+		&= \sum_{i_1 = 1}^{D} n(i_1, M - 1).\label{1.15eqn2}
+	\end{align}
+	
+	Now we continue to prove
+	\begin{align}\label{1.15eqn1}
+		\sum_{i = 1}^{D} \frac{(i + M - 2)!}{(i - 1)!(M - 1)!} = \frac{(D + M - 1)!}{(D-1)!M!}
+	\end{align}
+	by induction.
+	
+	\noindent\textbf{Basis:} when $D = 1$, it can be seen that
+	\begin{align}
+		\sum_{i = 1}^{D} \frac{(i + M - 2)!}{(i - 1)!(M - 1)!} = \frac{(M-1)!}{(M-1)!} = 1.
+	\end{align} 
+	For the right side, we have
+	\begin{align}
+		\frac{(D + M - 1)!}{(D-1)!M!} = \frac{M!}{M!} = 1.
+	\end{align}
+	Therefore the basis holds.
+	
+	\noindent\textbf{Induction Hypothesis:} suppose for some $D' \geq 1$, the claim holds. That is,
+	\begin{align}
+		\sum_{i = 1}^{D'} \frac{(i + M - 2)!}{(i - 1)!(M - 1)!} = \frac{(D' + M - 1)!}{(D'-1)!M!}
+	\end{align}
+	
+	\noindent\textbf{Induction Step:} Now we need to prove that the claim holds for $D' + 1$. It can be seen that
+	\begin{align}
+		&\sum_{i=1}^{D'+1} \frac{(i + M - 2)!}{(i - 1)!(M - 1)!}\\
+		&= \frac{(D' + M - 1)!}{(D'-1)!M!} + \frac{(D'+M-1)!}{(D')!(M-1)!}\\
+		&= \frac{D'\cdot (D' + M - 1)! + M \cdot (D'+M-1)!}{D'!M!}\\
+		&= \frac{(D' + M)(D' + M - 1)!}{D'!M!}\\
+		&= \frac{(D' + M)!}{D'!M!}.
+	\end{align}
+	By induction, we can conclude that the claim holds.
+	
+	If we let $n(D, M) = \frac{(D + M - 1)!}{(D-1)!M!}$, what (\ref{1.15eqn1}) suggest is that we have found a possible expression that satisfies equation (\ref{1.15eqn2}). If it indeed equals to the true value of $n(D, M)$ for some value  of $M$, then it will hold for all subsequent $M$'s. When $M = 0$, it is a constant term, so there is only one independent parameter; when $M = 1$, there are $D$ independent parameters; by the result of \prmlqstyle{1.14}, we know that when $M = 2$, there are $D(D+1)/2$ independent parameters. It can be seen that
+	\begin{align}
+		n(D, 0) &= 1\\
+		n(D, 1) &= D\\
+		n(D, 2) &= \frac{D(D+1)}{2}.
+	\end{align}
+	Therefore we can conclude that
+	\begin{align}
+		n(D, M) = \frac{(D + M - 1)!}{(D-1)!M!}
+	\end{align}
+	holds for all possible $D$'s and $M$'s.
+\end{answer}

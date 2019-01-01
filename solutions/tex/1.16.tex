@@ -1,0 +1,27 @@
+\begin{question}{1.16}
+	In exercise \prmlqstyle{1.15}, we proved the result
+	\begin{align*}
+		n(D, M) = \frac{(D + M - 1)!}{(D-1)!M!}
+	\end{align*}
+	for the number of independent parameters in the $M$\textsuperscript{th} order term of a $D$-dimensional polynomial. We now find an expression for the total number $N(D, M)$ of independent parameters in all of the terms up to and including the $M$\textsuperscript{th} order. First show that $N(D, M)$ satisfies
+	\begin{align*}
+		N(D, M) = \sum_{m = 0}^{M} n(D, m).
+	\end{align*}
+	where $n(D, m)$ is the number of independent parameters in the term of order $m$. Now make use of
+	\begin{align*}
+		n(D,M) = \frac{(D + M - 1)!}{(D-1)!M!},
+	\end{align*}
+	together with proof by induction, to show that
+	\begin{align*}
+		N(D, M) = \frac{(D + M)!}{D!M!}.
+	\end{align*}
+	This can be done by first proving that the result holds for $M = 0$ and arbitrary $D \geq 1$, then assuming that it holds at order $M$, and hence showing that it holds at order $M + 1$. Finally, make use of Stirling's approximation in the form
+	\begin{align*}
+		n! \simeq n^n e^{-n}
+	\end{align*}
+	for large $n$ to show that, for $D \gg M$, the quantity $N(D, M)$ grows like $D^M$, and for $M \gg D$, it grows like $M^D$. Consider a cubic ($M = 3$) polynomial in $D$ dimensions, and evaluate numerically the total number of independent parameters for (i) $D = 10$ and (ii) $D = 100$, which correspond to typical small-scale and medium-scale machine learning applications.
+\end{question}
+
+\begin{answer}{}
+	content...
+\end{answer}
