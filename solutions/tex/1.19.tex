@@ -1,0 +1,80 @@
+\begin{question}{1.19}
+	Consider a sphere of radius $a$ in $D$-dimensions together with the concentric hypercube of side $2a$, so that the sphere touches the hypercube at the centers of each of its sides. By using the results of exercise \prmlqstyle{1.18}, show that the ratio of the volume of the sphere to the volume of the cube is given by
+	\begin{align*}
+		\frac{\mbox{volume of sphere}}{\mbox{volume of cube}} = \frac{\pi^{D/2}}{D2^{D-1}\Gamma(D/2)}.
+	\end{align*}
+	Now make use of the Stirling's formula in the form
+	\begin{align*}
+		\Gamma(x + 1)  \simeq (2\pi)^{1/2} e^{-x} x^{x + (1/2)}
+	\end{align*}
+	which is valid for $x \gg 1$, to show that as $D \rightarrow \infty$, the ratio above goes to zero. Show also that the ratio of the distance from the center of the hypercube to one of the corners, divided by the perpendicular distance to one of the sides, is $\sqrt{D}$, which therefore goes to $\infty$ as $D \rightarrow \infty$. From these results we see that, in a space of high dimensionality, most of the volume of a cube is concentrated in the large number of corners, which themselves become very long `spikes'!
+\end{question}
+
+\begin{answer}{}
+	The volume of the cube in $D$-dimensions is
+	\begin{align}
+		&\int_{-a}^{a} \cdots \int_{-a}^{a} dx_1\cdots\ dx_D\\
+		&= \prod_{i = 1}^{D} \int_{-a}^{a} dx_i\\
+		&= (2a)^D.
+	\end{align}
+	Using the similar approach in \prmlqstyle{1.18}, we know that the volume of the sphere is
+	\begin{align}
+		&\int_{0}^{a} \int_{\odot} r^{D-1}\ dr\ d\Omega\\
+		&= \int_{\odot} d\Omega \int_{0}^{a} r^{D-1}\ dr\\
+		&= S_D \cdot \left( \left. \frac{r^D}{D} \right\rvert_{0}^{a} \right)\\
+		&= \frac{a^DS_D}{D}\\
+		&= \frac{2a^D\pi^{D/2}}{D\Gamma(D/2)}.
+	\end{align}
+	Now we can clearly see that
+	\begin{align}\label{1.19eqn1}
+		\frac{\mbox{volume of sphere}}{\mbox{volume of cube}} = \frac{\pi^{D/2}}{D2^{D-1}\Gamma(D/2)}.
+	\end{align}
+	
+	Consider putting $D + 2$ instead of $D$ in (\ref{1.19eqn1}), when $D \rightarrow \infty$, there limit should be the same. By doing so, the ratio becomes
+	\begin{align}
+		\frac{\pi^{D/2 + 1}}{(D+2)2^{D+1}\Gamma(D/2 + 1)}.
+	\end{align}
+	Inserting the Stirling's formula, we have
+	\begin{align}\label{1.19eqn2}
+		&\lim_{D \rightarrow \infty} \frac{\pi^{D/2 + 1}}{(D+2)2^{D+1}\Gamma(D/2 + 1)}\\
+		&\simeq \lim_{D \rightarrow \infty} \frac{\pi^{D/2 + 1}}{(D+2)2^{D+1}(2\pi)^{1/2}e^{-{D/2}}(D/2)^{(D + 1)/2}}\\
+		&= \lim_{D \rightarrow \infty}\frac{e^{D/2}\pi^{D/2 + 1}}{(D+2)2^{D+1}(2\pi)^{1/2}(D/2)^{(D + 1)/2}}\\
+		&= \lim_{D \rightarrow \infty} \frac{\pi}{(D+2)2^{D+1}(2\pi)^{1/2}(D/2)^{1/2}} \cdot \frac{(e\pi)^{D/2}}{(D/2)^{D/2}}\\
+		&= \lim_{D \rightarrow \infty} \frac{\pi}{(D+2)2^{D+1}(2\pi)^{1/2}(D/2)^{1/2}} \cdot \lim_{D \rightarrow \infty} \left(\frac{2e\pi}{D}\right)^{D/2}
+	\end{align}
+	It is obvious that $\lim_{D \rightarrow \infty} \frac{\pi}{(D+2)2^{D+1}(2\pi)^{1/2}(D/2)^{1/2}} = 0$, now we need to prove that $\lim_{D \rightarrow \infty} \left(\frac{2e\pi}{D}\right)^{D/2} = 0$. It can be seen that when $D > 100$, the following inequality holds
+	\begin{align}
+		\frac{1}{D} \leq \frac{2e\pi}{D} \leq \frac{1}{2},
+	\end{align}
+	and therefore
+	\begin{align}
+		\left(\frac{1}{D}\right)^{D/2} \leq \left(\frac{2e\pi}{D}\right)^{D/2} \leq \left(\frac{1}{2}\right)^{D/2}.
+	\end{align}
+	It is very easy to see that
+	\begin{align}
+		\lim_{D \rightarrow \infty} \left(\frac{1}{D}\right)^{D/2} = 0\\
+		\lim_{D \rightarrow \infty} \left(\frac{1}{2}\right)^{D/2} = 0,
+	\end{align}
+	and by the squeeze theorem we can conclude that $\lim_{D \rightarrow \infty} \left(\frac{2e\pi}{D}\right)^{D/2} = 0$. Hence we can see that the ratio in (\ref{1.19eqn2}) goes to zero when $D \rightarrow \infty$.
+	
+	The center of the hypercube is the origin. It is obvious that one of the vertices of the hypercube is $\overbrace{(-a, -a, \ldots, -a)^{\T}}^{\mbox{D $a$'s}}$. Therefore the distance between it and the origin is $a\sqrt{D}$. A hyperplane in $D$-dimensional space can be constructed by $D-1$ vectors. Let us consider one of the planes where one side of the hypercube lies on, which is spanned by the following group of $D - 1$ vectors
+	\begin{equation}
+		\begin{cases}
+			(2a, 0, \ldots, 0, 0)^{\T}\\
+			(0, 2a, \ldots, 0, 0)^{\T}\\
+			(0, 0, \ldots, 2a, 0)^{\T}
+		\end{cases}
+	\end{equation}
+	It is not hard to find one of its normal vector $\bm{n} = (0, 0, \ldots, 0, 1)^{\T}$. The distance between the origin and the plain, which equals to the distance between the origin and the side that lies on the plain is
+	\begin{align}
+	\left\lvert \left(\bm{0} - (-a, -a, \ldots, -a)^{\T}\right) \dotp \bm{n} \right\rvert = a,
+	\end{align}
+	where $(\dotp)$ denotes dot product. Therefore we know the ratio is
+	\begin{align}\label{1.19eqn3}
+		\frac{\mbox{distance from origin to a corner}}{\mbox{distance from origin to a side}} = \frac{a\sqrt{D}}{a} = \sqrt{D}.
+	\end{align}
+	
+	When $D \rightarrow \infty$, the ratio (\ref{1.19eqn2}) goes to zero, which means the volume of the insphere of the hypercube is significantly smaller to the volume of the hypercube itself. Also, the ratio (\ref{1.19eqn3}) goes to infinity, which indicates that in high dimensions, the distance from the center of the hypercube to a corner is significantly greater to the distance from the center of the hypercube to a side. That is to say, more volume is concentrated around the corners, which is right `above' the insphere. It is very imaginative to describe this phenomenon as `spikes'. 
+	
+	Question \prmlqstyle{1.18} and \prmlqstyle{1.19} may have little to do with machine learning, but it is still worth the effort to derive the formulae and study the property of high dimensionality. One very useful lesson we can learn from these questions is that due to the oddities of high dimensions, our intuition in low dimensions will almost always fail. That is to say, when we need to reason a problem using the properties of high dimensionality (even the simplest), instead of trusting our intuition, we should always refer to mathematical tools to verify them.
+\end{answer}

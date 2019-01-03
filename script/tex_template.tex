@@ -32,12 +32,6 @@
 \usepackage{color}
 %\usepackage{hyperref}
 
-\pagestyle{fancy}
-\fancyhf{}
-\chead{\thetitle}
-\cfoot{\thepage}
-
-
 
 \newcommand{\prmlqstyle}[1]{{\color{red}\textbf{#1}}}
 \newenvironment{question}[1]{\par\medskip\noindent{\prmlqstyle{#1}}\hspace*{0.5em}}{\medskip}
@@ -52,6 +46,11 @@
 \newcommand{\ev}[1]{\mathbb{E}\left[#1\right]}
 \newcommand{\var}[1]{\mathrm{var}\left[#1\right]}
 \newcommand{\cov}[1]{\mathrm{cov}\left[#1\right]}
+
+\makeatletter
+\newcommand*\dotp{\mathpalette\bigcdot@{1.0}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
 
 \title{Detailed Solutions to PRML}
 \author{Ziyue ``Alan'' Xiang}
@@ -68,10 +67,15 @@ BoldItalicFont=STIX2Text-BoldItalic,
 
 \setmathfont{STIX2Math.otf}
 
-\doublespacing
 \allowdisplaybreaks
 
-%\onehalfspacing
+%\doublespacing
+\onehalfspacing
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{\thetitle}
+\cfoot{\thepage}
 
 % !! insert begin
 
