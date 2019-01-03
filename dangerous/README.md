@@ -1,4 +1,4 @@
-# This is the official solutions to the PRML textbook
+# This is the official solution to the PRML textbook
 # If there is any copyright infringement, please contact me as soon as possible. I will have it deleted immediately.
 
 # Contact
