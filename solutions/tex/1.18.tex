@@ -1,0 +1,161 @@
+\begin{question}{1.18}
+	We can use the result 
+	\begin{align*}
+		\int_{-\infty}^{+\infty} e^{-x^2}\ dx = \sqrt{\pi}
+	\end{align*}
+	to derive an expression for the surface area $S_D$, and the volume $V_D$, of a sphere of unit radius in $D$ dimensions. To do this, consider the following result, which is obtained by transforming from Cartesian to polar coordinates
+	\begin{align*}
+		\prod_{i = 1}^{D} \int_{-\infty}^{+\infty} e^{-x_i^2}\ dx_i = S_D \int_{0}^{+\infty} e^{-r^2} r^{D-1}\ dr.
+	\end{align*}
+	Using the definition of the Gamma function, together with the result above, evaluate both sides of this equation, and hence show that
+	\begin{align*}
+		S_D = \frac{2\pi^{D/2}}{\Gamma(D/2)}.
+	\end{align*}
+	Next, by integrating with respect to radius form $0$ to $1$, show that the volume of the unit sphere in $D$ dimensions is given by
+	\begin{align*}
+		V_D = \frac{S_D}{D}.
+	\end{align*}
+	Finally, use the results $\Gamma(1) = 1$ and $\Gamma(3/2) = \sqrt{\pi}/2$ to show that the expression of $S_D$ and $V_D$ reduce to the usual expression for $D = 2$ and $D = 3$.
+\end{question}
+
+\begin{answer}{}
+	We begin by appreciating the integral of function $f(x) = \exp(\sum_{i = 1}^{D} - x_i^2)$, which can help us derive the formula for the surface area of a $n$-sphere. It can be seen that
+	\begin{align}\label{1.18eqn1}
+		&\int_{-\infty}^{+\infty} \cdots \int_{-\infty}^{+\infty} \exp(\sum_{i = 1}^{D} - x_i^2) \ dx_1 \cdots\ dx_D\\
+		&= \prod_{i = 1}^{D} \int_{-\infty}^{+\infty} e^{-x_i^2}\ dx_i\\
+		&= \pi^{D/2}.
+	\end{align}
+	Now we transform from Cartesian coordinates $(x_1, x_2, \ldots, x_D)$ to spherical coordinates $(r, \phi_1, \phi_2, \ldots, \phi_{D - 1})$, it can be seen that
+	\begin{equation}
+		\left\{
+			\begin{aligned}
+				x_1 &= r\cos(\phi_1)\\
+				x_2 &= r\sin(\phi_1)\cos(\phi_2)\\
+				x_3 &= r\sin(\phi_1)\sin(\phi_2)\cos(\phi)\\
+				&\vdots\\
+				x_{D - 1} &= r\sin(\phi_1)\sin(\phi_2)\cdots\sin(\phi_{D-2})\cos(\phi_{D-1})\\
+				x_D &= r\sin(\phi_1)\sin(\phi_2)\cdots\sin(\phi_{D-2})\sin(\phi_{D-1})
+			\end{aligned}
+		\right. ,
+	\end{equation}
+	where $r \geq 0$, $\phi_1, \ldots, \phi_{D - 2} \in [0, \pi]$, and $\phi_{D - 1} \in [0, 2\pi)$. The property of spherical coordinate ensures that
+	\begin{align}
+		\sum_{i = 1}^{D} x_i^2 = r^2.
+	\end{align}
+	
+	The Jacobian of the transformation is
+	{
+	\scriptsize
+	\begin{align}
+		\frac{\partial(x_1, \ldots, x_D)}{\partial(r, \phi_1, \ldots, \phi_{D - 1})} = 
+		\begin{bmatrix}
+			\cos(\phi_1) & -r\sin(\phi_1) & 0 & \cdots & 0\\
+			\sin(\phi_1)\cos(\phi_2) & r\cos(\phi_1)\cos(\phi_2) & -r\sin(\phi_1)\sin(\phi_2) & \cdots & 0\\
+			\vdots & \vdots & \vdots & \ddots & \vdots\\
+			\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos(\phi_{D - 1}) & \cdots & \cdots & \cdots & -r\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin(\phi_{D-1})\\
+			\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin(\phi_{D - 1}) & \cdots & \cdots & \cdots & r\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos(\phi_{D-1})
+		\end{bmatrix}.
+	\end{align}
+	}
+	Denote this Jacobian of the $D$-dimension by $JV_D$, to transform from Cartesian coordinates to spherical coordinates, we need to compute the determinant of $JV_D$. It can be seen that
+	{\scriptsize
+	\begin{align}
+		|JV_D| &= \begin{vmatrix}
+			\cos(\phi_1) & -r\sin(\phi_1) & 0 & \cdots & 0\\
+			\sin(\phi_1)\cos(\phi_2) & r\cos(\phi_1)\cos(\phi_2) & -r\sin(\phi_1)\sin(\phi_2) & \cdots & 0\\
+			\vdots & \vdots & \vdots & \ddots & \vdots\\
+			\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos(\phi_{D - 1}) & \cdots & \cdots & \cdots & -r\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin(\phi_{D-1})\\
+			\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin(\phi_{D - 1}) & \cdots & \cdots & \cdots & r\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos(\phi_{D-1})
+		\end{vmatrix}\\
+	\begin{split}
+		&=r\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin(\phi_{D-1}) \times\\
+		&\phantom{=}\quad\begin{vmatrix}
+			\cos(\phi_1) & -r\sin(\phi_1) & 0 & \cdots & 0\\
+			\sin(\phi_1)\cos(\phi_2) & r\cos(\phi_1)\cos(\phi_2) & -r\sin(\phi_1)\sin(\phi_2) & \cdots & 0\\
+			\vdots & \vdots & \vdots & \ddots & \vdots\\
+			\sin(\phi_1)\cdots\sin(\phi_{D-3})\cos(\phi_{D - 2}) & \cdots & \cdots & \cdots & -r\sin(\phi_1)\cdots\sin(\phi_{D-3})\sin(\phi_{D-2})\\
+			\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin(\phi_{D - 1}) & \cdots & \cdots & \cdots & r\sin(\phi_1)\cdots\cos(\phi_{D-2})\sin(\phi_{D-1})
+		\end{vmatrix}\\
+		&\phantom{=}+ r\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos(\phi_{D-1}) \times \\
+		&\phantom{=}\quad\begin{vmatrix}
+		\cos(\phi_1) & -r\sin(\phi_1) & 0 & \cdots & 0\\
+		\sin(\phi_1)\cos(\phi_2) & r\cos(\phi_1)\cos(\phi_2) & -r\sin(\phi_1)\sin(\phi_2) & \cdots & 0\\
+		\vdots & \vdots & \vdots & \ddots & \vdots\\
+		\sin(\phi_1)\cdots\sin(\phi_{D-3})\cos(\phi_{D - 2}) & \cdots & \cdots & \cdots & -r\sin(\phi_1)\cdots\sin(\phi_{D-3})\sin(\phi_{D-2})\\
+		\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos(\phi_{D - 1}) & \cdots & \cdots & \cdots & r\sin(\phi_1)\cdots\cos(\phi_{D-2})\cos(\phi_{D-1})
+		\end{vmatrix}
+	\end{split}\\
+	\begin{split}
+		&=r\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin^2(\phi_{D-1}) \times\\
+		&\phantom{=}\quad\begin{vmatrix}
+		\cos(\phi_1) & -r\sin(\phi_1) & 0 & \cdots & 0\\
+		\sin(\phi_1)\cos(\phi_2) & r\cos(\phi_1)\cos(\phi_2) & -r\sin(\phi_1)\sin(\phi_2) & \cdots & 0\\
+		\vdots & \vdots & \vdots & \ddots & \vdots\\
+		\sin(\phi_1)\cdots\sin(\phi_{D-3})\cos(\phi_{D - 2}) & \cdots & \cdots & \cdots & -r\sin(\phi_1)\cdots\sin(\phi_{D-3})\sin(\phi_{D-2})\\
+		\sin(\phi_1)\cdots\sin(\phi_{D-3})\sin(\phi_{D-2}) & \cdots & \cdots & \cdots & r\sin(\phi_1)\cdots\sin(\phi_{D-3})\cos(\phi_{D-2})
+		\end{vmatrix}\\
+		&\phantom{=}+ r\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos^2(\phi_{D-1}) \times \\
+		&\phantom{=}\quad\begin{vmatrix}
+		\cos(\phi_1) & -r\sin(\phi_1) & 0 & \cdots & 0\\
+		\sin(\phi_1)\cos(\phi_2) & r\cos(\phi_1)\cos(\phi_2) & -r\sin(\phi_1)\sin(\phi_2) & \cdots & 0\\
+		\vdots & \vdots & \vdots & \ddots & \vdots\\
+		\sin(\phi_1)\cdots\sin(\phi_{D-3})\cos(\phi_{D - 2}) & \cdots & \cdots & \cdots & -r\sin(\phi_1)\cdots\sin(\phi_{D-3})\sin(\phi_{D-2})\\
+		\sin(\phi_1)\cdots\sin(\phi_{D-3})\sin(\phi_{D-2}) & \cdots & \cdots & \cdots & r\sin(\phi_1)\cdots\sin(\phi_{D-3})\cos(\phi_{D-2})
+		\end{vmatrix}
+	\end{split}\\
+	&= r\sin(\phi_1)\cdots\sin(\phi_{D-2})\sin^2(\phi_{D-1}) \cdot |JV_{D-1}| + r\sin(\phi_1)\cdots\sin(\phi_{D-2})\cos^2(\phi_{D-1}) \cdot |JV_{D-1}|\\
+	&= r\sin(\phi_1)\cdots\sin(\phi_{D-2}) \cdot |JV_{D-1}| \cdot \left[\sin^2(\phi_{D-1}) + \cos^2(\phi_{D-1})\right]\\
+	&= r\sin(\phi_1)\cdots\sin(\phi_{D-2}) \cdot |JV_{D-1}|.
+	\end{align}
+	}
+	Now we have acquired a recursion relation for $|JV_D|$, which is
+	\begin{align}
+		|JV_D| = r\left[\prod_{i = 1}^{D - 2}\sin(\phi_{i})\right] |JV_{D-1}|.
+	\end{align}
+	When $D = 2$, it is just the case of polar coordinates, and we know that $|JV_2| = r$. Therefore we can conclude that
+	\begin{align}
+		|JV_D| = r^{D-1}\sin^{D-2}(\phi_1)\sin^{D-3}(\phi_2)\cdots\sin(\phi_{D - 2}).
+	\end{align}
+	By the domain of $\phi_{1}, \ldots, \phi_{D - 2}$  we know that $JV_D$ is always greater or equal to zero. It can be seen that
+	\begin{align}
+		dx_1\cdots\ dx_D &= dV =  \lVert JV_D \rVert dr\ d\phi_1 \cdots\ d\phi_{D - 1}\\
+		&= r^{D-1}\sin^{D-2}(\phi_1)\sin^{D-3}(\phi_2)\cdots\sin(\phi_{D - 2})\ dr\ d\phi_1 \cdots\ d\phi_{D - 1},
+	\end{align}
+	where $dV$ is the $D$-dimensional volume element. If we encapsulate all angular parameters $\phi_{1}, \ldots, \phi_{D - 1}$ with a set $\Omega$, it can be seen that
+	\begin{align}
+		dV = r^{D-1}\ dr\ d\Omega.
+	\end{align}
+	As a matter of fact, $d\Omega$ is just the surface element in $D$-dimensional spherical coordinate. If we denote the domain of the $D$-dimensional unit sphere by $\odot$, we would have $\int_{\odot} d\Omega = S_D$.
+	
+	Back to (\ref{1.18eqn1}), whose actual value is already known. By transforming from Cartesian coordinates to spherical coordinates, we have
+	\begin{align}
+		&\int_{-\infty}^{+\infty} \cdots \int_{-\infty}^{+\infty} \exp(\sum_{i = 1}^{D} - x_i^2) \ dx_1 \cdots\ dx_D\\
+		&= \int_{0}^{+\infty} \int_{\odot} e^{-r^2} r^{D-1}\ dr\ d\Omega\\
+		&= \int_{\odot} d\Omega \int_{0}^{+\infty} e^{-r^2} r^{D-1}\ dr\\
+		&= \frac{1}{2}S_D \int_{0}^{+\infty} r^{D-2} e^{-r^2} 2r\ dr\\
+		&\mbox{(let $u = r^2$, then $du = 2r\ dr$)}\\
+		&= \frac{1}{2}\cdot S_D \int_{0}^{+\infty} u^{\frac{D}{2} - 1} e^{-u}\ du\\
+		&= \frac{1}{2}\cdot S_D \cdot \Gamma(D/2) = \pi^{D/2}.
+	\end{align}
+	Therefore we can conclude that
+	\begin{align}\label{1.18eqn2}
+		S_D = \frac{2\pi^{D/2}}{\Gamma(D/2)}.
+	\end{align}
+	The volume of the unit sphere is given by
+	\begin{align}
+		V_D &= \int_{0}^{1} \int_{\odot} r^{D-1}\ dr\ d\Omega\\
+		&= \int_{\odot} d\Omega \int_{0}^{1} r^{D-1}\ dr\\
+		&= S_D \left( \left. \frac{r^{D}}{D} \right\rvert^{1}_{0} \right)\\
+		&= \frac{S_D}{D}. \label{1.18eqn3}
+	\end{align}
+	
+	
+	We know that when $D = 2$, the circumference of the unit circle is $2\pi$, and the area is $\pi$; when $D=3$, the surface area of the unit sphere is $4\pi$, and the volume is $\frac{4}{3}\pi$. According to (\ref{1.18eqn2}) and (\ref{1.18eqn3}), it can be seen that
+	\begin{align}
+		S_2 &= \frac{2\pi}{\Gamma(1)} = 2\pi\\
+		V_2 &= \frac{S_2}{2} = \pi\\
+		S_3 &= \frac{2\pi^{3/2}}{\Gamma(3/2)} = 4\pi\\
+		V_3 &= \frac{S_3}{3} = \frac{4\pi}{3}.
+	\end{align}
+	We can see that our formulae accord with actual observations.
+\end{answer}

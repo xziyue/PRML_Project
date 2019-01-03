@@ -41,7 +41,7 @@
 
 \newcommand{\prmlqstyle}[1]{{\color{red}\textbf{#1}}}
 \newenvironment{question}[1]{\par\medskip\noindent{\prmlqstyle{#1}}\hspace*{0.5em}}{\medskip}
-\newenvironment{answer}[1]{\par\medskip\noindent\textit{Answer #1.}\hspace*{0.5em}}{\medskip}
+\newenvironment{answer}[1]{\par\medskip\noindent{\color{green}\textit{Answer #1.}}\hspace*{0.5em}}{\medskip}
 
 \renewcommand\qedsymbol{$\blacksquare$}
 \newcommand{\bm}[1]{\symbf{#1}}
@@ -68,8 +68,10 @@ BoldItalicFont=STIX2Text-BoldItalic,
 
 \setmathfont{STIX2Math.otf}
 
-%\doublespacing
-\onehalfspacing
+\doublespacing
+\allowdisplaybreaks
+
+%\onehalfspacing
 
 % !! insert begin
 

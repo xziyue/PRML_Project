@@ -23,5 +23,69 @@
 \end{question}
 
 \begin{answer}{}
-	content...
+	Since $n(D, m)$ is the number of independent parameters in the term of order $m$, it is intuitive to say that the total number of independent parameters is the sum of each term, from order $0$ to order $M$. That is to say,
+	\begin{align}
+		N(D, M) = \sum_{m = 0}^M n(D, m).
+	\end{align}
+	This is true, as long as there is no redundancy across any two terms, which is also true because the order between any two terms will be different, and that their coefficients will not depend on each other's.
+	
+	Now we need to prove that $N(D, M) = \frac{(D + M)!}{D!M!}$. It can be seen that
+	\begin{align}
+		N(D, M) &= \sum_{m = 0}^{M} n(D, m)\\
+		&= \sum_{m = 0}^{M} \frac{(m + D - 1)!}{(D-1)!m!}.
+	\end{align}
+	We shall prove this claim by mathematical induction on $M$.
+	
+	\noindent\textbf{Basis:} when $M = 0$, we have
+	\begin{align}
+		N(D, 0) = n(D, 0) = \frac{(D-1)!}{(D-1)!} = 1,
+	\end{align}
+	while for the right side, we have
+	\begin{align}
+		\frac{(D + 0)!}{D!0!} = 1.
+	\end{align}
+	Therefore the claim is true.
+	
+	\noindent\textbf{Induction Hypothesis:} Suppose for some arbitrary $M'$, the claim is true. That is,
+	\begin{align}
+		N(D, M') = \frac{(D + M')!}{D!M'!}.
+	\end{align}
+	
+	\noindent\textbf{Induction Step:} We need to prove that the claim holds for $M' + 1$. It can be seen that
+	\begin{align}
+		N(D, M' + 1) &= \sum_{m = 0}^{M' + 1} n(D, m)\\
+		&= \frac{(D + M')!}{D!M'!} + n(D, M' + 1)\\
+		&= \frac{(D + M')!}{D!M'!}  + \frac{(D + M')!}{(D-1)!(M'+1)!}\\
+		&= \frac{(M' + 1)(D + M')! + D(D + M')!}{D!(M+1)!}\\
+		&= \frac{(D + M' + 1)(D + M')!}{D!(M' + 1)!}\\
+		&= \frac{(D + M' + 1)!}{D!(M' + 1)!}.
+	\end{align}
+	By induction, we know that the claim is true.
+	
+	Using the Stirling's formula, we can get
+	\begin{align}
+		N(D, M)  &\simeq \frac{(D + M)^{D + M}e^{-(D + M)}}{D^De^{-D}M^Me^{-M}}\\
+		& \simeq \frac{(D + M)^{D + M}}{D^D M^M}\\
+		& \simeq \frac{(D + M)^D (D + M)^M}{D^D M^M}\\
+		& \simeq \frac{D + M}{D}^D \cdot \frac{D + M}{M}^M\\
+		& \simeq M^D \cdot D^M.
+	\end{align}
+	Consider the case when $D \gg M$, we assume that
+	\begin{align}
+		\frac{M}{D} \simeq 0.
+	\end{align}
+	To compare the scale of $M^D$ and $D^M$, we study their quotient, which is
+	\begin{align}
+		\frac{M^D}{D^M} = \frac{M^{D - M}M^M}{D^M} = M^{D-M} \cdot \left(\frac{M}{D}\right)^M \simeq 0.
+	\end{align}
+	That is to say, though being a positive integer, the scale of $M^D$ is almost insignificant when it is compared to the scale of $D^M$. Therefore we can conclude that when $D \gg M$, it grows like $D^M$. The case when $M \gg D$ can be reasoned in the same manner.
+	
+	When $M = 3$, $D = 10$, we have
+	\begin{align}
+		N(10, 3) = \frac{13!}{10!3!} = 286,
+	\end{align}
+	when $M = 3$, $D = 100$, we have
+	\begin{align}
+		N(100, 3) = \frac{(103)!}{100!3!} = 176851.
+	\end{align}
 \end{answer}

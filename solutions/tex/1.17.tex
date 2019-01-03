@@ -1,0 +1,31 @@
+\begin{question}{1.17}
+	The gamma function is defined by
+	\begin{align*}
+		\Gamma(x) \equiv \int_{0}^{+\infty} u^{x-1} e^{-u}\ du.
+	\end{align*}
+	Use integration by parts, prove the relation $\Gamma(x + 1) = x \Gamma(x).$ Show also that $\Gamma(1) = 1$ and hence that $\Gamma(x + 1) = x!$ when $x$ is an integer.
+\end{question}
+
+\begin{answer}{}
+	By using integration by parts, it can be seen that
+	\begin{align}
+		\Gamma(x + 1) &= \int_{0}^{+\infty} u^{x} e^{-u}\ du\\
+		&= \left.u^x e^{-u}\right\rvert^{+\infty}_{0} + \int_{0}^{+\infty} xu^{x - 1} e^{-u}\ du\\
+		&= 0 + x\int_{0}^{+\infty} u^{x - 1} e^{-u}\ du\\
+		&= x\Gamma(x).
+	\end{align}
+	
+	When $x = 1$, we have
+	\begin{align}
+		\Gamma(1) &= \int_{0}^{+\infty} e^{-u}\ du\\
+		&= \left.-e^{-u}\right\rvert_{0}^{\infty}\\
+		&= 1.
+	\end{align}
+	Let us prove $\Gamma(x + 1) = x!\quad(x \in [0, \infty) \cap \mathbb{Z})$ by induction.
+	
+	\noindent\textbf{Basis:} when $x = 0$, $\Gamma(1) = 0!$ holds.
+	
+	\noindent\textbf{Induction Hypothesis:} suppose for some arbitrary $x'$, $\Gamma(x' + 1) = x'!$ holds.
+	
+	\noindent\textbf{Induction Step:} since $\Gamma(x' + 1) = x'!$, it can be seen that $\Gamma(x' + 2) = (x' + 1)\Gamma(x' + 1) = (x' + 1)x'! = (x' + 1)!$. That is to say, the claim holds for $x' + 1$. Therefore we can conclude that the claim is true.
+\end{answer}
