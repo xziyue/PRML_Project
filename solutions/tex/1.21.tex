@@ -1,0 +1,25 @@
+\begin{question}{1.21}
+	Consider two nonnegative numbers $a$ and $b$, and show that, if $a \leq b$, then $a \leq (ab)^{\frac{1}{2}}$. Use this result to show that, if the decision regions of a two-class classification problem are chosen to minimize the probability of misclassification, this probability will satisfy
+	\begin{align*}
+		p(\mbox{mistake}) \leq \int \left\{ p(\bm{x}, \mathcal{C}_1)p(\bm{x}, \mathcal{C}_2) \right\}^{1/2}\ d\bm{x}.
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	Because $a$, $b$ are nonnegative and $a \leq b$, it can be seen that $a^2 \leq ab$. Applying square root on both sides yields
+	\begin{align}
+		a \leq (ab)^{1/2}.
+	\end{align}
+	
+	We know that for a two-class classification problem, the probability of misclassification is
+	\begin{align}
+		p(\mbox{mistake}) &= p(\bm{x} \in \mathcal{R}_1, \mathcal{C}_2) + p(\bm{x} \in \mathcal{R}_2, \mathcal{C}_1)\\
+		&= \int_{\mathcal{R}_1} p(\bm{x}, \mathcal{C}_2)\ d\bm{x} + \int_{\mathcal{R}_2} p(\bm{x}, \mathcal{C}_1)\ d\bm{x}.
+	\end{align}
+	Because the decision regions are chosen to minimize $p(\mbox{mistake})$, in $\mathcal{R}_1$ we should have $p(\bm{x}, \mathcal{C}_2) \leq p(\bm{x}, \mathcal{C}_1) $; in $\mathcal{R}_2$ we should have $p(\bm{x}, \mathcal{C}_1) < p(\bm{x}, \mathcal{C}_2)$. Using the inequality above, we have
+	\begin{align}
+		p(\mbox{mistake}) & = \int_{\mathcal{R}_1} p(\bm{x}, \mathcal{C}_2)\ d\bm{x} + \int_{\mathcal{R}_2} p(\bm{x}, \mathcal{C}_1)\ d\bm{x}\\
+		&\leq \int_{\mathcal{R}_1} \left\{ p(\bm{x}, \mathcal{C}_1)p(\bm{x}, \mathcal{C}_2) \right\}^{1/2} + \int_{\mathcal{R}_2} \left\{ p(\bm{x}, \mathcal{C}_1)p(\bm{x}, \mathcal{C}_2) \right\}^{1/2}\\
+		&= \int \left\{ p(\bm{x}, \mathcal{C}_1)p(\bm{x}, \mathcal{C}_2) \right\}^{1/2}\ d\bm{x}.
+	\end{align}
+\end{answer}

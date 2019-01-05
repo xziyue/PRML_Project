@@ -1,0 +1,15 @@
+\begin{question}{1.23}
+	Derive the criterion for minimizing the expected loss when there is a general loss matrix and general prior probabilities for the classes.
+\end{question}
+
+\begin{answer}{}
+	The minimal-loss criterion in terms of posterior probabilities writes
+	\begin{align}
+		\sum_{k} L_{kj}p(\mathcal{C}_k \mid \bm{x}).
+	\end{align}
+	Using the Bayes' theorem, it can be seen that
+	\begin{align}
+		\sum_{k} L_{kj}p(\mathcal{C}_k \mid \bm{x}) &= \sum_{k} L_{kj}\frac{p(\bm{x} \mid \mathcal{C}_k ) p(\mathcal{C}_k)}{p(\bm{x})}\\
+		&= \frac{1}{p(\bm{x})} \sum_{k} L_{kj} p(\bm{x} \mid \mathcal{C}_k ) p(\mathcal{C}_k).
+	\end{align}
+\end{answer}

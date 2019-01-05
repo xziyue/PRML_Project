@@ -1,0 +1,25 @@
+\begin{question}{1.22}
+	Given a loss matrix with elements $L_{kj}$, the expected risk is minimized if, for each $\bm{x}$, we choose the class that minimizes
+	\begin{align*}
+		\sum_{k} L_{kj}p(\mathcal{C}_k \mid \bm{x}).
+	\end{align*}
+	Verify that, when the loss matrix is given by $L_{kj} = 1 - I_{kj}$, where $I_{kj}$ are the elements of the identity matrix, this reduces to the criterion of choosing the class having the largest posterior probability. What is the interpretation of this form of loss matrix?
+\end{question}
+
+\begin{answer}{}
+	It can be seen that $L = \bm{1} - I$, that is to say
+	\begin{equation}
+		L_{kj} =
+		\begin{cases}
+			0, & k = j\\
+			1, &\mbox{otherwise}.
+		\end{cases}
+	\end{equation}
+	We know that $\sum_{k} p(\mathcal{C}_k \mid \bm{x}) = 1$. Given a fixed $j$, it can be seen that
+	\begin{align}
+		\sum_{k} L_{kj}p(\mathcal{C}_k \mid \bm{x}) = 1 - p(\mathcal{C}_j \mid \bm{x}).
+	\end{align}
+	That is to say, we wish to find the $j$ such that the quantity $1 - p(\mathcal{C}_j \mid \bm{x})$ is the smallest. It is equivalent to finding the largest $p(\mathcal{C}_j \mid \bm{x})$, namely the posterior probability.
+	
+	This form of loss matrix assigns identical loss (here, $1$) for any type of misclassification, while giving $0$ loss for correct classifications.
+\end{answer}
