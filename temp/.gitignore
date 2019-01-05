@@ -260,3 +260,4 @@ TSWLatexianTemp*
 
 *.tex
 *.pdf
+!prml_ans_all.pdf

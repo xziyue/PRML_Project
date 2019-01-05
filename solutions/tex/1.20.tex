@@ -1,0 +1,88 @@
+\begin{question}{1.20}
+	In this exercise, we explore the behavior of the Gaussian distribution in high-dimensional spaces. Consider a Gaussian distribution in $D$ dimensions given by
+	\begin{align*}
+		p(\bm{x}) = \frac{1}{(2\pi\sigma^2)^{D/2}} \exp\left( -\frac{\lVert \bm{x} \rVert^2}{2\sigma^2} \right).
+	\end{align*}
+	We wish to find the density with respect to radius in polar coordinates in which the direction variables have been integrated out. To do this, show that the integral of the probability density over a thin shell of radius $r$ and thickness $\epsilon$, where $|\epsilon| \ll 1$, is given by $p(r)\epsilon$ where
+	\begin{align*}
+		p(r) = \frac{S_D r^{D-1}}{(2\pi\sigma^2)^{D/2}} \exp \left( \frac{-r^2}{2\sigma^2} \right)
+	\end{align*}
+	where $S_D$ is the surface area of a unit sphere in $D$ dimensions. Show that the function $p(r)$ has a single stationary point located, for large $D$, at $\hat{r} \simeq \sqrt{D}\sigma$. By considering $p(\hat{r}) + \epsilon$ where $|\epsilon| \ll \hat{r}$, show that for large $D$,
+	\begin{align*}
+		p(\hat{r} + \epsilon) = p(\hat{r}) \exp \left( -\frac{\epsilon^2}{\sigma^2} \right)
+	\end{align*}
+	which shows that $\hat{r}$ is a maximum of the radial probability density and also that $p(r)$ decays exponentially away from its maximum at $\hat{r}$ with length scale $\sigma$. We have already seen that $|\sigma| \ll \hat{r}$ for large $D$, and so we see that most of the probability mass is concentrated in a thin shell at large radius. Finally, show that the probability density $p(\bm{x})$ is larger at the origin than at the radius $\hat{r}$ by a factor of $\exp(D/2)$. We therefore see that most of the probability mass in a high-dimensional Gaussian distribution is located at a different radius from the origin of high probability density. This property of distributions in spaces of high dimensionality will have important consequences when we consider Bayesian inference of model parameters in later chapters. 
+\end{question}
+
+\begin{answer}{}
+	It can be seen that $\bm{x} = (x_1, x_2, \ldots, x_D)^{\T}$. The normalization property of a probability distribution ensures that
+	\begin{align}\label{1.20eqn1}
+		\int_{-\infty}^{\infty}\cdots \int_{-\infty}^{\infty} p(\bm{x})\ dx_1\cdots\ dx_D = 1.
+	\end{align}
+	To transform from Cartesian coordinates to spherical coordinates, we use the results from exercise \prmlqstyle{1.18}, namely
+	\begin{align}
+		dx_1\cdots\ dx_D = r^{D-1}\ dr\ d\Omega,
+	\end{align}
+	where $\Omega$ denotes the set of all angular variables. It can be seen that $d\Omega$ is the surface element of $D$-dimensional sphere. Directly substituting the variables in $p(\bm{x})$ into spherical coordinates to get $\tilde{p}(r)$, we get
+	\begin{align}
+		\tilde{p}(r) = \frac{1}{(2\pi\sigma^2)^{D/2}} \exp\left( -\frac{r^2}{2\sigma^2} \right).
+	\end{align}
+	By transforming (\ref{1.20eqn1}), we have
+	\begin{align}
+		\int_{0}^{\infty}\int_{\odot} \tilde{p}(r) r^{D-1}\ dr\ d\Omega = 1,
+	\end{align}
+	where $\odot$ denotes the domain of a unit $D$-sphere. We can further derive that
+	\begin{align}
+		&\int_{0}^{\infty}\int_{\odot} \tilde{p}(r) r^{D-1}\ dr\ d\Omega\\
+		&= \int_{\odot}d\Omega \int_{0}^{\infty} \tilde{p}(r) r^{D-1}\ dr\\
+		&= S_D \int_{0}^{\infty} \tilde{p}(r) r^{D-1}\ dr = 1.
+	\end{align}
+	That is to say, the normalized probability density function $p(r)$ is
+	\begin{align}
+		p(r) &= S_D r^{D-1} \tilde{p}(r)\\
+		&= \frac{S_D r^{D-1}}{(2\pi\sigma^2)^{D/2}} \exp\left( -\frac{r^2}{2\sigma^2} \right).
+	\end{align}
+
+	To derive the stationary point of the function, we compute
+	\begin{align}
+		\frac{dp(r)}{dr} &= \frac{S_D}{(2\pi\sigma^2)^{D/2}}\left[ (D-1)r^{D-2}\exp\left( -\frac{r^2}{2\sigma^2}\right) - r^{D-1}\exp\left(-\frac{r^2}{2\sigma^2}\right)\frac{r}{\sigma^2} \right]\\
+		&= \frac{S_D}{(2\pi\sigma^2)^{D/2}}\exp\left( -\frac{r^2}{2\sigma^2}\right)r^{D-2}\left[(D-1) - \frac{r^2}{\sigma^2}\right].
+	\end{align}
+	All terms are non-negative except for the last one, which is surrounded by square brackets. When $r \geq 0$, there is only one zero for $\left[(D-1) - \frac{r^2}{\sigma^2}\right]$, namely $\hat{r} = \sigma\sqrt{D-1}$. In the range $[0, \hat{r}]$, $p(r)$ is increasing; in the range $(\hat{r}, +\infty)$, $p(r)$ is decreasing. Therefore $p(\hat{r})$ is the global maximum of function $p(r)$. It can be seen that when $D$ is large, $\hat{r} \simeq \sigma\sqrt{D}$.
+	
+	Consider the expression
+	\begin{align}
+		\frac{p(\hat{r} + \epsilon)}{p(\hat{r})} &= \frac{\frac{S_D (\hat{r} + \epsilon)^{D-1}}{(2\pi\sigma^2)^{D/2}} \exp\left( -\frac{(\hat{r} + \epsilon)^2}{2\sigma^2} \right)}{\frac{S_D \hat{r}^{D-1}}{(2\pi\sigma^2)^{D/2}} \exp\left( -\frac{\hat{r}^2}{2\sigma^2} \right)}\\
+		&= \frac{(\hat{r} + \epsilon)^{D-1}\exp\left( -\frac{(\hat{r} + \epsilon)^2}{2\sigma^2} \right)}{\hat{r}^{D-1}\exp\left( -\frac{\hat{r}^2}{2\sigma^2} \right) }\\
+		&= \left( 1 + \frac{\epsilon}{\hat{r}}\right)^{D - 1} \exp\left( -\frac{(\hat{r} + \epsilon)^2}{2\sigma^2} + \frac{\hat{r}^2}{2\sigma^2} \right)\\
+		&= \left( 1 + \frac{\epsilon}{\hat{r}}\right)^{D - 1} \exp\left( -\frac{2\epsilon \hat{r} + \epsilon^2}{2\sigma^2} \right)\\
+		&= \exp\left[ -\frac{2\epsilon \hat{r} + \epsilon^2}{2\sigma^2} + (D-1)\ln \left( 1 + \frac{\epsilon}{\hat{r}}\right) \right].
+	\end{align}
+	When $D$ is large, $D \simeq (D - 1)$. The Maclaurin series of $\ln(x+1)$ suggests that
+	\begin{align}
+		\ln(x + 1) = x - \frac{x^2}{2} + O(x^3).
+	\end{align}
+	Combining these facts, we have
+	\begin{align}
+		&\exp\left[ -\frac{2\epsilon \hat{r} + \epsilon^2}{2\sigma^2} + (D-1)\ln \left( 1 + \frac{\epsilon}{\hat{r}}\right) \right]\\
+		&\simeq \exp\left[ -\frac{2\epsilon \hat{r} + \epsilon^2}{2\sigma^2} + D\left(\frac{\epsilon}{\hat{r}} - \frac{\epsilon^2}{2\hat{r}^2}\right)\right].
+	\end{align}
+	Substitute $\hat{r}$ by $\sigma\sqrt{D}$, we have
+	\begin{align}
+		&\exp\left[ -\frac{2\epsilon \hat{r} + \epsilon^2}{2\sigma^2} + D\left(\frac{\epsilon}{\hat{r}} - \frac{\epsilon^2}{2\hat{r}^2}\right)\right]\\
+		&= \exp\left[ -\frac{2\epsilon\sigma\sqrt{D} + \epsilon^2}{2\sigma^2} + D\left(\frac{\epsilon}{\sigma\sqrt{D}} - \frac{\epsilon^2}{2\sigma^2D}\right) \right]\\
+		&= \exp\left(-\frac{\epsilon \sqrt{D}}{\sigma} - \frac{\epsilon^2}{2\sigma^2} + \frac{\epsilon \sqrt{D}}{\sigma} - \frac{\epsilon^2}{2\sigma^2} \right)\\
+		&= \exp\left( -\frac{\epsilon^2}{\sigma^2} \right).
+	\end{align}
+	Therefore we can conclude that $p(\hat{r} + \epsilon) = p(\hat{r}) \exp\left( -\frac{\epsilon^2}{\sigma^2} \right)$, which indicates that $p(r)$ decays exponentially around $\hat{r}$.
+	
+	The mode of the distribution under Cartesian coordinates is
+	\begin{align}
+		\left. p(\bm{x})\right\rvert_{\bm{x} = \bm{0}} = \frac{1}{(2\pi\sigma^2)^{D/2}}.
+	\end{align}
+	The density at radius $\hat{r}$ is
+	\begin{align}
+		\left. p(\bm{x})\right\rvert_{\lVert\bm{x}\rVert = \hat{r}} = \frac{1}{(2\pi\sigma^2)^{D/2}}\exp\left(-\frac{D}{2}\right).
+	\end{align}
+	Because $D \gg 1$, we can see that the mode of the distribution is greater than the density at $\hat{r}$ by a factor of $\exp\left(\frac{D}{2}\right)$. However, the analysis of $p(r)$ suggests that the majority of the probability mass is actually concentrated around $\hat{r}$, where the density is significantly smaller. This is obviously, another oddity when it comes to high dimensionality.
+\end{answer}
