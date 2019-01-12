@@ -1,0 +1,63 @@
+\begin{question}{1.25}
+	Consider the generalization of the squared loss function
+	\begin{align*}
+		\ev{L} = \int\int \left\{ y(\bm{x}) - t \right\}^2 p(\bm{x}, t)\ d\bm{x}\ dt
+	\end{align*}
+	for a single variable $t$ to the case of multiple target variables described by the vector $\bm{t}$ given by
+	\begin{align*}
+		\ev{L(\bm{t}, \bm{y}(\bm{x}))} = \int\int \lVert \bm{y}(\bm{x}) - \bm{t} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}.
+	\end{align*}
+	Using the calculus of variations, show that the function $\bm{y}(\bm{x})$ for which this expected loss is minimized is given by $\bm{y}(\bm{x}) = \mathbb{E}_{\bm{t}}\left[\bm{t} \mid \bm{x}\right]$. Show that this reduces to the case of a single target variable $t$.
+\end{question}
+
+\begin{answer}{}
+	It is important to point out that the expressions of the squared loss function are definite integrals. Because their boundaries are trivial, they are not pointed out explicitly. In the following discussion, we also ignore the boundaries of integral signs, if possible. But keep in mind that all integrals are definite integrals with specific boundaries.
+	
+	For simplicity, let the functional $\bm{f}(\bm{y})$ be $\bm{f}\left[\bm{y}(\bm{x})\right] = \ev{L(\bm{t}, \bm{y}(\bm{x}))}$. Denote the functional $\bm{\Phi}(\bm{\epsilon})$ by
+	\begin{align}
+		\bm{\Phi}(\bm{\epsilon}) = \bm{f}(\bm{y} + \bm{\epsilon}\bm{\eta}),
+	\end{align}
+	where $\bm{\epsilon}$ is a small variation, and $\bm{\eta}$ is a flexible function that vanishes (equals to zero) at the boundaries of the integrals, then for any $\bm{\epsilon}$ close to $\bm{0}$. If $\bm{y}$ is a local minima of $\bm{f}$, the derivative around $\bm{y}$ should be close to zero. Therefore it is intuitive to see
+	\begin{align}\label{1.25eqn1}
+		\left.\frac{\partial \bm{\Phi}}{\partial \bm{\epsilon}}\right\lvert_{\bm{\epsilon} = \bm{0}} = \bm{0}.
+	\end{align}
+	
+	Let us prove a fact that is vital for our proof. If the one-dimensional integral satisfies
+	\begin{align}
+		\int_{a}^{b} \eta(x)h(x)\ dx = 0,
+	\end{align}
+	where $\eta(a) = \eta(b) = 0$, then we must have $h(x) \equiv 0$ on $(a, b)$. We can prove this claim by contradiction. Assume that $h(x) \not\equiv 0$ on $(a, b)$. Create a function $\zeta(x)$ that satisfies $\zeta(a) = \zeta(b) = 0$, and that $\zeta(x) > 0$ on $(a, b)$. Let $h(x) = \zeta(x)$. Now we have
+	\begin{align}
+		\int_{a}^{b} \zeta(x)h^2(x)\ dx = 0.
+	\end{align}
+	Because $h^2(x)$ is nonnegative, it must be true that $h(x) \equiv 0$ on $(a, b)$. This can very easily generalize to our vectorized case. That is to say, if
+	\begin{align}\label{1.25eqn2}
+		\int \bm{\eta}(\bm{x}) \bm{h}(\bm{x})\ d\bm{x} = \bm{0},
+	\end{align}
+	then we can conclude that $ \bm{h}(\bm{x}) \equiv \bm{0}$.
+	
+	By the rules of differentiation under the integral sign, it can be seen that
+	\begin{align}
+		\frac{\partial \bm{\Phi}}{\partial \bm{\epsilon}} &= \frac{\partial}{\partial \bm{\epsilon}} \int\int \lVert \bm{y}(\bm{x}) + \bm{\epsilon}\bm{\eta} - \bm{t} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		&= \int\int \frac{\partial}{\partial \bm{\epsilon}}\left[ \bm{y}(\bm{x}) + \bm{\epsilon}\bm{\eta} - \bm{t} \right]^2 p(\bm{x}, \bm{t})\ d\bm{t}\ d\bm{x}\\
+		&= \int\int \frac{\partial}{\partial \bm{\epsilon}}\left\{ \bm{y}^2(\bm{x}) + 2\bm{\epsilon}\bm{\eta}\bm{y}(\bm{x}) + \bm{\epsilon}^2\bm{\eta}^2 - 2\bm{t}\left[ \bm{y}(\bm{x}) + \bm{\epsilon}\bm{\eta}\right]  - \bm{t}^2\right\} p(\bm{x}, \bm{t})\ d\bm{t}\ d\bm{x}\\
+		&= \int\int \left[2\bm{\eta}\bm{y}(\bm{x}) + 2\bm{\epsilon}\bm{\eta}^2 - 2\bm{t}\bm{\eta}\right] p(\bm{x}, \bm{t})\ d\bm{t}\ d\bm{x}.
+	\end{align}
+	Putting the condition (\ref{1.25eqn1}) into the equation above, we have
+	\begin{align}
+		&\int\int \left[2\bm{\eta}\bm{y}(\bm{x}) - 2\bm{t}\bm{\eta}\right] p(\bm{x}, \bm{t})\ d\bm{t}\ d\bm{x}\\
+		&= \int \bm{\eta}\int 2\left[\bm{y}(\bm{x}) - \bm{t} \right]p(\bm{x}, \bm{t})\ d\bm{t}\ d\bm{x} = \bm{0}.
+	\end{align}
+	By (\ref{1.25eqn2}) we know that
+	\begin{align}
+		\int 2\left[\bm{y}(\bm{x}) - \bm{t} \right]p(\bm{x}, \bm{t})\ d\bm{t} = \bm{0}. 
+	\end{align}
+	It can be seen that
+	\begin{gather}
+		\int 2\left[\bm{y}(\bm{x}) - \bm{t} \right]p(\bm{x}, \bm{t})\ d\bm{t} = \bm{0}\\
+		\int \bm{y}(\bm{x}) p(\bm{x}, \bm{t})\ d\bm{t} = \int \bm{t} p(\bm{x}, \bm{t})\ d\bm{t}\\
+		\int \bm{y}(\bm{x}) p(\bm{x}) p(\bm{t} \mid \bm{x})\ d\bm{t} = \int \bm{t} p(\bm{x}, \bm{t})\ d\bm{t}\\
+		\bm{y}(\bm{x}) = \frac{\int \bm{t} p(\bm{x}, \bm{t})\ d\bm{t}}{p(\bm{x})} = \int \bm{t} p(\bm{t} \mid \bm{x})\ d\bm{t} = \mathbb{E}_{\bm{t}}\left[\bm{t} \mid \bm{x}\right].
+	\end{gather}
+	In one-dimensional case, it is just equivalent to $\mathbb{E}_{t}\left[t \mid x\right]$.
+\end{answer}
