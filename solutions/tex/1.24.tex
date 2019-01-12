@@ -1,0 +1,31 @@
+\begin{question}{1.24}
+	Consider a classification problem in which the loss incurred when an input vector from class $\mathcal{C}_k$ is classified as belonging to class $\mathcal{C}_j$ is given by the loss matrix $L_{kj}$, and for which the loss incurred in the selecting the rejection option is $\lambda$. Find the decision criterion that will give the minimum expected loss. Verify that this reduces to the reject criterion discussed in Section 1.5.3 where the loss matrix is given by $L_{kj} = 1 - I_{kj}$. What is the relationship between $\lambda$ and the rejection threshold $\theta$?
+\end{question}
+
+\begin{answer}{}
+	Taking the rejection option into account, it can be seen that the expected loss now writes
+	\begin{equation}\label{1.24eqn1}
+		\ev{L} =
+		\begin{cases}
+			\lambda, &\mbox{if a rejection is made},\\
+			\sum_{k}\sum_{j}\int_{R_j} L_{kj}p(\mathcal{C}_k \mid \bm{x})\ d\bm{x}, &\mbox{otherwise},
+		\end{cases}
+	\end{equation}
+	where $\lambda$ is a manually determined parameter to determine the trade-off between committing to a class or rejection. We know that in general classification problems, the optimal decision is to assign $\bm{x}$ to class $j'$ that minimizes
+	\begin{align}\label{1.24eqn2}
+		\sum_{k} L_{kj'}p(\mathcal{C}_k \mid \bm{x}),
+	\end{align}
+	which is equivalent to minimizing the second equation in (\ref{1.24eqn1}). The value of (\ref{1.24eqn2}) is exactly the loss incurred by this decision.
+	
+	
+	In order to minimize the expected loss, we choose the smaller quantity between (\ref{1.24eqn2}) and $\lambda$, that is, we choose to commit to $\mathcal{C}_j'$, if $\sum_{k} L_{kj'}p(\mathcal{C}_k \mid \bm{x}) \leq \lambda$. Otherwise, we choose to reject.
+	
+	In question \prmlqstyle{1.22}, we have concluded that if the loss matrix is given by $L_{kj} = \bm{1} - I_{kj}$, the loss of committing to class $\mathcal{C}_j$ is given by $1 - p(\mathcal{C}_j \mid \bm{x})$, and that the decision rule is equivalent to finding $j'$ such that $p(\mathcal{C}_j' \mid \bm{x})$ is the greatest. Combined with the rejection option, the decision principle now can be expressed as follows: we choose to commit to $\mathcal{C}_j'$ if $1 - p(\mathcal{C}_j' \mid \bm{x}) \leq  \lambda$. Otherwise, we choose to reject. 
+	
+	That is to say, we would choose a class if and if only
+	\begin{align}
+		1 - \max_j \left[ p(\mathcal{C}_j \mid \bm{x}) \right] &\leq \lambda\\
+		\max_j \left[ p(\mathcal{C}_j \mid \bm{x}) \right] &\geq 1 - \lambda,
+	\end{align}
+	which is identical to setting the rejection threshold $\theta$ to be $1 - \lambda$. Therefore we can conclude that $\theta = 1 - \lambda$.
+\end{answer}

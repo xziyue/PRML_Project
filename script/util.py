@@ -67,7 +67,7 @@ def CompileTeX(root, name, texText):
 
     outputDirParam = '-output-directory={}'.format(outputDir)
 
-    subprocess.call(['xelatex', '-synctex=1', '-interaction=nonstopmode', '--shell-escape', outputDirParam, filename])
+    subprocess.call(['pdflatex', '-interaction=nonstopmode', '--shell-escape', outputDirParam, filename])
 
     pdfOutputName = fnameFormat.format(name, 'pdf')
     pdfOutputFilaname = os.path.join(outputDir, pdfOutputName)
