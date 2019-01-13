@@ -1,0 +1,49 @@
+\begin{question}{1.26}
+	By expansion of the square in
+	\begin{align*}
+		\ev{L(\bm{t}, \bm{y}(\bm{x}))} = \int\int \lVert \bm{y}(\bm{x}) - \bm{t} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t},
+	\end{align*}
+	derive a result analogous to
+	\begin{align*}
+		\ev{L} = \int \left\{ y(\bm{x}) - \ev{t \mid \bm{x}} \right\}^2 p(\bm{x})\ d\bm{x} + \int \var{t \mid \bm{x}} p(\bm{x})\ d\bm{x}
+	\end{align*}
+	and hence show that the function $\bm{y}(\bm{x})$ that minimizes the expected squared loss for the case of a vector $\bm{t}$ of a vector $\bm{t}$ of target variables is again given by the conditional expectation of $\bm{t}$.
+\end{question}
+
+\begin{answer}{}
+	The two cases are very similar. It can be seen that
+	\begin{align}
+		\left[ \bm{y}(\bm{x}) - \bm{t} \right]^2 &= \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} + \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^2\\
+		&= \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 + 2\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\} \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\} + \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^2.
+	\end{align}
+	For the cross term, we have
+	\begin{align}
+		& \int\int 2\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\} \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\} p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		&= 2\int\int \left\{ \bm{y}(\bm{x}) \mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] - \bm{t}\bm{y}(\bm{x}) + \bm{t}\mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] - \mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \} p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		\begin{split}
+		&= 2 \left\{ \mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \int \bm{y}(\bm{x})p(\bm{x})\ d\bm{x} \int p(\bm{t} \mid \bm{x})\ d\bm{t}  \right.\\
+		&\phantom{=}\hspace*{3em} - \int \bm{y}(\bm{x})p(\bm{x})\ d\bm{x} \int \bm{t}p(\bm{t} \mid \bm{x})\ d\bm{t}\\
+		&\phantom{=}\hspace*{4em} + \mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \int p(\bm{x})\ d\bm{x} \int \bm{t}p(\bm{t} \mid \bm{x})\ d\bm{t}\\
+		&\phantom{=}\hspace*{5em} - \left.\mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \int\int p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\right\}
+		\end{split}\\
+		&= 2\left\{\mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right]\mathbb{E}_{\bm{x}}\left[\bm{y}\right] - \mathbb{E}_{\bm{x}}\left[\bm{y}\right]\mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] + \mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] - \mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \right\}\\
+		&= 0.
+	\end{align}
+	Therefore we can write
+	\begin{align}
+		\ev{L(\bm{t}, \bm{y}(\bm{x}))} &= \int\int \lVert \bm{y}(\bm{x}) - \bm{t} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		&= \int\int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t} + \int\int \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		\begin{split}
+		&= \int p(\bm{t} \mid \bm{x})\ d\bm{t}  \int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}) \ d\bm{x}\\
+		&\phantom{=}\quad + \int \left\{ \bm{t} - \ev{ \bm{t} \mid \bm{x}} \right\}^2 p(\bm{t} \mid \bm{x})\ d\bm{t} \int p(\bm{x})\ d\bm{x}
+		\end{split}\\
+		&= \int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}) \ d\bm{x} + \int \var{\bm{t} \mid \bm{x}} p(\bm{x})\ d\bm{x}\\
+		&= \int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}) \ d\bm{x} + \var{\bm{t} \mid \bm{x}}
+	\end{align}
+	
+	The second term does not depend on the choice of $\bm{y}$, while selecting
+	\begin{align}\label{1.26eqn1}
+		\bm{y}(\bm{x}) = \ev{\bm{t} \mid \bm{x}}
+	\end{align}
+	minimizes the first term. Therefore we can conclude that (\ref{1.26eqn1}) minimizes the loss function.
+\end{answer}
