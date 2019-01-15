@@ -7,9 +7,28 @@
 \end{question}
 
 \begin{answer}{}
-	When $q = 1$, it can be seen that
+	Our goal is to find expressions of $y(\bm{x})$ in order to minimize $\ev{L_q}$. It can be seen that
 	\begin{align}
-		\ev{L_1} &= \int\int \lvert y(\bm{x}) - t \rvert p(\bm{x}, t)\ d\bm{x}\ dt\\
-		
+		\ev{L_q} &= \int\int \lvert y(\bm{x}) - t \rvert^q p(\bm{x}, t)\ dt\ d\bm{x}\\
+		&= \int p(\bm{x}) \int \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x}) \ dt\ d\bm{x}
 	\end{align}
+	All quantities in the integral above are nonnegative, and we can try to minimize the integrand, namely
+	\begin{align}
+		\int \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt.
+	\end{align}
+	The optimal $y(\bm{x})$ can be found by setting the partial derivative with respect to itself to be zero. We know that $\lvert a \rvert = \left(x^2 \right)^{1/2}$, therefore we have
+	\begin{align}
+		&\frac{\partial}{\partial y(\bm{x})}\int \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&= \frac{\partial}{\partial y(\bm{x})}\int \left\{\left[ y(\bm{x}) - t \right]^2\right\}^{\frac{q}{2}} p(t \mid \bm{x})\ dt\\
+		&= \int  \frac{q}{2} \left\{\left[ y(\bm{x}) - t \right]^2\right\}^{\frac{q}{2} - 1}\cdot 2\left[ y(\bm{x}) - t \right]p(t \mid \bm{x})\ dt\\
+		&= \int q \left\{\left[ y(\bm{x}) - t \right]^2\right\}^{\frac{q-1}{2}} \cdot \frac{ y(\bm{x}) - t }{\left\lvert y(\bm{x}) - t\right\rvert}p(t \mid \bm{x})\ dt\\
+		&= q \int \lvert y(\bm{x}) - t \rvert^{q-1} \cdot \sgn{y(\bm{x}) - t }p(t \mid \bm{x})\ dt\\
+		&= q \int_{-\infty}^{y(\bm{x})} \lvert y(\bm{x}) - t \rvert^{q-1} p(t \mid \bm{x})\ dt - q \int_{y(\bm{x})}^{+\infty} \lvert y(\bm{x}) - t \rvert^{q-1}p(t \mid \bm{x})\ dt = 0.
+	\end{align}
+	Therefore we can see that the stationary condition for $y(\bm{x})$ is
+	\begin{gather}
+		q \int_{-\infty}^{y(\bm{x})} \lvert y(\bm{x}) - t \rvert^{q-1} p(t \mid \bm{x})\ dt - q \int_{y(\bm{x})}^{+\infty} \lvert y(\bm{x}) - t \rvert^{q-1}p(t \mid \bm{x})\ dt = 0\\
+		 \int_{-\infty}^{y(\bm{x})} \lvert y(\bm{x}) - t \rvert^{q-1} p(t \mid \bm{x})\ dt =  \int_{y(\bm{x})}^{+\infty} \lvert y(\bm{x}) - t \rvert^{q-1}p(t \mid \bm{x})\ dt.
+	\end{gather}
+	When $q = 1$, the condition reduces to
 \end{answer}
