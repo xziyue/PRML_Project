@@ -13,32 +13,49 @@
 \begin{answer}{}
 	The two cases are very similar. It can be seen that
 	\begin{align}
-		\left[ \bm{y}(\bm{x}) - \bm{t} \right]^2 &= \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} + \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^2\\
-		&= \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 + 2\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\} \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\} + \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^2.
+		\left\lVert \bm{y}(\bm{x}) - \bm{t} \right\rVert^2 &= \left\lVert \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} + \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\rVert^2\\
+		\begin{split}
+			&= \left\lVert \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\rVert^2\\
+			&\phantom{=}\quad + \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^{\T}\left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}\\
+			&\phantom{=}\quad\quad + \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^{\T}\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}\\
+			&\phantom{=}\quad\quad\quad + \left\lVert \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\rVert^2.
+		\end{split}
+	\end{align}
+	
+	
+	Because the cross terms are essentially numbers ($1 \times 1$ matrices), they equal to their own transpose. Therefore, the two cross terms are equal to each other, and we only consider the first term. In order to deal with the cross terms, consider the expectation $\mathbb{E}_{\bm{x}, \bm{t}}\left[\bm{g}\right]$. It can be seen that
+	\begin{align}
+		\mathbb{E}_{\bm{x}, \bm{t}}\left[g\right] &= \int\int \bm{g}(\bm{x}, \bm{t}) p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		&= \int p(\bm{x})\ d\bm{x} \int \bm{g}(\bm{x}, \bm{t})p(\bm{t}\mid\bm{x})\ d\bm{t}\\
+		&= \int \mathbb{E}_{\bm{t}}\left[\bm{g} \mid \bm{x}\right]p(\bm{x})\ d\bm{x}\\
+		&= \mathbb{E}_{\bm{x}}\left[ \mathbb{E}_{\bm{t}}\left[\bm{g} \mid \bm{x}\right] \right].
 	\end{align}
 	For the cross term, we have
 	\begin{align}
-		& \int\int 2\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\} \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\} p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
-		&= 2\int\int \left\{ \bm{y}(\bm{x}) \mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] - \bm{t}\bm{y}(\bm{x}) + \bm{t}\mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] - \mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \} p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
-		\begin{split}
-		&= 2 \left\{ \mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \int \bm{y}(\bm{x})p(\bm{x})\ d\bm{x} \int p(\bm{t} \mid \bm{x})\ d\bm{t}  \right.\\
-		&\phantom{=}\hspace*{3em} - \int \bm{y}(\bm{x})p(\bm{x})\ d\bm{x} \int \bm{t}p(\bm{t} \mid \bm{x})\ d\bm{t}\\
-		&\phantom{=}\hspace*{4em} + \mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \int p(\bm{x})\ d\bm{x} \int \bm{t}p(\bm{t} \mid \bm{x})\ d\bm{t}\\
-		&\phantom{=}\hspace*{5em} - \left.\mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \int\int p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\right\}
-		\end{split}\\
-		&= 2\left\{\mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right]\mathbb{E}_{\bm{x}}\left[\bm{y}\right] - \mathbb{E}_{\bm{x}}\left[\bm{y}\right]\mathbb{E}_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] + \mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] - \mathbb{E}^2_{\bm{t}}\left[{\bm{t} \mid \bm{x}}\right] \right\}\\
+		&\int\int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^{\T}\left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\} p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		&= \mathbb{E}_{\bm{x}, \bm{t}}\left[ \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^{\T}\left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\} \right]\\
+		&= \mathbb{E}_{\bm{x}}\left[ \mathbb{E}_{\bm{t}}\left[  \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^{\T}\left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}  \mid \bm{x}\right] \right].
+	\end{align}
+	Using subscript to denote a particular element of a vector, it can be seen that
+	\begin{align}
+		&\mathbb{E}_{\bm{x}}\left[ \mathbb{E}_{\bm{t}}\left[  \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^{\T}\left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}  \mid \bm{x}\right] \right]\\
+		&= \mathbb{E}_{\bm{x}}\left[ \mathbb{E}_{\bm{t}}\left[ \sum_{i}  \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}_i \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}_i \mid \bm{x}\right] \right]\\
+		&= \mathbb{E}_{\bm{x}}\left[ \sum_{i}\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}_i \mathbb{E}_{\bm{t}}\left[   \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}_i \mid \bm{x}\right] \right]\\
+		&= \mathbb{E}_{\bm{x}}\left[ \sum_{i}\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}_i \left\{ \mathbb{E}_{\bm{t}}\left[ \ev{\bm{t} \mid \bm{x}}_i \mid \bm{x} \right] - \mathbb{E}_{\bm{t}}\left[ \bm{t}_i \mid \bm{x} \right] \right\} \right]\\
+		&= \mathbb{E}_{\bm{x}}\left[ \sum_{i}\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}_i \left\{ \mathbb{E}_{\bm{t}}\left[ \bm{t} \mid \bm{x} \right]_i - \mathbb{E}_{\bm{t}}\left[ \bm{t}_i \mid \bm{x} \right] \right\} \right]\\
+		&= \mathbb{E}_{\bm{x}}\left[ \sum_{i}\left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}_i \cdot 0 \right]\\
 		&= 0.
 	\end{align}
-	Therefore we can write
+	Therefore we have proved that the two cross term vanish after integration. We can now write
 	\begin{align}
 		\ev{L(\bm{t}, \bm{y}(\bm{x}))} &= \int\int \lVert \bm{y}(\bm{x}) - \bm{t} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
-		&= \int\int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t} + \int\int \left\{ \ev{\bm{t} \mid \bm{x}} - \bm{t} \right\}^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
+		&= \int\int \lVert \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t} + \int\int \lVert \ev{\bm{t} \mid \bm{x}} - \bm{t} \rVert^2 p(\bm{x}, \bm{t})\ d\bm{x}\ d\bm{t}\\
 		\begin{split}
-		&= \int p(\bm{t} \mid \bm{x})\ d\bm{t}  \int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}) \ d\bm{x}\\
-		&\phantom{=}\quad + \int \left\{ \bm{t} - \ev{ \bm{t} \mid \bm{x}} \right\}^2 p(\bm{t} \mid \bm{x})\ d\bm{t} \int p(\bm{x})\ d\bm{x}
+		&= \int p(\bm{t} \mid \bm{x})\ d\bm{t}  \int \lVert \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \rVert^2 p(\bm{x}) \ d\bm{x}\\
+		&\phantom{=}\quad + \int \lVert \bm{t} - \ev{ \bm{t} \mid \bm{x}} \rVert^2 p(\bm{t} \mid \bm{x})\ d\bm{t} \int p(\bm{x})\ d\bm{x}
 		\end{split}\\
-		&= \int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}) \ d\bm{x} + \int \var{\bm{t} \mid \bm{x}} p(\bm{x})\ d\bm{x}\\
-		&= \int \left\{ \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \right\}^2 p(\bm{x}) \ d\bm{x} + \var{\bm{t} \mid \bm{x}}
+		&= \int \lVert \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \rVert^2 p(\bm{x}) \ d\bm{x} + \int \var{\bm{t} \mid \bm{x}} p(\bm{x})\ d\bm{x}\\
+		&= \int \lVert \bm{y}(\bm{x}) -\ev{\bm{t} \mid \bm{x}} \rVert^2 p(\bm{x}) \ d\bm{x} + \var{\bm{t} \mid \bm{x}}
 	\end{align}
 	
 	The second term does not depend on the choice of $\bm{y}$, while selecting

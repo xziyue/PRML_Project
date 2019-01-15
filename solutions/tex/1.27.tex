@@ -1,0 +1,15 @@
+\begin{question}{1.27}
+	Consider the expected loss for regression problems under the $L_q$ loss function given by
+	\begin{align*}
+		\ev{L_q} = \int\int \lvert y(\bm{x}) - t \rvert^q p(\bm{x}, t)\ d\bm{x}\ dt.
+	\end{align*}
+	Write down the condition that $y(\bm{x})$ must satisfy in order to minimize $\ev{L_q}$. Show that, for $q = 1$, this solution represents the conditional median, i.e., the function $y(\bm{x})$ shuch that the probability mass for $t < y(\bm{x})$ is the same as for $t \geq y(\bm{x})$. Also show that the minimum expected $L_q$ loss for $q \rightarrow 0$ is given by the conditional mode, i.e. by the function $y(\bm{x})$ equal to the value of $t$ that maximizes $p(t \mid \bm{x})$ for each $\bm{x}$.
+\end{question}
+
+\begin{answer}{}
+	When $q = 1$, it can be seen that
+	\begin{align}
+		\ev{L_1} &= \int\int \lvert y(\bm{x}) - t \rvert p(\bm{x}, t)\ d\bm{x}\ dt\\
+		
+	\end{align}
+\end{answer}
