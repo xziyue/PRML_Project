@@ -47,6 +47,9 @@ def GetAnswerTOC(root):
     pythonDict = __CreateFolderDict(pythonRoot)
     texDict = __CreateFolderDict(texRoot)
 
+    for _, val in texDict.items():
+        assert val.endswith('.tex')
+
     res = {
         'tex' : texDict,
         'python' : pythonDict

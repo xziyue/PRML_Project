@@ -46,7 +46,9 @@ if target == 'tex':
     with open(toc[target][recv], 'r') as infile:
         frac = infile.read()
 
+    #print(toc[target][recv])
     full = GenerateFullTex(root, frac)
+    #print(full)
     pdfOutput = CompileTeX(root, recv, full)
     if options.no_open:
         if os.path.exists(pdfOutput):

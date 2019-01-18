@@ -3,7 +3,7 @@
 	\begin{align*}
 		\ev{L_q} = \int\int \lvert y(\bm{x}) - t \rvert^q p(\bm{x}, t)\ d\bm{x}\ dt.
 	\end{align*}
-	Write down the condition that $y(\bm{x})$ must satisfy in order to minimize $\ev{L_q}$. Show that, for $q = 1$, this solution represents the conditional median, i.e., the function $y(\bm{x})$ shuch that the probability mass for $t < y(\bm{x})$ is the same as for $t \geq y(\bm{x})$. Also show that the minimum expected $L_q$ loss for $q \rightarrow 0$ is given by the conditional mode, i.e. by the function $y(\bm{x})$ equal to the value of $t$ that maximizes $p(t \mid \bm{x})$ for each $\bm{x}$.
+	Write down the condition that $y(\bm{x})$ must satisfy in order to minimize $\ev{L_q}$. Show that, for $q = 1$, this solution represents the conditional median, i.e., the function $y(\bm{x})$ such that the probability mass for $t < y(\bm{x})$ is the same as for $t \geq y(\bm{x})$. Also show that the minimum expected $L_q$ loss for $q \rightarrow 0$ is given by the conditional mode, i.e. by the function $y(\bm{x})$ equal to the value of $t$ that maximizes $p(t \mid \bm{x})$ for each $\bm{x}$.
 \end{question}
 
 \begin{answer}{}
@@ -23,12 +23,12 @@
 		&= \int  \frac{q}{2} \left\{\left[ y(\bm{x}) - t \right]^2\right\}^{\frac{q}{2} - 1}\cdot 2\left[ y(\bm{x}) - t \right]p(t \mid \bm{x})\ dt\\
 		&= \int q \left\{\left[ y(\bm{x}) - t \right]^2\right\}^{\frac{q-1}{2}} \cdot \frac{ y(\bm{x}) - t }{\left\lvert y(\bm{x}) - t\right\rvert}p(t \mid \bm{x})\ dt\\
 		&= q \int \lvert y(\bm{x}) - t \rvert^{q-1} \cdot \sgn{y(\bm{x}) - t }p(t \mid \bm{x})\ dt\\
-		&= q \int_{-\infty}^{y(\bm{x})} \lvert y(\bm{x}) - t \rvert^{q-1} p(t \mid \bm{x})\ dt - q \int_{y(\bm{x})}^{+\infty} \lvert y(\bm{x}) - t \rvert^{q-1}p(t \mid \bm{x})\ dt = 0.
+		&= q \int_{-\infty}^{y(\bm{x})} \left[ y(\bm{x}) - t \right]^{q-1} p(t \mid \bm{x})\ dt - q \int_{y(\bm{x})}^{+\infty} \left[ y(\bm{x}) - t \right]^{q-1}p(t \mid \bm{x})\ dt = 0.
 	\end{align}
 	Therefore we can see that the stationary condition for $y(\bm{x})$ is
 	\begin{gather}
-		q \int_{-\infty}^{y(\bm{x})} \lvert y(\bm{x}) - t \rvert^{q-1} p(t \mid \bm{x})\ dt - q \int_{y(\bm{x})}^{+\infty} \lvert y(\bm{x}) - t \rvert^{q-1}p(t \mid \bm{x})\ dt = 0\\
-		 \int_{-\infty}^{y(\bm{x})} \lvert y(\bm{x}) - t \rvert^{q-1} p(t \mid \bm{x})\ dt =  \int_{y(\bm{x})}^{+\infty} \lvert y(\bm{x}) - t \rvert^{q-1}p(t \mid \bm{x})\ dt.
+		q \int_{-\infty}^{y(\bm{x})} \left[ y(\bm{x}) - t \right]^{q-1} p(t \mid \bm{x})\ dt - q \int_{y(\bm{x})}^{+\infty} \left[ y(\bm{x}) - t \right]^{q-1}p(t \mid \bm{x})\ dt = 0\\
+		 \int_{-\infty}^{y(\bm{x})} \left[ y(\bm{x}) - t \right]^{q-1} p(t \mid \bm{x})\ dt =  \int_{y(\bm{x})}^{+\infty} \left[ y(\bm{x}) - t \right]^{q-1}p(t \mid \bm{x})\ dt.
 	\end{gather}
 	When $q = 1$, the condition reduces to
 	\begin{align}
