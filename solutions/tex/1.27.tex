@@ -6,7 +6,7 @@
 	Write down the condition that $y(\bm{x})$ must satisfy in order to minimize $\ev{L_q}$. Show that, for $q = 1$, this solution represents the conditional median, i.e., the function $y(\bm{x})$ such that the probability mass for $t < y(\bm{x})$ is the same as for $t \geq y(\bm{x})$. Also show that the minimum expected $L_q$ loss for $q \rightarrow 0$ is given by the conditional mode, i.e. by the function $y(\bm{x})$ equal to the value of $t$ that maximizes $p(t \mid \bm{x})$ for each $\bm{x}$.
 \end{question}
 
-\begin{answer}{(Wrong! Still Solving!)}
+\begin{answer}{}
 	Our goal is to find expressions of $y(\bm{x})$ in order to minimize $\ev{L_q}$. It can be seen that
 	\begin{align}
 		\ev{L_q} &= \int\int \lvert y(\bm{x}) - t \rvert^q p(\bm{x}, t)\ dt\ d\bm{x}\\
@@ -51,23 +51,42 @@
 		&= \int_{-\infty}^{t_0 - \tau} p(t \mid \bm{x})\ dt + \int_{t_0 + \tau}^{+\infty} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
 		&= 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt.
 	\end{align}
-	Assume that the maximum of $\lvert y(\bm{x}) - t \rvert$ on $(t_0 - \tau, t_0 + \tau)$ is $k$. Because $y(\bm{x})$ and $t$ are not correlated in any means, we would assume that $k > 0$ in general. Then we can write
-	\begin{gather}
-		1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} k^q p(t \mid \bm{x})\ dt\\
-		1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt\\
-		1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - 2\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt.
-	\end{gather}
-	This is essentially saying
+	It is intuitive that we can select $\tau$ such that
 	\begin{align}
-		\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - 2\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt.\label{1.27eqn2}
+		\lvert y(\bm{x}) - t \rvert < 1
 	\end{align}
-	We have found an upper bound of (\ref{1.27eqn1}), which almost has nothing to do with the behavior of $y(\bm{x})$ itself, except for where it equals $t$. By using the mean value theorem of definite integrals, it can be seen that there exists $t' \in (t_0 - \tau, t_0 + \tau)$ that satisfies
+	holds on $(t_0 - \tau, t_0 + \tau)$. Under proper choice of $\tau$ (which can be arbitrarily small), if we select a $q'$ that is very close to zero, we would have
 	\begin{align}
-		\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt = 2\tau p(t' \mid \bm{x}).
+		&\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&= 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&\approx 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^{q'} p(t \mid \bm{x})\ dt.
 	\end{align}
-	Combining with (\ref{1.27eqn2}), we can conclude that
+	By the mean theorem of definite integrals, we can see that there exists $t_1 \in (t_0 - \tau, t_0 + \tau)$ that satisfies
 	\begin{align}
-		\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - 4\tau p(t' \mid \bm{x}),
+		\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^{q'} p(t \mid \bm{x})\ dt = \lvert y(\bm{x}) - t_1 \rvert^{q'} \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt.
 	\end{align}
-	where $t' \in (t_0 - \tau, t_0 + \tau)$. Because $\tau$ can be arbitrarily small, we can assume that $t' \approx t_0$. In order to minimize (\ref{1.27eqn1}), we would like to choose the $t'$ such that $p(t' \mid \bm{x})$ is the greatest. It is equivalent to choosing a $y(\bm{x})$ such that $p(t_0 \mid \bm{x})$ is the greatest. Therefore we can say that the conditional mode is the minimizer at this point.
+	This allows us to write
+	\begin{align}
+		&1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^{q'} p(t \mid \bm{x})\ dt\\
+		&= 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lvert y(\bm{x}) - t_1 \rvert^{q'} \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt\\
+		&= 1 - (1 - \lvert y(\bm{x}) - t_1 \rvert^{q'})\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt.
+	\end{align}
+	Denote the constant $1 - \lvert y(\bm{x}) - t_1 \rvert^{q'}$ by $k$, it can be seen that
+	\begin{align}
+		0 \leq k < 1.
+	\end{align}
+	Now we can write
+	\begin{align}
+		&\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&\approx 1 - k\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt. \label{1.27eqn2}
+	\end{align}
+	Using the mean value theorem again, we know that there exists $t' \in (t_0 - \tau, t_0 + \tau)$ that satisfies
+	\begin{align}
+		\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt = 2\tau p(t' \mid \bm{x}),
+	\end{align}
+	which allows us to conclude that
+	\begin{align}
+		\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt \approx 1 - 2k\tau p(t' \mid \bm{x}).
+	\end{align}
+	Because $\tau$ can be arbitrarily small, we can assume that $t' \approx t_0$. In order to minimize (\ref{1.27eqn1}), we would like to choose the $t'$ such that $p(t' \mid \bm{x})$ is the greatest. It is equivalent to choosing a $y(\bm{x})$ such that $p(t_0 \mid \bm{x})$ is the greatest. Therefore we can say that the conditional mode is the minimizer at this point.
 \end{answer}
