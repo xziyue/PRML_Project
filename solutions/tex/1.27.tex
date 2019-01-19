@@ -36,5 +36,38 @@
 	\end{align}
 	which indicates that $y(\bm{x})$ is the conditional median of $t$.
 	
-	
+	When $q \rightarrow 0$, we need some other method to derive the minimizer. Consider the limit
+	\begin{align}
+		\lim_{q \rightarrow 0} a^q = 1,
+	\end{align}
+	where $a \neq 0$. However, the function $\lvert y(\bm{x}) - t \rvert^q$ does not equal to zero unless for some region where $y(\bm{x}) = t$. Suppose that this happens only when $t = t_0$, and on other regions we should always have $\lvert y(\bm{x}) - t \rvert \ > 0$. During the integration, we can exclude a small vicinity around $t_0$, which is denoted by $(t_0 - \tau, t_0 + \tau)$, where $\tau > 0$. Under this setting, it can be seen that
+	\begin{align}\label{1.27eqn1}
+		&\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		\begin{split}
+		&= \lim_{q \rightarrow 0}\int_{-\infty}^{t_0 - \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&\phantom{=}\quad + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&\phantom{=}\quad\quad + \lim_{q \rightarrow 0}\int_{t_0 + \tau}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt
+		\end{split}\\
+		&= \int_{-\infty}^{t_0 - \tau} p(t \mid \bm{x})\ dt + \int_{t_0 + \tau}^{+\infty} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt\\
+		&= 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt.
+	\end{align}
+	Assume that the maximum of $\lvert y(\bm{x}) - t \rvert$ on $(t_0 - \tau, t_0 + \tau)$ is $k$. Because $y(\bm{x})$ and $t$ are not correlated in any means, we would assume that $k > 0$ in general. Then we can write
+	\begin{gather}
+		1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} k^q p(t \mid \bm{x})\ dt\\
+		1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt\\
+		1 - \int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt + \lim_{q \rightarrow 0}\int_{t_0 - \tau}^{t_0 + \tau} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - 2\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt.
+	\end{gather}
+	This is essentially saying
+	\begin{align}
+		\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - 2\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt.\label{1.27eqn2}
+	\end{align}
+	We have found an upper bound of (\ref{1.27eqn1}), which almost has nothing to do with the behavior of $y(\bm{x})$ itself, except for where it equals $t$. By using the mean value theorem of definite integrals, it can be seen that there exists $t' \in (t_0 - \tau, t_0 + \tau)$ that satisfies
+	\begin{align}
+		\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt = 2\tau p(t' \mid \bm{x}).
+	\end{align}
+	Combining with (\ref{1.27eqn2}), we can conclude that
+	\begin{align}
+		\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt < 1 - 4\tau p(t' \mid \bm{x}),
+	\end{align}
+	where $t' \in (t_0 - \tau, t_0 + \tau)$. Because $\tau$ can be arbitrarily small, we can assume that $t' \approx t_0$. In order to minimize (\ref{1.27eqn1}), we would like to choose the $t'$ such that $p(t' \mid \bm{x})$ is the greatest. It is equivalent to choosing a $y(\bm{x})$ such that $p(t_0 \mid \bm{x})$ is the greatest. Therefore we can say that the conditional mode is the minimizer at this point.
 \end{answer}
