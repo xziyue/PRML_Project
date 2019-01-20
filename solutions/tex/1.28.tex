@@ -1,0 +1,35 @@
+\begin{question}{1.28}
+	In section 1.6, we introduced the idea of entropy $h(x)$ as the information gained on observing the value of a random variable $x$ having distribution $p(x)$. We saw that, for independent variables $x$ and $y$ for which $p(x, y) = p(x)p(y)$, the entropy functions are additive, so that $h(x, y) = h(x) + h(y)$. In this exercise, we derive the relation between $h$ and $p$ in the form of a function $h(p)$. First show that $h(p^2) = 2h(p)$, and hence by induction that $h(p^n) = nh(p)$ where $n$ is a positive integer. Hence show that $h(p^{n / m}) = (n / m)h(p)$ where $m$ is also a positive integer. This implies that $h(p^x) = xh(p)$ where $x$ is a positive rational number, and hence by continuity when it is a positive real number. Finally, show that this implies $h(p)$ must take the form $h(p) \propto \ln p$.
+\end{question}
+
+\begin{answer}{}
+	Based on the additive assumption, it can be seen that
+	\begin{align}
+		h(p^2) = h(p) + h(p) = 2h(p).
+	\end{align}
+	We can prove $h(p^n) = nh(p)$ for positive integer by induction.
+	
+	\noindent \textbf{Basis:} $h(p^1) = 1 \cdot h(p)$ holds.
+	
+	\noindent \textbf{Induction Hypothesis:} for any $k > 0$, $h(p^k) = kh(p)$ holds.
+	
+	\noindent \textbf{Induction Step}: by the additive assumption, it can be seen that $h(p^{k + 1}) = h(p^k \cdot p) = kh(p) + h(p) = (k+1)h(p)$, which indicates that the claim holds for $k + 1$. 
+	
+	\noindent By induction, we can conclude that the claim holds true for any positive integer.
+	
+	Now we are proving the second claim. It can be seen that $p^n = \left\{p^{n / m}\right\}^m$. Therefore we can write
+	\begin{align}
+		nh(p) \equiv h(p^n) = h\left(\left\{p^{n / m}\right\}^m\right) \equiv m h(p^{n / m}).
+	\end{align}
+	This equation yields $h(p^{n / m}) = \frac{n}{m} h(p)$. That is to say $h(p^x) = xh(p)$ where $x$ is a positive rational number, and hence by continuity when it is a positive real number.
+	
+	Given a positive real number $p$, for arbitrary positive real number $q$, we can always find a real number $s$ such that $p = q^s$. It can be seen that
+	\begin{align}
+		\frac{h(p)}{ln(p)} = \frac{h(q^s)}{\ln q^s} = \frac{s h(q)}{s \ln q} = \frac{h(q)}{\ln q},
+	\end{align}
+	which is a constant. Therefore we can conclude that $h(p) \propto \ln p$.
+\end{answer}
+
+\begin{afternote}
+	In the book, we try to deduce the form of the information content by defining $h(x, y) = h(x) + h(y)$ for \emph{independent} variables $x$ and $y$. In this question, it is extended to the case of $h(p^2) = h(p) + h(p) = 2h(p)$. However, we know that $p$ and $p$ itself are not independent, so this conclusion might be \emph{wrong}. I am not sure why we can generalize from an independent case to a dependent case. Nonetheless if the form of information content is indeed logarithmic, everything problem will vanish.
+\end{afternote}

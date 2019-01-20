@@ -85,8 +85,16 @@
 		\int_{t_0 - \tau}^{t_0 + \tau} p(t \mid \bm{x})\ dt = 2\tau p(t' \mid \bm{x}),
 	\end{align}
 	which allows us to conclude that
-	\begin{align}
+	\begin{align}\label{1.27eqn3}
 		\lim_{q \rightarrow 0} \int_{-\infty}^{+\infty} \lvert y(\bm{x}) - t \rvert^q p(t \mid \bm{x})\ dt \approx 1 - 2k\tau p(t' \mid \bm{x}).
 	\end{align}
 	Because $\tau$ can be arbitrarily small, we can assume that $t' \approx t_0$. In order to minimize (\ref{1.27eqn1}), we would like to choose the $t'$ such that $p(t' \mid \bm{x})$ is the greatest. It is equivalent to choosing a $y(\bm{x})$ such that $p(t_0 \mid \bm{x})$ is the greatest. Therefore we can say that the conditional mode is the minimizer at this point.
 \end{answer}
+
+\begin{afternote}
+	I tried very hard to solve the case when $q \rightarrow 0$, but I am still not satisfied with the proof. Because given $0 < q_1 < q_2$, if we consider the ratio
+	\begin{align}
+		\frac{\lvert y(\bm{x}) - t \rvert^{q_1} p(t \mid \bm{x})}{\lvert y(\bm{x}) - t \rvert^{q_2} p(t \mid \bm{x})} = \lvert y(\bm{x}) - t \rvert^{q_1 - q_2}.
+	\end{align}
+	Under the proper choice of $\tau$, we can see that this value is no less than one. That is to say, (\ref{1.27eqn3}) is actually a lower bound of the original limit, for it is almost always smaller than the limit. In this case, because both $q'$ and $\tau$ are very small, I would just assume that the approximation is extremely close to the true value, and that the term $p(t' \mid \bm{x})$ will affect the value in a much more fundamental way.
+\end{afternote}
