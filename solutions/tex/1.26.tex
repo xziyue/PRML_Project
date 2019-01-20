@@ -7,7 +7,7 @@
 	\begin{align*}
 		\ev{L} = \int \left\{ y(\bm{x}) - \ev{t \mid \bm{x}} \right\}^2 p(\bm{x})\ d\bm{x} + \int \var{t \mid \bm{x}} p(\bm{x})\ d\bm{x}
 	\end{align*}
-	and hence show that the function $\bm{y}(\bm{x})$ that minimizes the expected squared loss for the case of a vector $\bm{t}$ of a vector $\bm{t}$ of target variables is again given by the conditional expectation of $\bm{t}$.
+	and hence show that the function $\bm{y}(\bm{x})$ that minimizes the expected squared loss for the case of a vector $\bm{t}$ of target variables is again given by the conditional expectation of $\bm{t}$.
 \end{question}
 
 \begin{answer}{}
@@ -64,3 +64,7 @@
 	\end{align}
 	minimizes the first term. Therefore we can conclude that (\ref{1.26eqn1}) minimizes the loss function.
 \end{answer}
+
+\begin{afternote}
+	Here we are using the conclusion $\mathbb{E}_{\bm{t}}\left[ \bm{t} \mid \bm{x} \right]_i = \mathbb{E}_{\bm{t}}\left[ \bm{t}_i \mid \bm{x} \right]$ without proving explicitly.
+\end{afternote}
