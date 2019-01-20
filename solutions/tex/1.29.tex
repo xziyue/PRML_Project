@@ -9,9 +9,9 @@
 \begin{answer}{}
 	We know that
 	\begin{align}
-		H[x] = -\sum_{i = 1}^{M} p(x_i) \ln p(x_i) = \sum_{i = 1}^{M} p(x_i) \ln \frac{1}{p(x_i)}.
+		\etpy[x] = -\sum_{i = 1}^{M} p(x_i) \ln p(x_i) = \sum_{i = 1}^{M} p(x_i) \ln \frac{1}{p(x_i)}.
 	\end{align}
-	In the form of Jensen's inequality, it can be seen that $f(x_i) = \ln x_i$. We can easily derive that $f''(x_i) = -1 / x_i^2$, which is nonpositive. That is to say, $f$ is a concave function. When using Jensen's inequality, we need to reverse it, namely
+	In the form of Jensen's inequality, it can be seen that $f(x_i) = \ln x_i$. We can easily derive that $f''(x_i) = -1 / x_i^2$, which is nonpositive. That is to say, $f$ is a concave function. Also, it is clear that $p(x_i) \geq 0$ and  $\sum_{i = 1}^M p(x_i) = 1$, which meets the requirements of the inequality. Because the function is concave, when using Jensen's inequality, we need to reverse it, namely t use the form
 	\begin{align}
 		f\left( \sum_{i = 1}^{M} \lambda_i x_i \right) \geq \sum_{i = 1}^{M} \lambda_i f(x_i) \quad (\mbox{$f$ is concave}).
 	\end{align}
@@ -19,5 +19,5 @@
 	\begin{align}
 		\ln\left( \sum_{i = 1}^{M} p(x_i)\frac{1}{p(x_i)}\right) \geq  \sum_{i = 1}^{M} p(x_i) \ln \frac{1}{p(x_i)},
 	\end{align}
-	which indicates that $H[x] \leq \ln M$.
+	which indicates that $\etpy[x] \leq \ln M$.
 \end{answer}

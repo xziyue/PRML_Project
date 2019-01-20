@@ -1,0 +1,28 @@
+\begin{question}{1.32}
+	Consider a vector $\bm{x}$ of continuous variables with distribution $p(\bm{x})$ and corresponding entropy $\etpy[\bm{x}]$. Suppose that we make a nonsingular linear transformation of $\bm{x}$ to obtain a new variable $\bm{y} = \bm{Ax}$. Show that the corresponding entropy is given by $\etpy[\bm{y}] = \etpy[\bm{x}] + \ln \lvert \bm{A} \rvert$ where $\lvert \bm{A} \rvert$ denotes the determinant of $\bm{A}$.
+\end{question}
+
+\begin{answer}{}
+	Assume that both $\bm{x}$ and $\bm{y}$ are $N$-dimensional vector. Applying the change of variables over density functions, we have
+	\begin{gather}
+		p(\bm{x}) = p(\bm{y}) \left \lvert \det \left[\frac{\partial (y_1, \ldots, y_N)}{\partial (x_1, \ldots, x_N)}\right]\right\rvert = p(\bm{y}) \lvert \det(\bm{A})\rvert\\
+		p(\bm{y}) =  \lvert\det(\bm{A})\rvert\supinv p(\bm{x}),
+	\end{gather}
+	where $\lvert \cdot \rvert$ denotes absolute value. Because $\bm{A}$ is nonsingular, we know that $\bm{x} = \bm{A}\supinv\bm{y}$. The Jacobian of this transformation (denoted by $\bm{J}$) writes
+	\begin{align}
+		\bm{J} = \det\left[\frac{\partial (x_1, \ldots, x_N)}{\partial (y_1, \ldots, y_N)}\right] = \det (\bm{A}\supinv) = \det(\bm{A})\supinv.
+	\end{align}
+	We can now see that $d\bm{x} = \lvert \det(\bm{J}) \rvert \ d\bm{y} = \lvert\det(\bm{A})\rvert\supinv \ d\bm{y}$. It can be seen that
+	\begin{align}
+		\etpy[\bm{y}] &= -\int p(\bm{y}) \ln p(\bm{y})\ d\bm{y}\\
+		&= -\int p(\bm{x}) \ln \left[ \lvert\det(\bm{A})\rvert\supinv p(\bm{x}) \right]  \lvert\det(\bm{A})\rvert\supinv\ d\bm{y}\\
+		&= -\int p(\bm{x}) \ln \left[ \lvert\det(\bm{A})\rvert\supinv p(\bm{x}) \right]\ d\bm{x}\\
+		&= -\int p(\bm{x}) \ln p(\bm{x})\ d\bm{x} -\int p(\bm{x}) \ln \lvert\det(\bm{A})\rvert\supinv\ d\bm{x}\\
+		&= \etpy[\bm{x}] - \ln \lvert\det(\bm{A})\rvert\supinv\\
+		&= \etpy[\bm{x}] + \ln \lvert\det(\bm{A})\rvert.
+	\end{align}
+	Therefore we can conclude that 
+	\begin{align}
+		\etpy[\bm{y}] = \etpy[\bm{x}] + \ln \lvert\det(\bm{A})\rvert.
+	\end{align}
+\end{answer}

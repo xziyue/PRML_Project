@@ -1,0 +1,21 @@
+\begin{question}{1.31}
+	Consider two variables $\bm{x}$ and $\bm{y}$ having joint distribution $p(\bm{x}, \bm{y})$. Show that the differential entropy of this pair of variables satisfies
+	\begin{align}
+		\etpy[\bm{x}, \bm{y}] \leq \etpy[\bm{x}] + \etpy[\bm{y}]
+	\end{align}
+	with equality if, and only if, $\bm{x}$ and $\bm{y}$ are statistically independent.
+\end{question}
+
+\begin{answer}{}
+	Recall that mutual information of a distribution $p(\bm{x}, \bm{y})$ (denoted by $\mutinfo [\bm{x}, \bm{y}]$) is essentially the KL divergence between the joint distribution and the product of the marginals, which means it is always greater than or equal to zero. The equality stands only when $\bm{x}$ and $\bm{y}$ are statistically independent. We also know that
+	\begin{align}
+		\mutinfo[\bm{x}, \bm{y}] = \etpy[\bm{y}] - \etpy[\bm{y} \mid \bm{x}] \geq 0.
+	\end{align}
+	That is to say, $\etpy[\bm{y}]\geq \etpy[\bm{y} \mid \bm{x}]$, where the equality holds only when $\bm{x}$ and $\bm{y}$ are independent.
+	
+	According to the property of entropy, we know that
+	\begin{align}
+		\etpy[\bm{x}, \bm{y}] = \etpy[\bm{y} \mid \bm{x}] + \etpy[\bm{x}] \leq \etpy[\bm{y}] + \etpy[\bm{x}].
+	\end{align}
+	The equality holds only when $\bm{x}$ and $\bm{y}$ are independent.
+\end{answer}

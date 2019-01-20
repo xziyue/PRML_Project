@@ -1,0 +1,23 @@
+\begin{question}{1.33}
+	Suppose that the conditional entropy $\etpy[y \mid x]$ between two discrete random variables $x$ and $y$ is zero. Show that, for all values of $x$ such that $p(x) > 0$, the variable $y$ must be a function of $x$, in other words for each $x$ there is only one value of $y$ such that $p(y \mid x) \neq 0$.
+\end{question}
+
+\begin{answer}{}
+	By the definition of entropy, we have
+	\begin{align}
+		\etpy[y \mid x] &= -\sum_{i} \sum_{j} p(x_i, y_j) \ln p(y_j \mid x_i)\\
+		&= -\sum_{i} \sum_{j} p(x_i)p(y_j \mid x_i) \ln p(y_j \mid x_i)\\
+		&= \sum_{i} \sum_{j} p(x_i)p(y_j \mid x_i) \ln \frac{1}{p(y_j \mid x_i)}. \label{1.33eqn1}
+	\end{align}
+	By \lhopitalsrule, it can be seen that
+	\begin{align}
+		\lim_{x \rightarrow 0} x \ln \frac{1}{x} = \lim_{x \rightarrow 0} -x \ln x = -\lim_{x \rightarrow 0} \frac{\ln x}{\frac{1}{x}} = \lim_{x \rightarrow 0} \frac{\frac{1}{x}}{\frac{1}{x^2}} = \lim_{x \rightarrow 0} x = 0.
+	\end{align}
+	Given the fact that $0 \leq p(y_j \mid x_i) \leq 1$, we can conclude that $p(y_j \mid x_i) \ln \frac{1}{p(y_j \mid x_i)} \geq 0$, with equality holds only when $p(y_j \mid x_i) = 0$ or $p(y_j \mid x_i) = 1$. 
+	
+	Because (\ref{1.33eqn1}) equals to zero, and that every quantity in the product is nonnegative, we know that for those $i$s where $p(x_i) > 0$, we would have $p(y_j \mid x_i) \ln \frac{1}{p(y_j \mid x_i)} = 0$. Therefore in this case, we would either have $p(y_j \mid x_i) = 0$ or $p(y_j \mid x_i) = 1$. However, $p(y_j \mid x_i)$ is a probability distribution that satisfies
+	\begin{align}
+		\sum_{j} p(y_j \mid x_i) = 1.
+	\end{align}
+	That is to say, for each $x_i$ that has $p(x_i) > 0$, there exists one and only one $j$ such that $p(y_j \mid x_i) = 1$, while for all other $j$ values we have $p(y_j \mid x_i)  = 0$.
+\end{answer}

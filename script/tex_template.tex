@@ -1,4 +1,3 @@
-% Using XeLaTeX for fancy OpenType fonts
 \documentclass[oneside, fontsize=9pt, DIV=14, letterpaper]{scrbook}
 %\usepackage[letterpaper, left=0.75in, right=0.75in, top=1in, bottom=1in]{geometry}
 \usepackage[english]{babel}
@@ -42,11 +41,12 @@
 \newenvironment{answer}[1]{\par\medskip\noindent{\color{green}\textit{Answer #1.}}\hspace*{0.5em}}{\medskip}
 \newenvironment{afternote}{\par\medskip\noindent{\color{blue} \textit{Comment.}}\hspace*{0.5em}}{\medskip}
 
-
+\newcommand{\dmid}{\mathbin{||}}
 \renewcommand\qedsymbol{$\blacksquare$}
 \newcommand{\bm}[1]{\boldsymbol{#1}}
 
 \newcommand{\T}{\mathsf{T}}
+\newcommand{\supinv}{^{-1}}
 
 \newcommand{\sgn}[1]{\mathrm{sgn}\left(#1\right)}
 \newcommand{\ev}[1]{\mathbb{E}\left[#1\right]}
@@ -58,10 +58,14 @@
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 \makeatother
 
+% paying tribute to L'Hospital by encoding his "real" name
+\newcommand{\lhopitalsrule}{L'H\^{o}pital's rule}
 
 \DeclareMathOperator{\IndFn}{1}
 \DeclareMathOperator{\NumOf}{\#}
-
+\DeclareMathOperator{\KLDiv}{KL}
+\DeclareMathOperator{\etpy}{H}
+\DeclareMathOperator{\mutinfo}{I}
 
 \title{Detailed Solutions to PRML Questions}
 \author{Ziyue ``Alan'' Xiang}
@@ -71,7 +75,7 @@
 
 \begin{document}
 	
-% using STIX2 fonts
+% using STIX2 fonts (not any more!)
 %\setmainfont {STIX2Text-Regular}[Extension=.otf,BoldFont=STIX2Text-Bold,ItalicFont=STIX2Text-Italic,BoldItalicFont=STIX2Text-BoldItalic,]
 
 %\setmathfont{STIX2Math.otf}

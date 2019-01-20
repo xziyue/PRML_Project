@@ -1,0 +1,36 @@
+\begin{question}{1.30}
+	Evaluate the Kullback-Leibler divergence
+	\begin{align*}
+		\KLDiv(p \dmid q) = -\int p(x) \ln \left\{ \frac{q(x)}{p(x)} \right\}\ dx
+	\end{align*}
+	between two Gaussians $p(x) = \mathcal{N}(x \mid \mu, \sigma^2)$ and $q(x) = \mathcal{N}(x \mid m, s^2)$.
+\end{question}
+
+\begin{answer}{}
+	The density function of $p$ is given by
+	\begin{align}
+		p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left[ -\frac{(x - \mu)^2}{2\sigma^2} \right],
+	\end{align}
+	the density function of $q$ shares a similar form. Putting them into the KL divergence formula, we have
+	\begin{align}
+		\KLDiv(p \dmid q) &= -\int p(x) \ln \left\{ \frac{\frac{1}{\sqrt{2\pi}s} \exp\left[ -\frac{(x - m)^2}{2s^2} \right]}{\frac{1}{\sqrt{2\pi}\sigma} \exp\left[ -\frac{(x - \mu)^2}{2\sigma^2} \right]} \right\}\ dx\\
+		&= -\int p(x) \ln \left\{ \frac{\sigma}{s}\exp \left[ \frac{(x - \mu)^2}{2\sigma^2} - \frac{(x - m)^2}{2s^2}\right]  \right\}\ dx\\
+		&= -\int p(x) \left\{ \ln \frac{\sigma}{s} + \frac{(x - \mu)^2}{2\sigma^2} - \frac{(x - m)^2}{2s^2}  \right\}\ dx\\
+		\begin{split}
+		&= -\int p(x)  \ln \frac{\sigma}{s}\ dx\\
+		&\phantom{=}\quad - \int p(x) \frac{(x - \mu)^2}{2\sigma^2}\ dx\\
+		&\phantom{=}\quad\quad + \int p(x)\frac{(x - m)^2}{2s^2}\ dx
+		\end{split}\\
+		&= -\ev{\ln \frac{\sigma}{s} } -\frac{1}{2\sigma^2}\var{x} + \frac{1}{2s^2} \ev{x^2 - 2mx + m^2}.
+	\end{align}
+	All expectation here are with respect to the distribution of $p$. Given the fact that $\ev{x^2} = \mu^2 + \sigma^2$ for Gaussians, we have
+	\begin{align}
+		&-\ev{\ln \frac{\sigma}{s} } -\frac{1}{2\sigma^2}\var{x} + \frac{1}{2s^2} \ev{x^2 - 2mx + m^2}\\
+		&= -\ln \frac{\sigma}{s} - \frac{\sigma^2}{2\sigma^2} + \frac{1}{2s^2}\left[ \mu^2 + \sigma^2 - 2m\mu + m^2 \right]\\
+		&= \ln \frac{s}{\sigma} + \frac{1}{2s^2}\left[ \mu^2 + \sigma^2 - 2m\mu + m^2 \right] - \frac{1}{2}.
+	\end{align}
+	Therefore we can conclude that
+	\begin{align}
+		\KLDiv(p \dmid q) = \ln \frac{s}{\sigma}  + \frac{1}{2s^2}\left[ \mu^2 + \sigma^2 - 2m\mu + m^2 \right] - \frac{1}{2}.
+	\end{align}
+\end{answer}
