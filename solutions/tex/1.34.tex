@@ -1,0 +1,202 @@
+\begin{question}{1.34}
+	Use the calculus of variations to show that the stationary point of the functional
+	\begin{align*}
+		&- \int_{-\infty}^{+\infty} p(x) \ln p(x)\ dx + \lambda_1 \left( \int_{-\infty}^{+\infty} p(x)\ dx - 1 \right)\\
+		&\phantom{-}\quad + \lambda_2 \left( \int_{-\infty}^{+\infty} xp(x)\ dx - \mu \right) + \lambda_3\left( \int_{-\infty}^{+\infty} (x-\mu)^2p(x)\ dx - \sigma^2 \right)
+	\end{align*}
+	is given by
+	\begin{align*}
+		p(x) = \exp\left\{ -1 + \lambda_1 + \lambda_2x + \lambda_3(x - \mu)^2 \right\}.
+	\end{align*}
+	Then use the constraints
+	\begin{gather*}
+		\int_{-\infty}^{+\infty} p(x)\ dx = 1\\
+		\int_{-\infty}^{+\infty} xp(x)\ dx = \mu\\
+		\int_{-\infty}^{+\infty} (x-\mu)^2p(x)\ dx = \sigma^2
+	\end{gather*}
+	to eliminate the Lagrange multiplers and hence show that the maximum entropy solution is given by the Gaussian
+	\begin{align*}
+		p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left\{ -\frac{(x- \mu)^2}{2\sigma^2} \right\}.
+	\end{align*}
+\end{question}
+
+\begin{answer}{(incomplete, due to complexity)}
+	Denote the functional by $f$, which is made up by four smaller functionals $f_1, \ldots, f_4$. It can be seen that
+	\begin{align}
+		\begin{split}\label{1.34eqn0}
+			f[p(x)] &= - \int_{-\infty}^{+\infty} p(x) \ln p(x)\ dx + \lambda_1 \left( \int_{-\infty}^{+\infty} p(x)\ dx - 1 \right)\\
+			&\phantom{=}\quad + \lambda_2\left( \int_{-\infty}^{+\infty} xp(x)\ dx - \mu \right) + \lambda_3\left( \int_{-\infty}^{+\infty} (x-\mu)^2p(x)\ dx - \sigma^2 \right)
+		\end{split}\\
+		&= f_1 + f_2 + f_3 + f_4.
+	\end{align}
+	The \emph{functional derivative}\footnote{For more details, please read \url{https://en.wikipedia.org/wiki/Functional_derivative}.} of $f$ with respect to $p$ (denoted by $\frac{\partial f}{\partial p}(x)$), which is a function of $x$, is defined as
+	\begin{align}\label{1.34eqn1}
+		\left.\frac{\partial}{\partial \epsilon}f[p + \epsilon \eta(x)]\right\rvert_{\epsilon = 0} = \int \frac{\partial f}{\partial p}(x) \eta(x)\ dx,
+	\end{align}
+	where $\epsilon$ is a small variation and $\eta(x)$ is an arbitrary function. The functional derivative of a constant is obviously, equal to zero.
+	
+	Consider the functional
+	\begin{align}
+		g[p(x)] = \int_{-\infty}^{+\infty} p(x) f(x)\ dx.
+	\end{align}
+	In order to derive its functional derivative $\frac{\partial g}{\partial p}(x)$, we can see that
+	\begin{align}
+		\frac{\partial}{\partial \epsilon}g[p + \epsilon \eta] &= \frac{\partial}{\partial \epsilon} \int_{-\infty}^{+\infty} [p(x) + \epsilon\eta] f(x)\ dx\\
+		&= \frac{\partial}{\partial \epsilon} \int_{-\infty}^{+\infty} p(x)f(x)\ dx + \int_{-\infty}^{+\infty} \epsilon\eta f(x)\ dx\\
+		&= \int_{-\infty}^{+\infty} \eta f(x)\ dx.\label{1.34eqn2}
+	\end{align}
+	Notice that $\epsilon$ has vanished from the expression so we do not have to apply the constraint of $\epsilon = 0$. By comparing the form of (\ref{1.34eqn1}) and (\ref{1.34eqn2}), we know that
+	\begin{align}
+		\frac{\partial g}{\partial p}(x) = f(x),
+	\end{align}
+	which allows us to compute the functional derivative of $f_2$, $f_3$ and $f_4$.
+
+	As for $f_1$, by a similar approach, it can be seen that
+	\begin{align}
+		\frac{\partial}{\partial \epsilon} f_1[p + \epsilon\eta] &= \frac{\partial}{\partial \epsilon} - \int_{-\infty}^{+\infty} [p(x) + \epsilon\eta]\ln [p(x) + \epsilon\eta]\ dx\\
+		&= - \int_{-\infty}^{+\infty} \frac{\partial [p(x) + \epsilon\eta]}{\partial \epsilon}\ln [p(x) + \epsilon\eta] + [p(x) + \epsilon\eta]\frac{\partial \ln [p(x) + \epsilon\eta]}{\partial \epsilon}\ dx\\
+		&= - \int_{-\infty}^{+\infty} \eta \ln [p(x) + \epsilon\eta] + [p(x) + \epsilon\eta]\frac{\eta}{p(x) + \epsilon\eta}\ dx.
+	\end{align}
+	That is to say,
+	\begin{align}
+		\left. \frac{\partial}{\partial \epsilon} f_1[p + \epsilon\eta]\right\rvert_{\epsilon = 0} &= - \int_{-\infty}^{+\infty} \eta \ln p(x) + p(x)\frac{\eta}{p(x)}\ dx\\
+		&= - \int_{-\infty}^{+\infty} \eta[\ln p(x) + 1]\ dx.
+	\end{align}
+	We can now conclude that
+	\begin{align}
+		\frac{\partial f_1}{\partial p}(x) = -[\ln p(x) + 1].
+	\end{align}
+	
+	Now, we have
+	\begin{align}
+		\frac{\partial f}{\partial p} &= \sum_{i = 1}^{4} \frac{\partial f_i}{\partial p}\\
+		&= -[\ln p(x) + 1] + \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2.
+	\end{align}
+	By the Euler-Lagrange equations, the maximum condition is given by $ \frac{\partial f}{\partial p} = 0 $. Therefore we can write
+	\begin{gather}
+		-[\ln p(x) + 1] + \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 = 0\\
+		\ln p(x) = \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1\\
+		p(x) = \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}. \label{1.34eqn3}
+	\end{gather}
+
+	In order to eliminate the Lagrange multiplers, we are substituting (\ref{1.34eqn3}) back into (\ref{1.34eqn0}). For $\lambda_1$, we need to satisfy
+	\begin{gather}
+		\int_{-\infty}^{+\infty} p(x)\ dx - 1 = 0\\
+			\int_{-\infty}^{+\infty} p(x)\ dx  = 1\\
+			\int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx = 1.
+	\end{gather}
+	It can be seen that
+	\begin{align}
+		&\int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \lambda_3 x^2 + (\lambda_2 - 2\lambda_3\mu)x \right\}\ dx\\
+		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left[  x^2 + \frac{\lambda_2 - 2\lambda_3\mu}{\lambda_3}x  + \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2\right] \right\}\ dx\\
+		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left[ \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \right] \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.\label{1.34eqn4}
+	\end{align}
+	Notice that for the integral to converge, we must have $\lambda_3 < 0$. Therefore we have
+	\begin{align}
+		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \sqrt{-\lambda_3}v, \mbox{ then } dx = \sqrt{-\lambda_3}\ dv. \right) \nonumber \\
+		& \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&=  \sqrt{-\lambda_3}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
+	\end{align}
+	In question \prmlqstyle{1.7}, we have already shown that
+	\begin{align}
+		\int_{-\infty}^{+\infty} e^{-v^2}\ dv = \sqrt{\pi}.
+	\end{align}
+	We can now conclude that
+	\begin{align}
+		\int_{-\infty}^{+\infty} p(x)\ dx &= \int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		&= \sqrt{-\lambda_3\pi}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right], \label{1.34eqn5}
+	\end{align}
+	which yields our first equation
+	\begin{align}
+		\sqrt{-\lambda_3\pi}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] = 1.
+	\end{align}
+
+	For $\lambda_2$, we have
+	\begin{gather}
+		\int_{-\infty}^{+\infty} xp(x)\ dx - \mu = 0\\
+		\int_{-\infty}^{+\infty} xp(x)\ dx = \mu\\
+		\int_{-\infty}^{+\infty} x\exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx = \mu.
+	\end{gather}
+	Making use of (\ref{1.34eqn4}), it can be seen that
+	\begin{align}
+		&\int_{-\infty}^{+\infty} x\exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
+	\end{align}
+	The same change of variable technique yields
+	\begin{align}
+		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \sqrt{-\lambda_3}v, \mbox{ then } dx = \sqrt{-\lambda_3}\ dv. \right) \nonumber \\
+		&\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \left(\sqrt{-\lambda_3}v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)e^{-v^2}\ dv\\
+		\begin{split}
+			&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \sqrt{-\lambda_3}v e^{-v^2}\ dv\\
+			&\phantom{=} \quad - \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} e^{-v^2}\ dv
+		\end{split}\\
+	\begin{split}
+		&= \frac{\sqrt{-\lambda_3}}{2}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{0}^{+\infty} e^{-v^2}\ dv^2\\
+		&\phantom{=} \quad - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} e^{-v^2}\ dv
+	\end{split}\\
+	&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \left[ \frac{\sqrt{-\lambda_3}}{2} - \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\lambda_3} \right].
+	\end{align}
+	That is to say,
+	\begin{align}
+		\int_{-\infty}^{+\infty} xp(x)\ dx &= \int_{-\infty}^{+\infty} x\exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \left[ \frac{\sqrt{-\lambda_3}}{2} - \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\lambda_3} \right]. \label{1.34eqn6}
+	\end{align}
+	Therefore the second equation is
+	\begin{align}
+		\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \left[ \frac{\sqrt{-\lambda_3}}{2} - \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\lambda_3} \right] = \mu.
+	\end{align}
+
+	For $\lambda_3$, we have
+	\begin{gather}
+		\int_{-\infty}^{+\infty} (x-\mu)^2p(x)\ dx - \sigma^2 = 0\\
+		\int_{-\infty}^{+\infty} (x-\mu)^2p(x)\ dx = \sigma^2\\
+		\int_{-\infty}^{+\infty} (x - \mu)^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx = \sigma^2.
+	\end{gather}
+	We shall now see that
+	\begin{align}
+		&\int_{-\infty}^{+\infty} (x - \mu)^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		\begin{split}
+			&= \int_{-\infty}^{+\infty} x^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+			&\phantom{=}\quad - 2\mu \int_{-\infty}^{+\infty} x \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+			&\phantom{=}\quad\quad + \mu^2 \int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx.
+		\end{split}
+	\end{align}
+	The value of the second and the third term can be given by (\ref{1.34eqn6}) and (\ref{1.34eqn5}) respectively. We now focus on the first term. Reusing (\ref{1.34eqn4}), together with integration by parts, it can be seen that
+	\begin{align}
+		&\int_{-\infty}^{+\infty} x^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x^2\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
+	\end{align}
+	Let us just ignore the constant coefficient and consider the integral alone. We know that
+	\begin{align}
+		&\int_{-\infty}^{+\infty} x^2\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		\begin{split}
+			&= \left.\frac{x^2}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\right\rvert_{-\infty}^{+\infty}\\
+			&\phantom{=} - \int_{-\infty}^{+\infty} \frac{2x}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
+		\end{split}
+	\end{align}
+	The first term, which is the limit
+	\begin{align}
+		\lim_{x \rightarrow +\infty} \frac{x^2}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\},
+	\end{align}
+	can be evaluated by first substituting $x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = v$ and then with \lhopitalsrule. That is,
+	\begin{align}
+		&\lim_{x \rightarrow +\infty} \frac{x^2}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\\
+		&\left( \mbox{let } x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = v, \mbox{ then } x  = v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}.\right) \nonumber\\
+		&= \lim_{v \rightarrow +\infty} \frac{\left( v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2}{\frac{2}{\lambda_3} v }e^{\frac{v^2}{\lambda_3}}\\
+		&= \left.\lim_{v \rightarrow +\infty} \frac{\lambda_3}{2} \left[ v - \frac{\lambda_2 - 2\lambda_3\mu}{\lambda_3} + \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2\frac{1}{v} \right] \middle/ e^{-\frac{v^2}{\lambda_3}} \right.\\
+		&= \left.\lim_{v \rightarrow +\infty} \frac{\lambda_3}{2} \left[1  - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \frac{1}{v^2}\right] \middle/ -\frac{2v}{\lambda_3}e^{-\frac{v^2}{\lambda_3}} \right.\\
+		&= \left.\lim_{v \rightarrow +\infty} \frac{\lambda_3}{2} \left[ \frac{1}{v}  - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \frac{1}{v^3}\right] \middle/ -\frac{2}{\lambda_3}e^{-\frac{v^2}{\lambda_3}} \right.\\
+		&= 0.
+	\end{align}
+	It can be seen that the case for $x \rightarrow -\infty$ is also 0. Therefore we can see that the first term vanishes. For the second term, it can be seen that
+	\begin{align}
+		&\int_{-\infty}^{+\infty} \frac{2x}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&= \lambda_3 \int_{-\infty}^{+\infty} \frac{x}{ \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \sqrt{-\lambda_3}v, \mbox{ then } dx = \sqrt{-\lambda_3}\ dv. \right) \nonumber\\
+		&= -\sqrt{-\lambda_3^3} \int_{-\infty}^{+\infty} \frac{\left( \sqrt{-\lambda_3}v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}{\sqrt{-\lambda_3}v}e^{-v^2}\ dx\\
+		&= -\sqrt{-\lambda_3^3} \int_{-\infty}^{+\infty} e^{-v^2}\ dv - \frac{\lambda_2 - 2\lambda_3\mu}{2}\int_{-\infty}^{+\infty} v^{-1}e^{-v^2}\ dv.
+	\end{align}
+\end{answer}
