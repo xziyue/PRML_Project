@@ -1,0 +1,20 @@
+\begin{question}{1.41}
+	Using the sum and product rules of probability, show that the mutual information $\mutinfo[\bm{x}, \bm{y}]$ satisfies the relation
+	\begin{align*}
+		\mutinfo[\bm{x}, \bm{y}] = \etpy[\bm{x}] - \etpy[\bm{x} \mid \bm{y}] = \etpy[y] - \etpy[\bm{y} \mid \bm{x}].
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	It can be seen that
+	\begin{align}
+		\mutinfo[\bm{x}, \bm{y}] &= \KLDiv\left[ p(\bm{x}, \bm{y}) \dmid p(\bm{x}) p(\bm{y})\right]\\
+		&= -\int \int p(\bm{x}, \bm{y}) \ln \left\{ \frac{p(\bm{x}) p(\bm{y})}{p(\bm{x}, \bm{y})} \right\}\ d\bm{x}\ d\bm{y}\\
+		&= -\int \int p(\bm{x}, \bm{y}) \ln \left\{ \frac{p(\bm{x}) p(\bm{y})}{p(\bm{x} \mid \bm{y})p(\bm{y})} \right\}\ d\bm{x}\ d\bm{y}\\
+		&= -\int \int p(\bm{x}, \bm{y}) \ln \left\{ \frac{p(\bm{x})}{p(\bm{x} \mid \bm{y})} \right\}\ d\bm{x}\ d\bm{y}\\
+		&= -\int \int p(\bm{x}, \bm{y}) \ln p(\bm{x})\ d\bm{x}\ d\bm{y} + \int \int p(\bm{x}, \bm{y}) \ln p(\bm{x} \mid \bm{y}) \ d\bm{x}\ d\bm{y}\\
+		&= -\int p(\bm{x}) \ln p(\bm{x})\ d\bm{x} + \int \int p(\bm{x}, \bm{y}) \ln p(\bm{x} \mid \bm{y}) \ d\bm{x}\ d\bm{y}\\
+		&= \etpy[\bm{x}] - \etpy[\bm{x} \mid \bm{y}].
+	\end{align}
+	Similarly we can prove $\mutinfo[\bm{x}, \bm{y}] = \etpy[y] - \etpy[\bm{y} \mid \bm{x}]$.
+\end{answer}

@@ -15,9 +15,9 @@
 	\begin{table*}[h]
 		\centering
 		\begin{tabular}{l@{\hskip 0.3\linewidth}l@{\hskip 0.3\linewidth}l}
-			{\textbf{(a)}$\etpy[x]$} & {\textbf{(c)}$\etpy[y \mid x]$} & {\textbf{(e)}$\etpy[x, y]$}\\ [0.5em]
+			{\textbf{(a)} $\etpy[x]$} & {\textbf{(c)} $\etpy[y \mid x]$} & {\textbf{(e)} $\etpy[x, y]$}\\ [0.5em]
 			
-			{\textbf{(b)}$\etpy[y]$} & {\textbf{(d)}$\etpy[x \mid y]$} & {\textbf{(f)}$\mutinfo[x, y]$}
+			{\textbf{(b)} $\etpy[y]$} & {\textbf{(d)} $\etpy[x \mid y]$} & {\textbf{(f)} $\mutinfo[x, y]$}
 		\end{tabular}
 	\end{table*}
 
@@ -37,9 +37,45 @@
 		p(y_0) &= 1/3\\
 		p(y_1) &= 2/3.
 	\end{align}
-	\begin{enumerate}[label = {\bf (\alph*)}]
+		By the product rule, we know that
+	\begin{align}
+	p(x_i \mid y_j) &= p(x_i, y_j) / p(y_j)\\
+	p(y_j \mid x_i) &= p(x_i, y_j) / p(x_i).
+	\end{align}
+	Now we can easily evaluate these quantities.
+	\begin{enumerate}[label = {\bfseries (\alph*)}]
 		\item \begin{align}
-			\etpy[x] = \sum_{i = 0}^{1} p(x_i) \ln p(x_i)
+			\etpy[x] &= -\sum_{i = 0}^{1} p(x_i) \ln p(x_i)\\
+			&= -\left[\frac{2}{3}  \ln \frac{2}{3} + \frac{1}{3}\ln\frac{1}{3} \right]\\
+			&= \ln 3 - \frac{2}{3}\ln2.
+		\end{align}
+		\item \begin{align}
+			\etpy[y] &= -\sum_{j = 0}^{1} p(y_j) \ln p(x_j)\\
+			&= -\left[\frac{1}{3}\ln \frac{1}{3} + \frac{2}{3}\ln\frac{2}{3} \right]\\
+			&= \ln 3 - \frac{2}{3}\ln2.
+		\end{align}
+		\item \begin{align}
+			\etpy[y \mid x] &= -\sum_{i = 0}^{1} \sum_{j = 0}^{1} p(x_i, y_j) \ln p(y_j \mid x_i)\\
+			&= -\sum_{i = 0}^{1} \sum_{j = 0}^{1} p(x_i, y_j) \ln \left[p(x_i, y_j)p(x_i)\right]\\
+			&= \frac{2}{3}\ln 2.
+		\end{align}
+		\item Because $\etpy[x, y] = \etpy[y \mid x] + \etpy[x] = \etpy[x \mid y] + \etpy[y]$, we have
+		\begin{align}
+			\etpy[x \mid y] &= \etpy[y \mid x] + \etpy[x] - \etpy[y]\\
+			&= \frac{2}{3}\ln 2 + \left( \ln 3 - \frac{2}{3}\ln2 \right) - \left(\ln 3 - \frac{2}{3}\ln2\right)\\
+			&= \frac{2}{3}\ln 2.
+		\end{align}
+		\item 
+		\begin{align}
+			\etpy[x, y] &= \etpy[y \mid x] + \etpy[x]\\
+			&= \frac{2}{3}\ln 2 + \ln 3 - \frac{2}{3}\ln2\\
+			&= \ln 3.
+		\end{align}
+		\item 
+		\begin{align}
+			\mutinfo[x, y] &= \etpy[x] - \etpy[x \mid y] \\
+			&= \ln 3 - \frac{2}{3}\ln2 - \frac{2}{3}\ln 2\\
+			&= \ln 3 - \frac{4}{3}\ln2.
 		\end{align}
 	\end{enumerate}
 \end{answer}

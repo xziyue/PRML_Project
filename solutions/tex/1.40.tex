@@ -1,0 +1,40 @@
+\begin{question}{1.40}
+	By applying Jensen’s inequality  with $f(x) = \ln x$, show that the arithmetic mean of a set of real numbers is never less than their geometrical mean.
+\end{question}
+
+\begin{answer}{}
+	The arithmetic mean $\bar{x}$ of a series of $N$ real numbers $\left\{ x_1, x_2, \ldots, x_N \right\}$ is given by
+	\begin{align}
+		\bar{x} = \frac{1}{N} \sum_{i = 1}^{N} x_i,
+	\end{align}
+	while the geometric mean $\tilde{x}$ is given by
+	\begin{align}
+		\tilde{x} = \left( \prod_{i = 1}^{N} x_i \right) ^{\frac{1}{N}}.
+	\end{align}
+	Applying logarithm, we can see that
+	\begin{align}
+		\ln \bar{x} &= \ln \left( \frac{1}{N} \sum_{i = 1}^{N} x_i \right)\\
+		\ln \tilde{x} &= \frac{1}{N} \sum_{i = 1}^{N} \ln x_i.
+	\end{align}
+	Because
+	\begin{align}
+		\frac{d^2 \ln x}{dx^2} = -\frac{1}{x^2} < 0,
+	\end{align}
+	we know that $f(x) = \ln x$ is a concave function. Therefore we are using the Jensen's inequality in the reversed form, namely
+	\begin{align}
+		f\left( \sum_{i = 1}^{N} \lambda_i x_i \right) \geq \sum_{i = 1}^{N} \lambda_i f(x_i).
+	\end{align}
+	In this case, $\lambda_i = \frac{1}{N} > 0$, and that $\sum_{i} \lambda_i = 1$, which satisfies the condition of the inequality. Therefore we can conclude that
+	\begin{align}
+		\ln \left( \frac{1}{N} \sum_{i = 1}^{N} x_i \right) \geq \frac{1}{N} \sum_{i = 1}^{N} \ln x_i
+	\end{align}
+	holds for arbitrary any $x_i$'s. That is, 
+	\begin{align}
+		\ln \bar{x} \geq \ln \tilde{x}.
+	\end{align}
+	Because $f(x) = \ln x$ is a monotonically increasing function, we can assert that
+	\begin{align}
+		\bar{x} \geq \tilde{x},
+	\end{align}
+	which essentially says the arithmetic mean of a set of real numbers is never less than their geometrical mean
+\end{answer}
