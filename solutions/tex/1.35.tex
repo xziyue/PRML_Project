@@ -1,0 +1,39 @@
+\begin{question}{1.35}
+	Use the results
+	\begin{align*}
+		\int_{-\infty}^{+\infty} xp(x)\ dx = \mu
+	\end{align*}
+	and
+	\begin{align*}
+		\int_{-\infty}^{+\infty} x^2p(x)\ dx = \sigma^2
+	\end{align*}
+	to show that the entropy of the univariate Gaussian
+	\begin{align*}
+		p(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left\{ -\frac{(x - \mu)^2}{2\sigma^2} \right\}
+	\end{align*}
+	is given by
+	\begin{align}
+		\etpy[x] = \frac{1}{2}\left\{ 1 + \ln(2\pi\sigma^2) \right\}.
+	\end{align}
+\end{question}
+
+\begin{answer}{}
+	The entropy of the univariate Gaussian is
+	\begin{align}
+		\etpy[x] &= -\int_{-\infty}^{+\infty} p(x)\ln p(x)\ dx\\
+		&= -\int_{-\infty}^{+\infty} p(x) \left\{ \ln\frac{1}{\sqrt{2\pi}\sigma} - \frac{(x - \mu)^2}{2\sigma^2} \right\}\\
+		&= \frac{1}{2}\ln(2\pi\sigma^2)\int_{-\infty}^{+\infty} p(x)\ dx + \frac{1}{2\sigma^2}\int_{-\infty}^{+\infty} (x - \mu^2)p(x)\ dx\\
+		&= \frac{1}{2}\ln(2\pi\sigma^2) + \frac{1}{2\sigma^2}\int_{-\infty}^{+\infty} (x - \mu^2)p(x)\ dx.
+	\end{align}
+	For simplicity, the results stated in the question are not explicitly used. We will directly write
+	\begin{align}
+		&\frac{1}{2}\ln(2\pi\sigma^2) + \frac{1}{2\sigma^2}\int_{-\infty}^{+\infty} (x - \mu^2)p(x)\ dx\\
+		&= \frac{1}{2}\ln(2\pi\sigma^2) + \frac{1}{2\sigma^2} \var{x}\\
+		&= \frac{1}{2}\ln(2\pi\sigma^2) + \frac{1}{2}\\
+		&= \frac{1}{2}\left\{ 1 + \ln(2\pi\sigma^2)  \right\}.
+	\end{align}
+	That is to say,
+	\begin{align}
+		\etpy[x] = \frac{1}{2}\left\{ 1 + \ln(2\pi\sigma^2)  \right\}.
+	\end{align}
+\end{answer}

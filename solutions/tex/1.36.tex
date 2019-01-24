@@ -1,0 +1,56 @@
+\begin{question}{1.36}
+	A strictly convex function is defined as one for which chord lies above the function. Show that this is equivalent to the condition that the second derivative of the function be positive.
+\end{question}
+
+\begin{answer}{}
+	The graph below can help understanding the proof. For a strictly convex function, its chord lies above the function. Mathematically, for a function $f$, that is equivalent to saying
+	\begin{align}\label{1.36eqn1}
+		\delta f(a) + (1-\delta) f(b) > f\left[ \delta a + (1-\delta)b \right],
+	\end{align}
+	given two arbitrary number $a < b$ within the domain of $f$ and $\delta \in (0, 1)$. 
+	\begin{figure*}[h]
+		\centering
+		\begin{tikzpicture}
+			%\draw[->] (-3, 0) -- (3, 0) node[right] {$x$};
+			%\draw[->] (0, -3) -- (0, 3) node[above] {$y$};
+			\node (p1) at (-0.9, 0.81) {\textbullet};
+			\node (p2) at (1.5, 2.25) {\textbullet};
+			\node (p3) at (0, 0) {\textbullet};
+			\node[left = 1pt of p1] {$A$};
+			\node[right = 1pt of p2] {$B$};
+			\node[below = 1pt of p3] {$M$};
+			\draw[thick, domain=-1.6:1.6, smooth, variable=\x, blue] plot ({\x}, {\x * \x});
+			\draw[thick, domain=-0.9:1.5, smooth, variable=\x, dotted] plot ({\x}, {0.6*(\x - 1.5) + 2.25});
+			\draw[thick, domain=-0.9:0.0, smooth, variable=\x, dotted] plot ({\x}, {-0.9*\x});
+			\draw[thick, domain=0.0:1.5, smooth, variable=\x, dotted] plot ({\x}, {1.5*\x});
+		\end{tikzpicture}
+	\end{figure*}
+
+	In this graph, we have three points $A(a, f(a))$, $B(b, f(b))$ and $M(m, f(m))$. $A$ and $B$ are fixed points, and $M$ is an arbitrary point on $f$ that lies between $A$ and $B$. It is obvious that $m = \delta a + (1-\delta)b$, for some $\delta \in (0, 1)$. We would like to show that the gradient of line $AM$ (denoted by $k_{AM}$) is less than the gradient of line $MB$ (denoted by $k_{MB}$). Because
+	\begin{align}
+		k_{AM} &= \frac{f(a) - f(m)}{a - m}\\
+		k_{MB} &= \frac{f(m) - f(b)}{m - b},
+	\end{align}
+	it is equivalent to showing
+	\begin{gather}
+		\frac{f(a) - f(m)}{a - m} <  \frac{f(m) - f(b)}{m - b}\\
+		\frac{f(a) - f(m)}{a - (\delta a + (1-\delta)b)} <  \frac{f(m) - f(b)}{(\delta a + (1-\delta)b) - b}\\
+		\frac{f(a) - f(m)}{(1-\delta)(a - b)} <  \frac{f(m) - f(b)}{\delta (a - b)}\\
+		\delta \left[ f(a) - f(m) \right] > (1-\delta) \left[ f(m) - f(b) \right]\\
+		\delta f(a) + (1-\delta) f(b) > f(m),
+	\end{gather}
+	which is clearly true due to (\ref{1.36eqn1}). Therefore we know that $k_{AM} < k_{MB}$ holds. By the mean value theorem, it can be seen that there exists $c \in (a, m)$ and $d \in (m, b)$ such that
+	\begin{align}
+		f'(c) &= k_{AM}\\
+		f'(d) &= k_{MB}.
+	\end{align}
+	Using the mean value theorem once more, we know that there exists $e \in (c, d)$ that satisfies
+	\begin{align}
+		f''(e) = \frac{f'(d) - f'(c)}{d - c}.
+	\end{align}
+	Because $f'(d) > f'(c)$ and $d > c$, we know that $f''(e) > 0$ holds. Based on the arbitrariness of $a$ and $b$, we can conclude that
+	\begin{align}
+		f''(x) > 0
+	\end{align}
+	holds for all $x$ in the domain of $f$.
+\end{answer}

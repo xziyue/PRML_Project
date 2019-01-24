@@ -20,7 +20,7 @@
 	\end{align*}
 \end{question}
 
-\begin{answer}{(incomplete, due to complexity)}
+\begin{answer}{}
 	Denote the functional by $f$, which is made up by four smaller functionals $f_1, \ldots, f_4$. It can be seen that
 	\begin{align}
 		\begin{split}\label{1.34eqn0}
@@ -89,15 +89,15 @@
 	\begin{align}
 		&\int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
 		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \lambda_3 x^2 + (\lambda_2 - 2\lambda_3\mu)x \right\}\ dx\\
-		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left[  x^2 + \frac{\lambda_2 - 2\lambda_3\mu}{\lambda_3}x  + \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2\right] \right\}\ dx\\
-		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left[ \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \right] \right\}\ dx\\
-		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.\label{1.34eqn4}
+		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \lambda_3 \left[  x^2 + \frac{\lambda_2 - 2\lambda_3\mu}{\lambda_3}x  + \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2\right] \right\}\ dx\\
+		&= \exp\left(\lambda_3 \mu^2 + \lambda_1 - 1\right) \int_{-\infty}^{+\infty} \exp\left\{ \lambda_3 \left[ \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \right] \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \exp\left\{ \lambda_3 \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.\label{1.34eqn4}
 	\end{align}
 	Notice that for the integral to converge, we must have $\lambda_3 < 0$. Therefore we have
 	\begin{align}
-		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \sqrt{-\lambda_3}v, \mbox{ then } dx = \sqrt{-\lambda_3}\ dv. \right) \nonumber \\
-		& \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
-		&=  \sqrt{-\lambda_3}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
+		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \frac{1}{\sqrt{-\lambda_3}}v, \mbox{ then } dx = \frac{1}{\sqrt{-\lambda_3}}\ dv. \right) \nonumber \\
+		& \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \exp\left\{ \lambda_3 \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&=  \frac{1}{\sqrt{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
 	\end{align}
 	In question \prmlqstyle{1.7}, we have already shown that
 	\begin{align}
@@ -106,11 +106,11 @@
 	We can now conclude that
 	\begin{align}
 		\int_{-\infty}^{+\infty} p(x)\ dx &= \int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
-		&= \sqrt{-\lambda_3\pi}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right], \label{1.34eqn5}
+		&= \sqrt{\frac{\pi}{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right], \label{1.34eqn5}
 	\end{align}
 	which yields our first equation
-	\begin{align}
-		\sqrt{-\lambda_3\pi}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] = 1.
+	\begin{align}\label{1.34eqn_first}
+		\sqrt{\frac{\pi}{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] = 1.
 	\end{align}
 
 	For $\lambda_2$, we have
@@ -122,31 +122,35 @@
 	Making use of (\ref{1.34eqn4}), it can be seen that
 	\begin{align}
 		&\int_{-\infty}^{+\infty} x\exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
-		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x\exp\left\{ \lambda_3 \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
 	\end{align}
 	The same change of variable technique yields
 	\begin{align}
-		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \sqrt{-\lambda_3}v, \mbox{ then } dx = \sqrt{-\lambda_3}\ dv. \right) \nonumber \\
-		&\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
-		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \left(\sqrt{-\lambda_3}v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)e^{-v^2}\ dv\\
+		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \frac{1}{\sqrt{-\lambda_3}}v, \mbox{ then } dx = \frac{1}{\sqrt{-\lambda_3}}\ dv. \right) \nonumber \\
+		&\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x\exp\left\{ \lambda_3 \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&= \frac{1}{\sqrt{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \left(\frac{1}{\sqrt{-\lambda_3}}v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)e^{-v^2}\ dv\\
 		\begin{split}
-			&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \sqrt{-\lambda_3}v e^{-v^2}\ dv\\
-			&\phantom{=} \quad - \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} e^{-v^2}\ dv
+			&= \frac{1}{\sqrt{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \frac{1}{\sqrt{-\lambda_3}}v e^{-v^2}\ dv\\
+			&\phantom{=} \quad - \frac{1}{\sqrt{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} e^{-v^2}\ dv
+		\end{split}
+	\end{align}
+	It can be observed that $ve^{-v^2}$ is an odd function, therefore the first integral equals to zero. Hence we can write
+	\begin{align}
+		\begin{split}
+			&\frac{1}{\sqrt{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} \frac{1}{\sqrt{-\lambda_3}}v e^{-v^2}\ dv\\
+			&\phantom{=} \quad - \frac{1}{\sqrt{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} e^{-v^2}\ dv
 		\end{split}\\
-	\begin{split}
-		&= \frac{\sqrt{-\lambda_3}}{2}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{0}^{+\infty} e^{-v^2}\ dv^2\\
-		&\phantom{=} \quad - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} e^{-v^2}\ dv
-	\end{split}\\
-	&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \left[ \frac{\sqrt{-\lambda_3}}{2} - \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\lambda_3} \right].
+		&= \frac{\lambda_2 - 2\lambda_3\mu}{2\sqrt{-\lambda_3^3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]\int_{-\infty}^{+\infty} e^{-v^2}\ dv\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}}.
 	\end{align}
 	That is to say,
 	\begin{align}
 		\int_{-\infty}^{+\infty} xp(x)\ dx &= \int_{-\infty}^{+\infty} x\exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
-		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \left[ \frac{\sqrt{-\lambda_3}}{2} - \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\lambda_3} \right]. \label{1.34eqn6}
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}}. \label{1.34eqn6}
 	\end{align}
 	Therefore the second equation is
-	\begin{align}
-		\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \left[ \frac{\sqrt{-\lambda_3}}{2} - \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\lambda_3} \right] = \mu.
+	\begin{align}\label{1.34eqn_second}
+		\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}} = \mu.
 	\end{align}
 
 	For $\lambda_3$, we have
@@ -162,41 +166,99 @@
 			&= \int_{-\infty}^{+\infty} x^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
 			&\phantom{=}\quad - 2\mu \int_{-\infty}^{+\infty} x \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
 			&\phantom{=}\quad\quad + \mu^2 \int_{-\infty}^{+\infty} \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx.
-		\end{split}
+		\end{split}\label{1.34eqn7}
 	\end{align}
-	The value of the second and the third term can be given by (\ref{1.34eqn6}) and (\ref{1.34eqn5}) respectively. We now focus on the first term. Reusing (\ref{1.34eqn4}), together with integration by parts, it can be seen that
+	The value of the second and the third term can be given by (\ref{1.34eqn6}) and (\ref{1.34eqn5}) respectively. We now focus on the first term. Reusing (\ref{1.34eqn4}), it can be seen that
 	\begin{align}
 		&\int_{-\infty}^{+\infty} x^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
-		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x^2\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \int_{-\infty}^{+\infty} x^2\exp\left\{ \lambda_3 \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
 	\end{align}
-	Let us just ignore the constant coefficient and consider the integral alone. We know that
+	Let us just ignore the constant coefficient and consider the integral alone. We know that by change variables, we have
 	\begin{align}
-		&\int_{-\infty}^{+\infty} x^2\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \frac{1}{\sqrt{-\lambda_3}}v, \mbox{ then } dx = \frac{1}{\sqrt{-\lambda_3}}\ dv. \right) \nonumber\\
+		&\int_{-\infty}^{+\infty} x^2\exp\left\{ \lambda_3 \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
+		&= \frac{1}{\sqrt{-\lambda_3}} \int_{-\infty}^{+\infty} \left(\frac{1}{\sqrt{-\lambda_3}}v -  \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 e^{-v^2}\ dv\\
 		\begin{split}
-			&= \left.\frac{x^2}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\right\rvert_{-\infty}^{+\infty}\\
-			&\phantom{=} - \int_{-\infty}^{+\infty} \frac{2x}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx.
+			&= \frac{1}{\sqrt{-\lambda_3^3}} \int_{-\infty}^{+\infty} v^2 e^{-v^2}\ dv\\
+			&\phantom{=}\quad + \frac{\lambda_2 - 2\lambda_3\mu}{\lambda_3^2}\int_{-\infty}^{+\infty} ve^{-v^2}\ dv\\
+			&\phantom{=}\quad\quad + \frac{1}{\sqrt{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
+		\end{split}\\
+		\begin{split}
+			&= \frac{1}{\sqrt{-\lambda_3^3}} \int_{-\infty}^{+\infty} v^2 e^{-v^2}\ dv\\
+			&\phantom{=}\quad + \frac{1}{\sqrt{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
 		\end{split}
 	\end{align}
-	The first term, which is the limit
+	It can be seen that $v^2e^{-v^2}$ is an even function, therefore $\int_{-\infty}^{+\infty} v^2 e^{-v^2}\ dv = 2\int_{0}^{+\infty}v^2 e^{-v^2}\ dv$. This allows us to write
 	\begin{align}
-		\lim_{x \rightarrow +\infty} \frac{x^2}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\},
+		\begin{split}
+			&\frac{1}{\sqrt{-\lambda_3^3}} \int_{-\infty}^{+\infty} v^2 e^{-v^2}\ dv\\
+			&\phantom{=}\quad + \frac{1}{\sqrt{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 \int_{-\infty}^{+\infty} e^{-v^2}\ dv.
+		\end{split}\\
+		\begin{split}
+			&= 2\cdot\frac{1}{2\sqrt{-\lambda_3^3}} \int_{0}^{+\infty} (v^2)^{\frac{1}{2}} e^{-v^2}\ dv^2\\
+			&\phantom{=}\quad + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2.
+		\end{split}\\
+		\begin{split}
+			&= \frac{1}{\sqrt{-\lambda_3^3}}\Gamma\left(\frac{3}{2}\right)\\
+			&\phantom{=}\quad + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2.
+		\end{split}\\
+		&= \frac{\sqrt{\pi}}{2\sqrt{-\lambda_3^3}} + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2.
 	\end{align}
-	can be evaluated by first substituting $x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = v$ and then with \lhopitalsrule. That is,
+	Therefore we can conclude that
 	\begin{align}
-		&\lim_{x \rightarrow +\infty} \frac{x^2}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\\
-		&\left( \mbox{let } x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = v, \mbox{ then } x  = v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}.\right) \nonumber\\
-		&= \lim_{v \rightarrow +\infty} \frac{\left( v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2}{\frac{2}{\lambda_3} v }e^{\frac{v^2}{\lambda_3}}\\
-		&= \left.\lim_{v \rightarrow +\infty} \frac{\lambda_3}{2} \left[ v - \frac{\lambda_2 - 2\lambda_3\mu}{\lambda_3} + \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2\frac{1}{v} \right] \middle/ e^{-\frac{v^2}{\lambda_3}} \right.\\
-		&= \left.\lim_{v \rightarrow +\infty} \frac{\lambda_3}{2} \left[1  - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \frac{1}{v^2}\right] \middle/ -\frac{2v}{\lambda_3}e^{-\frac{v^2}{\lambda_3}} \right.\\
-		&= \left.\lim_{v \rightarrow +\infty} \frac{\lambda_3}{2} \left[ \frac{1}{v}  - \left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3}\right)^2 \frac{1}{v^3}\right] \middle/ -\frac{2}{\lambda_3}e^{-\frac{v^2}{\lambda_3}} \right.\\
-		&= 0.
+		&\int_{-\infty}^{+\infty} x^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]  \left[ \frac{\sqrt{\pi}}{2\sqrt{-\lambda_3^3}} + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 \right].
 	\end{align}
-	It can be seen that the case for $x \rightarrow -\infty$ is also 0. Therefore we can see that the first term vanishes. For the second term, it can be seen that
+	
+	Combining all terms in (\ref{1.34eqn7}), we have
 	\begin{align}
-		&\int_{-\infty}^{+\infty} \frac{2x}{\frac{2}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
-		&= \lambda_3 \int_{-\infty}^{+\infty} \frac{x}{ \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}\exp\left\{ \frac{1}{\lambda_3} \left( x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  \right\}\ dx\\
-		&\left(\mbox{let }  x + \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \sqrt{-\lambda_3}v, \mbox{ then } dx = \sqrt{-\lambda_3}\ dv. \right) \nonumber\\
-		&= -\sqrt{-\lambda_3^3} \int_{-\infty}^{+\infty} \frac{\left( \sqrt{-\lambda_3}v - \frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)}{\sqrt{-\lambda_3}v}e^{-v^2}\ dx\\
-		&= -\sqrt{-\lambda_3^3} \int_{-\infty}^{+\infty} e^{-v^2}\ dv - \frac{\lambda_2 - 2\lambda_3\mu}{2}\int_{-\infty}^{+\infty} v^{-1}e^{-v^2}\ dv.
+		&\int_{-\infty}^{+\infty} (x - \mu)^2 \exp\left\{ \lambda_1 + \lambda_2 x + \lambda_3(x-\mu)^2 - 1 \right\}\ dx\\
+		\begin{split}
+			&= \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]  \left[ \frac{\sqrt{\pi}}{2\sqrt{-\lambda_3^3}}  + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2 \right]\\
+			&\phantom{=}\quad -2\mu \exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \cdot \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}}\\
+			&\phantom{=}\quad\quad + \mu^2 \sqrt{\frac{\pi}{-\lambda_3}}\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right]
+		\end{split}\\
+		\begin{split}
+			&= \left.\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \right. \cdot \\
+			&\phantom{=}\quad  \left\{ \frac{\sqrt{\pi}}{2\sqrt{-\lambda_3^3}} + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  -2\mu \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}} + \mu^2\sqrt{\frac{\pi}{-\lambda_3}} \right\}.
+		\end{split}
 	\end{align}
+	The third equation is
+	\begin{equation}\label{1.34eqn_third}
+		\begin{split}
+		&\left.\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] \right. \cdot \\
+		&\phantom{=}\quad  \left\{ \frac{\sqrt{\pi}}{2\sqrt{-\lambda_3^3}} + \sqrt{\frac{\pi}{-\lambda_3}}\left(\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} \right)^2  -2\mu \frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}} + \mu^2\sqrt{\frac{\pi}{-\lambda_3}} \right\} = \sigma^2.
+		\end{split}
+	\end{equation}
+	
+	The first equation (equation \ref{1.34eqn_first}) gives
+	\begin{align}\label{1.34eqn8}
+		\exp\left[ -\frac{(\lambda_2 - 2\lambda_3\mu)^2}{4\lambda_3} + \lambda_3 \mu^2 + \lambda_1 - 1 \right] = \sqrt{\frac{-\lambda_3}{\pi}}.
+	\end{align}
+	Putting it into the second equation (equation \ref{1.34eqn_second}) yields
+	\begin{gather}
+		  \sqrt{\frac{-\lambda_3}{\pi}}\frac{\sqrt{\pi}(\lambda_2 - 2\lambda_3\mu)}{2\sqrt{-\lambda_3^3}} = \mu\\
+		  -\frac{\lambda_2 - 2\lambda_3\mu}{2\lambda_3} = \mu\\
+		  -\frac{\lambda_2}{2\lambda_3} = 0\\
+		  \lambda_2 = 0. \label{1.34eqn9}
+	\end{gather}
+	Putting (\ref{1.34eqn8}) and (\ref{1.34eqn9}) into the third equation (equation \ref{1.34eqn_third}) yields
+	\begin{gather}
+		\sqrt{\frac{-\lambda_3}{\pi}}\left\{ \frac{\sqrt{\pi}}{2\sqrt{-\lambda_3^3}} + \mu^2\sqrt{\frac{\pi}{-\lambda_3}}  -2\mu^2 \frac{\sqrt{\pi}}{\sqrt{-\lambda_3}} + \mu^2\sqrt{\frac{\pi}{-\lambda_3}} \right\} = \sigma^2\\
+		-\frac{1}{2\lambda_3} = \sigma^2\\
+		\lambda_3 = -\frac{1}{2\sigma^2}. \label{1.34eqn10}
+	\end{gather}
+	Eventually, putting (\ref{1.34eqn9}) and (\ref{1.34eqn10}) back to the first equation gives
+	\begin{gather}
+		\sqrt{2\pi\sigma^2} \exp\left[ \lambda_1 - 1 \right] = 1\\
+		\exp\left[ \lambda_1 - 1 \right] = \left(2\pi\sigma^2\right)^{-\frac{1}{2}}\\
+		\lambda_1 - 1 = -\frac{1}{2}\ln 2\pi\sigma^2\\
+		\lambda_1 = 1 - \frac{1}{2}\ln 2\pi\sigma^2. \label{1.34eqn11}
+	\end{gather}
+	By substituting $\lambda_1$, $\lambda_2$ and $\lambda_3$ with the corresponding values in (\ref{1.34eqn3}), we have
+	\begin{align}
+		p(x) &= \exp\left\{ 1 - \frac{1}{2}\ln 2\pi\sigma^2 -\frac{(x - \mu^2)}{2\sigma^2} -1 \right\}\\
+		&= \frac{1}{\sqrt{2\pi}\sigma} \exp\left\{ -\frac{(x - \mu^2)}{2\sigma^2} \right\},
+	\end{align}
+	which is identical to the form of Gaussians.
 \end{answer}
