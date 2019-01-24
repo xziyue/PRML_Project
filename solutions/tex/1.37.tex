@@ -1,0 +1,21 @@
+\begin{question}{1.37}
+	Using the definition
+	\begin{align*}
+		\etpy[\bm{y} \mid \bm{x}] = -\int\int p(\bm{y}, \bm{x}) \ln p(\bm{y} \mid \bm{x})\ d\bm{y}\ d\bm{x}
+	\end{align*}
+	together with the product rule of probability, prove the result
+	\begin{align*}
+		\etpy[\bm{x}, \bm{y}] = \etpy[\bm{y} \mid \bm{x}] + \etpy[\bm{x}].
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	It can be easily seen that
+	\begin{align}
+		\etpy[\bm{x}, \bm{y}] &=  -\int\int p(\bm{y}, \bm{x}) \ln p(\bm{y}, \bm{x})\ d\bm{y}\ d\bm{x}\\
+		&= -\int\int p(\bm{y}, \bm{x}) \ln \left[p(\bm{y} \mid \bm{x})p(\bm{x})\right]\ d\bm{y}\ d\bm{x}\\
+		&= -\int\int p(\bm{y}, \bm{x}) \ln p(\bm{y} \mid \bm{x})\ d\bm{y}\ d\bm{x} -\int\int p(\bm{y}, \bm{x}) \ln p(\bm{x})\ d\bm{y}\ d\bm{x}\\
+		&= \etpy[\bm{y} \mid \bm{x}] - \int p(\bm{x}) \ln p(\bm{x})\ d\bm{x}\\
+		&= \etpy[\bm{y} \mid \bm{x}] + \etpy[\bm{x}].
+	\end{align}
+\end{answer}

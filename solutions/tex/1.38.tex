@@ -1,0 +1,54 @@
+\begin{question}{1.38}
+	Using proof by induction, show that the inequality
+	\begin{align*}
+		f(\lambda a + (1-\lambda) b) \leq \lambda f(a) + (1-\lambda) f(b)
+	\end{align*}
+	implies the result
+	\begin{align*}
+		f\left( \sum_{i = 1}^{M} \lambda_i x_i \right) \leq \sum_{i = 1}^{M} \lambda_i f(x_i),
+	\end{align*}
+	where $\lambda_i \geq 0$ and $\sum_{i = 1}^M \lambda_i = 1$.
+\end{question}
+
+\begin{answer}{}
+	We demonstrate the proof by induction as follows.
+	
+	\noindent\textbf{Basis:} When $M = 1$, $f(\lambda_1 x_i) \leq \lambda_1f(x_1)$ holds, for it is equivalent to setting $\lambda = 1$ in the first inequality of the question. It can be clearly seen that the claim holds for $M = 2$.
+	
+	\noindent\textbf{Induction Hypothesis:} Suppose for some $M' \geq 2$, we have
+	\begin{align}
+		f\left( \sum_{i = 1}^{M'} \lambda_i x_i \right) \leq \sum_{i = 1}^{M'} \lambda_i f(x_i).
+	\end{align}
+	
+	\noindent\textbf{Induction Step:}
+	Because the inequality holds for any choice of $x_i$, for the case of $M'$ terms, we can change the last term to any value we want, and the claim still holds. That is to say,
+	\begin{align}
+		f\left( \sum_{i = 1}^{M' - 1} \lambda_i x_i  + \lambda_{M'}x'\right) \leq \left[\sum_{i = 1}^{M' - 1} \lambda_i f(x_i)\right] + \lambda_{M'}x'
+	\end{align}
+	holds for arbitrary $x'$. We can assign $x'$ with the following value
+	\begin{align}
+		x' = \lambda' x_{M'} + (1- \lambda') x_{M' + 1},
+	\end{align}
+	where $x_{M' + 1}$ is some arbitrary new variable we would like to introduce into the inequality, and $\lambda' \in [0, 1]$. We can see that the inequality
+	\begin{align}
+		f\left[ \sum_{i = 1}^{M' - 1} \lambda_i x_i  + \lambda_{M'}(\lambda' x_{M'} + (1- \lambda') x_{M' + 1}) \right] \leq \left[\sum_{i = 1}^{M' - 1} \lambda_i f(x_i)\right] + \lambda_{M'}\lambda' x_{M'} + (1- \lambda') x_{M' + 1}
+	\end{align}
+	holds true. If we calculate the sum of all weights, it would be
+	\begin{align}
+		\left(\sum_{i = 1}^{M' - 1} \lambda_i x_i\right) + \lambda_{M'}\lambda' + \lambda_{M'}(1- \lambda') = \sum_{i = 1}^{M'} \lambda_i = 1.
+	\end{align}
+	That is to say, the condition of the inequality still holds. It is also important, but trivial to verify that both $\lambda_{M'}\lambda'$ and $\lambda_{M'}(1- \lambda')$ are in the range of $[0, 1]$. Now if we define a set of new weights $\{ \zeta \}$, where
+	\begin{equation}
+		\zeta_i = 
+		\begin{cases}
+			\lambda_i, & 0 < i < M'\\
+			\lambda_{M'}\lambda', & i = M'\\
+			\lambda_{M'}(1- \lambda') & i = M' + 1,
+		\end{cases}
+	\end{equation}
+	we can rewrite the inequality as
+	\begin{align}
+		f\left( \sum_{i = 1}^{M' + 1} \zeta_i x_i \right) \leq \sum_{i = 1}^{M' + 1} \zeta_i f(x_i).
+	\end{align}
+	That is to say, the claim also holds true for $M' + 1$. Therefore we have proved this claim by induction.
+\end{answer}
