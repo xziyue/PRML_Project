@@ -1,0 +1,38 @@
+\begin{question}{2.1}
+	Verify that the Bernoulli distribution
+	\begin{align*}
+		\mathrm{Bern}(x \mid \mu) = \mu^{x}(1-\mu)^{1-x}
+	\end{align*}
+	satisfies the following properties
+	\begin{align*}
+		\sum_{x = 0}^{1} p(x \mid \mu) &= 1\\
+		\ev{x} &= \mu\\
+		\var{x} &= \mu(1-\mu).
+	\end{align*}
+	Show that the entropy $\etpy[x]$ of a Bernoulli distributed random binary variable $x$ is given by
+	\begin{align*}
+		\etpy[x] = -\mu \ln \mu - (1-\mu) \ln (1-\mu).
+	\end{align*}
+\end{question}
+
+\begin{answer}{}
+	The Bernoulli distribution only takes on two values, where
+	\begin{align}
+		p(x = 1 \mid \mu) &= \mu\\
+		p(x = 0 \mid \mu) &= (1-\mu).
+	\end{align}
+	The expectation is given by
+	\begin{align}
+		\ev{x} = \sum_{x = 0}^{1} xp(x \mid \mu) = \mu.
+	\end{align}
+	The expectation is given by
+	\begin{align}
+		\var{x} &= \sum_{x = 0}^{1} (x - mu)^2 p(x \mid \mu)\\
+		&= \mu(1-\mu).
+	\end{align}
+	The entropy is given by
+	\begin{align}
+		\etpy[x] &= -\sum_{x = 0}^{1}p(x \mid \mu) \ln p(x \mid \mu)\\
+		&= -\mu \ln \mu - (1-\mu)\ln(1-\mu).
+	\end{align}
+\end{answer}

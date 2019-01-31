@@ -1,0 +1,41 @@
+\begin{question}{2.2}
+	The form of the Bernoulli distribution given by
+	\begin{align*}
+		\mathrm{Bern}(x \mid \mu) = \mu^{x}(1-\mu)^{1-x}
+	\end{align*}
+	is not symmetric between the two values of $x$. In some situations, it will be more convenient to use an equivalent formulation for which $x \in \left\{ -1, 1 \right\}$, in which case the distribution can be written
+	\begin{align*}
+		p(x \mid \mu) = \left( \frac{1 - \mu}{2} \right)^{(1-x)/2} \left( \frac{1 + \mu}{2} \right)^{(1+x)/2}
+	\end{align*}
+	where $\mu \in [-1, 1]$. Show that the distribution above is normalized, and evaluate its mean, variance and entropy.
+\end{question}
+
+\begin{answer}{}
+	It can be easily seen that
+	\begin{align}
+		p(x = -1 \mid \mu) &= \frac{1 - \mu}{2}\\
+		p(x = 1 \mid \mu) &= \frac{1 + \mu}{2}.
+	\end{align}}
+	We can easily derive that $p(x = -1 \mid \mu) + p(x = 1 \mid \mu) = 1$, which indicates that the distribution is normalized. 
+	
+	The expectation is given by
+	\begin{align}
+		\ev{x} &= \sum_{\mathclap{x \in \left\{ -1, 1\right\}}} xp(x \mid \mu)\\
+		&= -\frac{1 - \mu}{2} + \frac{1 + \mu}{2}\\
+		&= \mu.
+	\end{align}
+	The variance is given by
+	\begin{align}
+		\var{x} &= \sum_{\mathclap{x \in \left\{ -1, 1\right\}}} (x - \mu)^2 p(x \mid \mu)\\
+		&= (1 + \mu)^2 \frac{1 - \mu}{2} + (1 - \mu)^2\frac{1 + \mu}{2}\\
+		&= \frac{1}{2}\left[(1 + \mu)^2 + (1 - \mu)^2\right] + \frac{\mu}{2}\left[(1 - \mu)^2 - (1 + \mu)^2  \right]\\
+		&= 1 + \mu^2 - 2\mu^2\\
+		&= 1-\mu^2.
+	\end{align}
+	The entropy is given by
+	\begin{align}
+		\etpy[x] &= -\sum_{\mathclap{x \in \left\{ -1, 1\right\}}} p(x \mid \mu) \ln p(x \mid \mu)\\
+		&= -\frac{1 - \mu}{2} \ln \frac{1 - \mu}{2} - \frac{1 + \mu}{2} \ln \frac{1 + \mu}{2}.
+	\end{align}
+\end{answer}
+
